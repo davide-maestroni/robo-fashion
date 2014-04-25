@@ -50,6 +50,7 @@ class LongSparseArrayReverseIterator<V>
     }
 
     @Override
+    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     public boolean equals(final Object o) {
 
         return SparseEntries.equal(this, o);

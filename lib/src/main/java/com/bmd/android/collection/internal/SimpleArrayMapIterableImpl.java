@@ -307,6 +307,7 @@ class SimpleArrayMapIterableImpl<K, V> extends AbstractSparseIterable<SimpleArra
 
         for (final SimpleArrayMapEntry<K, V> entry : this) {
 
+            //noinspection unchecked
             array[i++] = (T) entry.toImmutable();
         }
 
@@ -339,6 +340,7 @@ class SimpleArrayMapIterableImpl<K, V> extends AbstractSparseIterable<SimpleArra
 
         for (final SimpleArrayMapEntry<K, V> entry : this) {
 
+            //noinspection unchecked
             array[i++] = (T) entry.toParcelable();
         }
 
@@ -566,6 +568,7 @@ class SimpleArrayMapIterableImpl<K, V> extends AbstractSparseIterable<SimpleArra
 
         final ArrayList<ObjectSparseObjectEntry<K, V>> list = toImmutableList();
 
+        //noinspection unchecked,SuspiciousToArrayCall
         return list.toArray((T[]) Array.newInstance(type, list.size()));
     }
 
@@ -595,6 +598,7 @@ class SimpleArrayMapIterableImpl<K, V> extends AbstractSparseIterable<SimpleArra
 
         final ArrayList<ParcelableObjectSparseObjectEntry<K, V>> list = toParcelableList();
 
+        //noinspection unchecked,SuspiciousToArrayCall
         return list.toArray((T[]) Array.newInstance(type, list.size()));
     }
 

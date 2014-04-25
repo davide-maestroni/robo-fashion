@@ -50,7 +50,6 @@ android.libraryVariants.all { variant ->
     }
 
     task("javadoc${variant.name.capitalize()}", type: Javadoc) {
-        title = "$name $version API"
         description "Generates Javadoc from the ${variant.name.capitalize()} build"
         source = variant.javaCompile.source
         ext.androidJar =
@@ -63,7 +62,6 @@ android.libraryVariants.all { variant ->
     }
 
     artifacts.add('archives', task("jar${buildTypeName.capitalize()}", type: Jar) {
-        title = "$name $version API"
         description "Generates Jar from the ${variant.name.capitalize()} build"
         dependsOn variant.javaCompile
         archiveName = "$project.parent.name-$android.defaultConfig.versionName"

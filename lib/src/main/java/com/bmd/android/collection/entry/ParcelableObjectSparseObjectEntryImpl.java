@@ -50,6 +50,7 @@ class ParcelableObjectSparseObjectEntryImpl<K, V>
         mValue = value;
     }
 
+    @SuppressWarnings("unchecked")
     public ParcelableObjectSparseObjectEntryImpl(final Parcel parcel) {
 
         mKey = (K) parcel.readValue(null);
@@ -70,6 +71,7 @@ class ParcelableObjectSparseObjectEntryImpl<K, V>
     }
 
     @Override
+    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     public boolean equals(final Object o) {
 
         return SparseEntries.equal(this, o);

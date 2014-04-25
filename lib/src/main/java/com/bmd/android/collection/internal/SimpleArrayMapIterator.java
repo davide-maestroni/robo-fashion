@@ -56,6 +56,7 @@ class SimpleArrayMapIterator<K, V> extends AbstractSparseIterator<SimpleArrayMap
     }
 
     @Override
+    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     public boolean equals(final Object o) {
 
         return SparseEntries.equal(this, o);

@@ -147,6 +147,7 @@ abstract class ElementSparseIterableImpl<E> extends AbstractSparseIterable<E>
 
         for (final E element : this) {
 
+            //noinspection unchecked
             array[i++] = (T) element;
         }
 
@@ -158,6 +159,7 @@ abstract class ElementSparseIterableImpl<E> extends AbstractSparseIterable<E>
 
         final ArrayList<E> list = toList();
 
+        //noinspection unchecked,SuspiciousToArrayCall
         return list.toArray((T[]) Array.newInstance(type, list.size()));
     }
 

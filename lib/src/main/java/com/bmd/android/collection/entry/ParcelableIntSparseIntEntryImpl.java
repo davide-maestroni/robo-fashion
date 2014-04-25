@@ -66,6 +66,7 @@ class ParcelableIntSparseIntEntryImpl implements ParcelableIntSparseIntEntry {
     }
 
     @Override
+    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     public boolean equals(final Object o) {
 
         return SparseEntries.equal(this, o);

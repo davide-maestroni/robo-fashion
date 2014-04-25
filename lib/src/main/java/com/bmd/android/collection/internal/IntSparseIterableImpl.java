@@ -166,7 +166,7 @@ abstract class IntSparseIterableImpl extends ElementSparseIterableImpl<Integer>
 
         int count = 0;
 
-        for (final Integer i : this) {
+        for (final Integer ignored : this) {
 
             ++count;
         }

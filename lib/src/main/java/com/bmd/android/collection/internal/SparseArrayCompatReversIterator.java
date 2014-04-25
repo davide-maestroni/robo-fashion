@@ -47,6 +47,7 @@ class SparseArrayCompatReversIterator<V> extends AbstractReverseSparseIterator<S
     }
 
     @Override
+    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     public boolean equals(final Object o) {
 
         return SparseEntries.equal(this, o);

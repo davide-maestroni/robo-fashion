@@ -166,7 +166,7 @@ abstract class LongSparseIterableImpl extends ElementSparseIterableImpl<Long>
 
         int count = 0;
 
-        for (final Long l : this) {
+        for (final Long ignored : this) {
 
             ++count;
         }

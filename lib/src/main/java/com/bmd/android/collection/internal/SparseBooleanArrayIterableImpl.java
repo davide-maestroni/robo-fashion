@@ -13,6 +13,7 @@
  */
 package com.bmd.android.collection.internal;
 
+import android.annotation.SuppressLint;
 import android.os.Parcelable;
 import android.util.SparseBooleanArray;
 
@@ -240,6 +241,7 @@ class SparseBooleanArrayIterableImpl extends AbstractSparseIterable<SparseBoolea
 
         for (final SparseBooleanArrayEntry entry : this) {
 
+            //noinspection unchecked
             array[i++] = (T) entry.toImmutable();
         }
 
@@ -272,6 +274,7 @@ class SparseBooleanArrayIterableImpl extends AbstractSparseIterable<SparseBoolea
 
         for (final SparseBooleanArrayEntry entry : this) {
 
+            //noinspection unchecked
             array[i++] = (T) entry.toParcelable();
         }
 
@@ -433,6 +436,7 @@ class SparseBooleanArrayIterableImpl extends AbstractSparseIterable<SparseBoolea
 
         final ArrayList<IntSparseBooleanEntry> list = toImmutableList();
 
+        //noinspection unchecked,SuspiciousToArrayCall
         return list.toArray((T[]) Array.newInstance(type, list.size()));
     }
 
@@ -449,6 +453,7 @@ class SparseBooleanArrayIterableImpl extends AbstractSparseIterable<SparseBoolea
     @Override
     public Map<Integer, Boolean> toMap() {
 
+        @SuppressLint("UseSparseArrays")
         final HashMap<Integer, Boolean> map = new HashMap<Integer, Boolean>();
 
         fill(map);
@@ -461,6 +466,7 @@ class SparseBooleanArrayIterableImpl extends AbstractSparseIterable<SparseBoolea
 
         final ArrayList<ParcelableIntSparseBooleanEntry> list = toParcelableList();
 
+        //noinspection unchecked,SuspiciousToArrayCall
         return list.toArray((T[]) Array.newInstance(type, list.size()));
     }
 

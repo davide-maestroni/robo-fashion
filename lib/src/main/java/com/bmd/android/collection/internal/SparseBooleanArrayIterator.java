@@ -53,6 +53,7 @@ class SparseBooleanArrayIterator extends AbstractSparseIterator<SparseBooleanArr
     }
 
     @Override
+    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     public boolean equals(final Object o) {
 
         return SparseEntries.equal(this, o);

@@ -51,6 +51,7 @@ class ParcelableLongSparseObjectEntryImpl<V> implements ParcelableLongSparseObje
     public ParcelableLongSparseObjectEntryImpl(final Parcel parcel) {
 
         mKey = parcel.readLong();
+        //noinspection unchecked
         mValue = (V) parcel.readValue(null);
     }
 
@@ -68,6 +69,7 @@ class ParcelableLongSparseObjectEntryImpl<V> implements ParcelableLongSparseObje
     }
 
     @Override
+    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     public boolean equals(final Object o) {
 
         return SparseEntries.equal(this, o);

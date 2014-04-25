@@ -51,6 +51,7 @@ class ParcelableIntSparseObjectEntryImpl<V> implements ParcelableIntSparseObject
     public ParcelableIntSparseObjectEntryImpl(final Parcel parcel) {
 
         mKey = parcel.readInt();
+        //noinspection unchecked
         mValue = (V) parcel.readValue(null);
     }
 
@@ -68,6 +69,7 @@ class ParcelableIntSparseObjectEntryImpl<V> implements ParcelableIntSparseObject
     }
 
     @Override
+    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     public boolean equals(final Object o) {
 
         return SparseEntries.equal(this, o);

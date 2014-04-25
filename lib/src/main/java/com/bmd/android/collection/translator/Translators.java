@@ -120,6 +120,7 @@ public class Translators {
             };
         }
 
+        //noinspection unchecked
         return (ToBooleanTranslator<E>) sBooleanValueTranslator;
     }
 
@@ -144,6 +145,7 @@ public class Translators {
             };
         }
 
+        //noinspection unchecked
         return (Translator<E, ?>) sBooleanValueObjectTranslator;
     }
 
@@ -308,6 +310,7 @@ public class Translators {
             };
         }
 
+        //noinspection unchecked
         return (FullTranslator<E, E>) sIdentityTranslator;
     }
 
@@ -361,6 +364,7 @@ public class Translators {
             };
         }
 
+        //noinspection unchecked
         return (ToIntTranslator<E>) sIntKeyTranslator;
     }
 
@@ -385,6 +389,7 @@ public class Translators {
             };
         }
 
+        //noinspection unchecked
         return (Translator<E, ?>) sIntKeyObjectTranslator;
     }
 
@@ -409,6 +414,7 @@ public class Translators {
             };
         }
 
+        //noinspection unchecked
         return (ToIntTranslator<E>) sIntValueTranslator;
     }
 
@@ -433,6 +439,7 @@ public class Translators {
             };
         }
 
+        //noinspection unchecked
         return (Translator<E, ?>) sIntValueObjectTranslator;
     }
 
@@ -486,6 +493,7 @@ public class Translators {
             };
         }
 
+        //noinspection unchecked
         return (ToLongTranslator<E>) sLongKeyTranslator;
     }
 
@@ -510,6 +518,7 @@ public class Translators {
             };
         }
 
+        //noinspection unchecked
         return (Translator<E, ?>) sLongKeyObjectTranslator;
     }
 
@@ -534,6 +543,7 @@ public class Translators {
             };
         }
 
+        //noinspection unchecked
         return (ToLongTranslator<E>) sLongValueTranslator;
     }
 
@@ -558,6 +568,7 @@ public class Translators {
             };
         }
 
+        //noinspection unchecked
         return (Translator<E, ?>) sLongValueObjectTranslator;
     }
 
@@ -581,6 +592,7 @@ public class Translators {
             };
         }
 
+        //noinspection unchecked
         return (Translator<E, ?>) sElementObjectTranslator;
     }
 
@@ -605,6 +617,7 @@ public class Translators {
             };
         }
 
+        //noinspection unchecked
         return (Translator<E, ?>) sObjectKeyTranslator;
     }
 
@@ -629,6 +642,7 @@ public class Translators {
             };
         }
 
+        //noinspection unchecked
         return (Translator<E, ?>) sObjectValueTranslator;
     }
 }

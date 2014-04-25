@@ -13,6 +13,7 @@
  */
 package com.bmd.android.collection.internal;
 
+import android.annotation.SuppressLint;
 import android.os.Parcelable;
 import android.support.v4.util.SparseArrayCompat;
 
@@ -241,6 +242,7 @@ class SparseArrayCompatIterableImpl<V> extends AbstractSparseIterable<SparseArra
 
         for (final SparseArrayEntry<V> entry : this) {
 
+            //noinspection unchecked
             array[i++] = (T) entry.toImmutable();
         }
 
@@ -273,6 +275,7 @@ class SparseArrayCompatIterableImpl<V> extends AbstractSparseIterable<SparseArra
 
         for (final SparseArrayEntry<V> entry : this) {
 
+            //noinspection unchecked
             array[i++] = (T) entry.toParcelable();
         }
 
@@ -472,6 +475,7 @@ class SparseArrayCompatIterableImpl<V> extends AbstractSparseIterable<SparseArra
 
         final ArrayList<IntSparseObjectEntry<V>> list = toImmutableList();
 
+        //noinspection unchecked,SuspiciousToArrayCall
         return list.toArray((T[]) Array.newInstance(type, list.size()));
     }
 
@@ -488,6 +492,7 @@ class SparseArrayCompatIterableImpl<V> extends AbstractSparseIterable<SparseArra
     @Override
     public Map<Integer, V> toMap() {
 
+        @SuppressLint("UseSparseArrays")
         final HashMap<Integer, V> map = new HashMap<Integer, V>();
 
         fill(map);
@@ -500,6 +505,7 @@ class SparseArrayCompatIterableImpl<V> extends AbstractSparseIterable<SparseArra
 
         final ArrayList<ParcelableIntSparseObjectEntry<V>> list = toParcelableList();
 
+        //noinspection unchecked,SuspiciousToArrayCall
         return list.toArray((T[]) Array.newInstance(type, list.size()));
     }
 

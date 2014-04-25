@@ -142,6 +142,7 @@ class FilterBuilderImpl<T extends SparseIterable<E>, E> implements FilterBuilder
 
     private T build(final boolean isInclusive, final Filter<E> filter) {
 
+        //noinspection unchecked
         return (T) (isInclusive ? mIterable.only(filter) : mIterable.but(filter));
     }
 }

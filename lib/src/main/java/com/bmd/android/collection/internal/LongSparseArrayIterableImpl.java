@@ -13,6 +13,7 @@
  */
 package com.bmd.android.collection.internal;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.os.Parcelable;
 import android.util.LongSparseArray;
@@ -243,6 +244,7 @@ class LongSparseArrayIterableImpl<V> extends AbstractSparseIterable<LongSparseAr
 
         for (final LongSparseArrayEntry<V> entry : this) {
 
+            //noinspection unchecked
             array[i++] = (T) entry.toImmutable();
         }
 
@@ -275,6 +277,7 @@ class LongSparseArrayIterableImpl<V> extends AbstractSparseIterable<LongSparseAr
 
         for (final LongSparseArrayEntry<V> entry : this) {
 
+            //noinspection unchecked
             array[i++] = (T) entry.toParcelable();
         }
 
@@ -474,6 +477,7 @@ class LongSparseArrayIterableImpl<V> extends AbstractSparseIterable<LongSparseAr
 
         final ArrayList<LongSparseObjectEntry<V>> list = toImmutableList();
 
+        //noinspection unchecked,SuspiciousToArrayCall
         return list.toArray((T[]) Array.newInstance(type, list.size()));
     }
 
@@ -490,6 +494,7 @@ class LongSparseArrayIterableImpl<V> extends AbstractSparseIterable<LongSparseAr
     @Override
     public Map<Long, V> toMap() {
 
+        @SuppressLint("UseSparseArrays")
         final HashMap<Long, V> map = new HashMap<Long, V>();
 
         fill(map);
@@ -502,6 +507,7 @@ class LongSparseArrayIterableImpl<V> extends AbstractSparseIterable<LongSparseAr
 
         final ArrayList<ParcelableLongSparseObjectEntry<V>> list = toParcelableList();
 
+        //noinspection unchecked,SuspiciousToArrayCall
         return list.toArray((T[]) Array.newInstance(type, list.size()));
     }
 

@@ -57,6 +57,7 @@ class LongSparseArrayIterator<V> extends AbstractSparseIterator<LongSparseArrayE
     }
 
     @Override
+    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     public boolean equals(final Object o) {
 
         return SparseEntries.equal(this, o);
