@@ -11,6 +11,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import com.android.builder.BuilderConstants
+
 apply plugin: 'android-library'
 
 android {
@@ -42,9 +44,14 @@ dependencies {
 
 android.libraryVariants.all { variant ->
 
-    task("generate${capitalize(variant.name)}Javadoc", type: Javadoc) {
+    def buildTypeName = variant.buildType.name
+    if (buildTypeName.equals(BuilderConstants.DEBUG)) {
+        return; // Skip debug builds.
+    }
+
+    task("javadoc${variant.name.capitalize()}", type: Javadoc) {
         title = "$name $version API"
-        description "Generates Javadoc for Build '$variant.name'."
+        description "Generates Javadoc from the ${variant.name.capitalize()} build"
         source = variant.javaCompile.source
         ext.androidJar =
                 "${android.plugin.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
@@ -55,12 +62,13 @@ android.libraryVariants.all { variant ->
         exclude '**/R.java'
     }
 
-}
-
-def capitalize(name) {
-
-    def capitalized = name.toLowerCase()
-    capitalized = capitalized.replaceFirst(capitalized[0], capitalized[0].toUpperCase());
-
-    return capitalized
+    artifacts.add('archives', task("jar${buildTypeName.capitalize()}", type: Jar) {
+        title = "$name $version API"
+        description "Generates Jar from the ${variant.name.capitalize()} build"
+        dependsOn variant.javaCompile
+        archiveName = "$project.parent.name-$android.defaultConfig.versionName"
+        exclude '**/BuildConfig.class'
+        exclude '**/R*.class'
+        from variant.javaCompile.destinationDir
+    })
 }

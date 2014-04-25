@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bmd.android.collections">
+    package="com.bmd.android.collection">
 
     <!-- PROFILING!! REMOVE AFTER USE!! !-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
