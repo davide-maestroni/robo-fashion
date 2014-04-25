@@ -6,7 +6,7 @@ Overview
 
 The Android platform introduced a few collection classes based on the sparse array implementation. Although they bring improved performances and optimized memory usage to the classic Java collections world, they sometimes become awkward to use while implementing the most basic pieces of code. For example, good old iteration is not supported, so that, while all Java developers are by now used to the short and elegant syntax:
 
-```sh
+```java
 for (final Entry<Integer,MyClass> entry : map.entrySet()) {
 
   doSomethingWithKey(entry.getKey());
@@ -16,7 +16,7 @@ for (final Entry<Integer,MyClass> entry : map.entrySet()) {
 
 when employing Android sparse collections, you quickly end up in rewriting one time to often the same ugly code:
 
-```sh
+```java
 final int size = collection.size();
 
 for (int i = 0; i < size; ++i) {
