@@ -44,8 +44,8 @@ Version
 License
 -------
 
-[Apache License, Version 2.0]
+[The Apache Software License, Version 2.0] [1]
 
 **It's open! Feel free to contribute!!**
 
-[Apache License, Version 2.0]:http://www.apache.org/licenses/LICENSE-2.0
+[1]:http://www.apache.org/licenses/LICENSE-2.0
