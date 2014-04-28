@@ -13,6 +13,8 @@
  */
 package com.bmd.android.collection.internal;
 
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.util.SparseArray;
 
 import com.bmd.android.collection.entry.IntSparseObjectEntry;
@@ -125,6 +127,13 @@ class SparseArrayIterator<V> extends AbstractSparseIterator<SparseArrayEntry<V>>
     @Override
     protected void removeElement() {
 
-        mSparseArray.remove(getKey());
+        if (VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB) {
+
+            mSparseArray.removeAt(mPosition);
+
+        } else {
+
+            mSparseArray.remove(getKey());
+        }
     }
 }
