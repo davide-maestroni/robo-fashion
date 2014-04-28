@@ -14,6 +14,12 @@
 import com.android.builder.BuilderConstants
 
 apply plugin: 'android-library'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+group = 'com.bmd'
+version = '1.0'
+archivesBaseName = "$project.parent.name"
 
 android {
     compileSdkVersion 19
@@ -23,7 +29,7 @@ android {
         minSdkVersion 8
         targetSdkVersion 19
         versionCode 1
-        versionName "1.0"
+        versionName version
 
         testPackageName "com.bmd.android.collection.test"
     }
@@ -45,12 +51,17 @@ dependencies {
 android.libraryVariants.all { variant ->
 
     def buildTypeName = variant.buildType.name
+
     if (buildTypeName.equals(BuilderConstants.DEBUG)) {
-        return; // Skip debug builds.
+
+        // Skip debug builds.
+        return;
     }
 
-    task("javadoc${variant.name.capitalize()}", type: Javadoc) {
-        description "Generates Javadoc from the ${variant.name.capitalize()} build"
+    def variantName = variant.name.capitalize()
+
+    task("javadoc${variantName}", type: Javadoc) {
+        description "Generates Javadoc from the ${variantName} build"
         source = variant.javaCompile.source
         ext.androidJar =
                 "${android.plugin.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
@@ -61,12 +72,81 @@ android.libraryVariants.all { variant ->
         exclude '**/R.java'
     }
 
-    artifacts.add('archives', task("jar${buildTypeName.capitalize()}", type: Jar) {
-        description "Generates Jar from the ${variant.name.capitalize()} build"
-        dependsOn variant.javaCompile
-        archiveName = "$project.parent.name-$android.defaultConfig.versionName"
-        exclude '**/BuildConfig.class'
-        exclude '**/R*.class'
-        from variant.javaCompile.destinationDir
-    })
+    artifacts {
+
+        archives task("sourcesJar${variantName}", type: Jar) {
+            description "Generates sources Jar from the ${variantName} build"
+            classifier = 'sources'
+            from variant.sourceSets.allSource
+        }
+
+        archives task("javadocJar${variantName}", type: Jar, dependsOn: tasks["javadoc${variantName}"]) {
+            description "Generates Javadoc Jar from the ${variantName} build"
+            classifier = 'javadoc'
+            from 'build/docs/javadoc'
+        }
+
+        archives task("jar${variantName}", type: Jar) {
+            dependsOn variant.javaCompile
+            description "Generates Jar from the ${variantName} build"
+            from variant.javaCompile.destinationDir
+            exclude '**/BuildConfig.class'
+            exclude '**/R*.class'
+        }
+
+        archives file: file('$buildDir/pom.pom'), name: archivesBaseName, type: 'pom'
+    }
+}
+
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            if (hasProperty('sonatypeUsername') && hasProperty('sonatypePassword')) {
+
+                repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                    authentication(userName: sonatypeUsername, password: sonatypePassword)
+                }
+
+            } else {
+
+                repository(url: "file:///home/davide/.m2/repository/")
+            }
+
+            pom {
+                project {
+                    name archivesBaseName
+                    packaging 'jar'
+                    description 'Easily iterate through Android sparse collections'
+                    url 'https://github.com/davide-maestroni/robo-fashion'
+
+                    scm {
+                        url 'scm:git:git@github.com:davide-maestroni/robo-fashion.git'
+                        connection 'scm:git:git@github.com:davide-maestroni/robo-fashion.git'
+                        developerConnection 'scm:git:git@github.com:davide-maestroni/robo-fashion.git'
+                    }
+
+                    licenses {
+                        license {
+                            name 'The Apache Software License, Version 2.0'
+                            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                            distribution 'repo'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id 'davide-maestroni'
+                            name 'Davide Maestroni'
+                        }
+                    }
+                }
+            }.writeTo('$buildDir/pom.pom')
+        }
+    }
 }
