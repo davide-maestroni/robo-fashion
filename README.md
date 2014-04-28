@@ -1,6 +1,8 @@
 robo-fashion
 ============
 
+This library employes builder and fluent design patterns to enable easy iteration and manipulation of Android sparse collections.
+
 Overview
 --------
 
