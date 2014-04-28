@@ -81,7 +81,7 @@ import com.bmd.android.collection.iterator.SupportLongSparseArrayIterable;
  * </pre>
  * <p/>
  * As an example to clearly understand the filter concatenation behavior, the output of the
- * following code snippet:
+ * following code:
  * <pre>
  *
  *     final SparseArrayCompat<String> array = new SparseArrayCompat<String>();
@@ -115,7 +115,7 @@ import com.bmd.android.collection.iterator.SupportLongSparseArrayIterable;
  * The entries returned by the iterator can be safely accessed only inside the iteration loop,
  * since they have direct access to the wrapped sparse collection.
  * <br/>
- * In case the caller needs to retain an entry instance outside the loop, it must create an
+ * In case the caller needed to retain an entry instance outside the loop, it must create an
  * immutable or parcelable copy and retain that instead:
  * <pre>
  *
