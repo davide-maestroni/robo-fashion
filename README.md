@@ -67,29 +67,29 @@ As shown in the above examples inclusion and exclusion filters can be applied to
 In order to fully understand the filter concatenation behavior, note that the output of the following code:
 
 ```java
-    final SparseArrayCompat<String> array = new SparseArrayCompat<String>();
+final SparseArrayCompat<String> array = new SparseArrayCompat<String>();
 
-    for (int i = 0; i < 5; i++) {
+for (int i = 0; i < 5; i++) {
 
-        array.append(i, String.valueOf(i));
-    }
+  array.append(i, String.valueOf(i));
+}
 
-    AndroidCollections.iterate(array)
-                      .only()
-                      .first(3)
-                      .only()
-                      .last(2)
-                      .reverse()
-                      .forEach((element, index) -> {
-                          System.out.println(element.getValue());
-                      });
+AndroidCollections.iterate(array)
+                  .only()
+                  .first(3)
+                  .only()
+                  .last(2)
+                  .reverse()
+                  .forEach((element, index) -> {
+                    System.out.println(element.getValue());
+                  });
 ```
 
 will be:
 
 ```java
-    2
-    1
+  2
+  1
 ```
 
 The iterable implementation is not thread safe (unless differently specified) and not fail-fast, that is, if the wrapped collection is changed during the iteration no exception will be thrown, and further call to the iterator or to the entries methods might lead to unexpected results.
@@ -98,24 +98,24 @@ The entries returned by the iterator can be safely accessed only inside the iter
 In case the caller needed to retain an entry instance outside the loop, it must create an immutable or parcelable copy and retain that instead:
 
 ```java
-    final SparseArrayCompat<String> array = new SparseArrayCompat<String>();
+final SparseArrayCompat<String> array = new SparseArrayCompat<String>();
 
-    for (int i = 0; i < 5; i++) {
+for (int i = 0; i < 5; i++) {
 
-        array.append(i, String.valueOf(i));
-    }
+  array.append(i, String.valueOf(i));
+}
 
-    IntSparseObjectEntry<String> myEntry;
+IntSparseObjectEntry<String> myEntry;
 
-    for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)) {
+for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)) {
 
-        if ("3".equals(entry.getValue())) {
+  if ("3".equals(entry.getValue())) {
 
-            myEntry = entry.toImmutable();
+    myEntry = entry.toImmutable();
 
-            break;
-        }
-    }
+    break;
+  }
+}
 ```
 
 The [Filters][2] class already provides several filter implementations (like last *N* elements or first *N* elements), but additional custom filters can be easily implemented and concatenated with the existing ones.
