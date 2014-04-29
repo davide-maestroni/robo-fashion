@@ -17,7 +17,7 @@ apply plugin: 'android-library'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
-group = 'com.bmd'
+group = 'com.bmd.android'
 version = '1.0'
 archivesBaseName = project.parent.name
 
