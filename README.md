@@ -1,6 +1,6 @@
 #robo-fashion
 
-This library employes builder and fluent design patterns to enable easy iteration and manipulation of Android sparse collections.
+This library employs builder and fluent design patterns to enable easy iteration and manipulation of Android sparse collections.
 
 ##Overview
 
