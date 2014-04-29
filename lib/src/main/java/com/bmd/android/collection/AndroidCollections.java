@@ -52,38 +52,38 @@ import com.bmd.android.collection.iterator.SupportLongSparseArrayIterable;
  * <p/>
  * The sparse collection can be iterated both by using the classic Java syntax:
  * <pre>
- *
+ *  <code>
  *     for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)) {
  *
  *         // ... do your stuff ...
  *     }
- *
+ *  </code>
  * </pre>
  * Or through a more fluent syntax, like:
  * <pre>
- *
+ *  <code>
  *     AndroidCollections.iterate(array)
  *                       .only().from(4)
  *                       .forEach((element, index) -> {
  *                           // ... do your stuff ...
  *                       });
- *
+ *  </code>
  * </pre>
  * Or even by mixing the two:
  * <pre>
- *
+ *  <code>
  *     for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)
  *                                                                  .only().first(3)) {
  *
  *         // ... do your stuff ...
  *     }
- *
+ *  </code>
  * </pre>
  * <p/>
  * As an example to clearly understand the filter concatenation behavior, the output of the
  * following code:
  * <pre>
- *
+ *  <code>
  *     final SparseArrayCompat<String> array = new SparseArrayCompat<String>();
  *
  *     for (int i = 0; i < 5; i++) {
@@ -97,14 +97,14 @@ import com.bmd.android.collection.iterator.SupportLongSparseArrayIterable;
  *                       .reverse().forEach((element, index) -> {
  *                           System.out.println(element.getValue());
  *                       });
- *
+ *  </code>
  * </pre>
  * will be:
  * <pre>
- *
+ *  <code>
  *     2
  *     1
- *
+ *  </code>
  * </pre>
  * <p/>
  * Note that the iterable implementation is not thread safe (unless differently specified) and
@@ -118,7 +118,7 @@ import com.bmd.android.collection.iterator.SupportLongSparseArrayIterable;
  * In case the caller needed to retain an entry instance outside the loop, it must create an
  * immutable or parcelable copy and retain that instead:
  * <pre>
- *
+ *  <code>
  *     final SparseArrayCompat<String> array = new SparseArrayCompat<String>();
  *
  *     for (int i = 0; i < 5; i++) {
@@ -137,7 +137,7 @@ import com.bmd.android.collection.iterator.SupportLongSparseArrayIterable;
  *             break;
  *         }
  *     }
- *
+ *  </code>
  * </pre>
  * <p/>
  * Created by davide on 3/9/14.

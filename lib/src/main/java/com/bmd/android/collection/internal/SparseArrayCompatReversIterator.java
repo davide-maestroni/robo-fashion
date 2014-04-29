@@ -60,6 +60,12 @@ class SparseArrayCompatReversIterator<V> extends AbstractReverseSparseIterator<S
     }
 
     @Override
+    public String toString() {
+
+        return getKey() + "=" + getValue();
+    }
+
+    @Override
     public int getIndex() {
 
         return mPosition;

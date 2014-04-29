@@ -69,6 +69,12 @@ class SimpleArrayMapIterator<K, V> extends AbstractSparseIterator<SimpleArrayMap
     }
 
     @Override
+    public String toString() {
+
+        return getKey() + "=" + getValue();
+    }
+
+    @Override
     public int getIndex() {
 
         return mPosition;

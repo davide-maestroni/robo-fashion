@@ -59,6 +59,12 @@ class SparseBooleanArrayReverseIterator
     }
 
     @Override
+    public String toString() {
+
+        return getKey() + "=" + getValue();
+    }
+
+    @Override
     public int getIndex() {
 
         return mPosition;

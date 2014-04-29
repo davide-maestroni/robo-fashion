@@ -68,6 +68,12 @@ class SupportLongSparseArrayIterator<V> extends AbstractSparseIterator<LongSpars
     }
 
     @Override
+    public String toString() {
+
+        return getKey() + "=" + getValue();
+    }
+
+    @Override
     public int getIndex() {
 
         return mPosition;

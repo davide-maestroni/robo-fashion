@@ -66,6 +66,12 @@ class SparseBooleanArrayIterator extends AbstractSparseIterator<SparseBooleanArr
     }
 
     @Override
+    public String toString() {
+
+        return getKey() + "=" + getValue();
+    }
+
+    @Override
     public int getIndex() {
 
         return mPosition;

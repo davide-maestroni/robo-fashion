@@ -66,6 +66,12 @@ class SparseIntArrayIterator extends AbstractSparseIterator<SparseIntArrayEntry>
     }
 
     @Override
+    public String toString() {
+
+        return getKey() + "=" + getValue();
+    }
+
+    @Override
     public int getIndex() {
 
         return mPosition;

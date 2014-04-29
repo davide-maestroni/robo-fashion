@@ -68,6 +68,12 @@ class SparseArrayCompatIterator<V> extends AbstractSparseIterator<SparseArrayEnt
     }
 
     @Override
+    public String toString() {
+
+        return getKey() + "=" + getValue();
+    }
+
+    @Override
     public int getIndex() {
 
         return mPosition;

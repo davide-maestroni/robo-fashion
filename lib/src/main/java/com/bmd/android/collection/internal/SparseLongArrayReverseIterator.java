@@ -60,6 +60,12 @@ class SparseLongArrayReverseIterator extends AbstractReverseSparseIterator<Spars
     }
 
     @Override
+    public String toString() {
+
+        return getKey() + "=" + getValue();
+    }
+
+    @Override
     public int getIndex() {
 
         return mPosition;

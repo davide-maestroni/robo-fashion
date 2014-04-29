@@ -68,6 +68,7 @@ android.libraryVariants.all { variant ->
         classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
         options.links("http://docs.oracle.com/javase/7/docs/api/")
         options.linksOffline("http://developer.android.com/reference/", "${android.plugin.sdkDirectory}/docs/reference/")
+        options.overview("${project.name}/docs/overview.html")
         exclude '**/BuildConfig.java'
         exclude '**/R.java'
     }
