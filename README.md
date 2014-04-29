@@ -1,10 +1,8 @@
-robo-fashion
-============
+#robo-fashion
 
 This library employes builder and fluent design patterns to enable easy iteration and manipulation of Android sparse collections.
 
-Overview
---------
+##Overview
 
 The Android platform introduced a few collection classes based on the sparse array implementation. Although they bring improved performances and optimized memory usage to the classic Java collections world, they sometimes become awkward to use when implementing the most basic pieces of code. For example, good old iteration is not supported, so that, while all Java developers are by now used to the short and elegant syntax:
 
@@ -32,8 +30,7 @@ The autocomplete feature of most Java or Android IDEs is not of much help here..
 
 The purpose of this library is to provide an easy way to iterate through the elements of the Android sparse collections and manipulate them in the while.
 
-Usage
------
+##Usage
 
 The specific sparse collection can be iterated both by using the classic Java syntax:
 
@@ -124,13 +121,11 @@ In case the caller needed to retain an entry instance outside the loop, it must 
 The [Filters][2] class already provides several filter implementations (like last *N* elements or first *N* elements), but additional custom filters can be easily implemented and concatenated with the existing ones.
 
 
-Version
--------
+##Version
 
 1.0
 
-License
--------
+##License
 
 [The Apache Software License, Version 2.0][1]
 
