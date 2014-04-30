@@ -66,9 +66,11 @@ android.libraryVariants.all { variant ->
         ext.androidJar =
                 "${android.plugin.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
         classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
+        title = "${archivesBaseName} ${version}"
         options.links("http://docs.oracle.com/javase/7/docs/api/")
         options.linksOffline("http://developer.android.com/reference/", "${android.plugin.sdkDirectory}/docs/reference/")
         options.overview("${project.name}/docs/overview.html")
+        options.windowTitle("Javadoc - ${archivesBaseName}")
         exclude '**/BuildConfig.java'
         exclude '**/R.java'
     }
@@ -122,29 +124,29 @@ uploadArchives {
             }
 
             pom.project {
-                name archivesBaseName
-                packaging 'jar'
-                description 'Easily iterate through Android sparse collections'
-                url 'https://github.com/davide-maestroni/robo-fashion'
+                name = archivesBaseName
+                packaging = 'jar'
+                description = 'Easily iterate through Android sparse collections'
+                url = 'https://github.com/davide-maestroni/robo-fashion'
 
                 scm {
-                    url 'git@github.com:davide-maestroni/robo-fashion.git'
-                    connection 'scm:git:git@github.com:davide-maestroni/robo-fashion.git'
-                    developerConnection 'scm:git:git@github.com:davide-maestroni/robo-fashion.git'
+                    url = 'git@github.com:davide-maestroni/robo-fashion.git'
+                    connection = 'scm:git:git@github.com:davide-maestroni/robo-fashion.git'
+                    developerConnection = 'scm:git:git@github.com:davide-maestroni/robo-fashion.git'
                 }
 
                 licenses {
                     license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        distribution 'repo'
+                        name = 'The Apache Software License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution = 'repo'
                     }
                 }
 
                 developers {
                     developer {
-                        id 'davide-maestroni'
-                        name 'Davide Maestroni'
+                        id = 'davide-maestroni'
+                        name = 'Davide Maestroni'
                     }
                 }
             }
