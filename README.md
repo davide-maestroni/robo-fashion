@@ -92,7 +92,7 @@ will be:
   1
 ```
 
-The [Filters][2] class already provides several filter implementations (like last *N* elements or first *N* elements), but additional custom filters can be easily implemented and concatenated with the existing ones.
+The [Filters][3] class already provides several filter implementations (like last *N* elements or first *N* elements), but additional custom filters can be easily implemented and concatenated with the existing ones.
 
 The iterable implementation is not thread safe (unless differently specified) and not fail-fast, that is, if the wrapped collection is changed during the iteration no exception will be thrown, and further call to the iterator or to the entries methods might lead to unexpected results.
 
@@ -120,15 +120,37 @@ for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)) {
 }
 ```
 
+##Documentation
+
+Complete [Javadocs][4] with insights and examples are available.
+
+##Performance
+
+The iterator implementation is generally faster than the correspondent Java map collection, but, in any case, slower than directly accessing the Android collection object. In fact, there could be nothing faster than reading an element from a primitive array by its index. It is also true that the sparse collections were designed for best performances when holding a relative small number of elements. In such cases iteration is for sure not the bottleneck, so you'd better have flexibility and readability than speed.
+
 ##Version
 
 1.0
 
+##Dependencies
+
+####Source dependencies
+
+- Android SDK ([Terms and Condition][1])
+- Android Support Library ([Apache License v2.0][2])
+
+####Test dependencies
+
+- [fest-android][5] ([Apache License v2.0][2])
+
 ##License
 
-[The Apache Software License, Version 2.0][1]
+[The Apache Software License, Version 2.0][2]
 
 **It's open! Feel free to contribute!!**
 
-[1]:http://www.apache.org/licenses/LICENSE-2.0
-[2]:https://github.com/davide-maestroni/robo-fashion/blob/master/lib/src/main/java/com/bmd/android/collection/filter/Filters.java
+[1]:http://developer.android.com/sdk/terms.html
+[2]:http://www.apache.org/licenses/LICENSE-2.0
+[3]:https://github.com/davide-maestroni/robo-fashion/blob/master/lib/src/main/java/com/bmd/android/collection/filter/Filters.java
+[4]:http://davide-maestroni.github.io/robo-fashion/javadoc/
+[5]:http://square.github.io/fest-android/
