@@ -25,9 +25,9 @@ import com.bmd.android.collection.iterator.SimpleArrayMapIterable;
 import java.util.Iterator;
 
 /**
- * Enhanced implementation of {@link android.support.v4.util.SparseArrayCompat} supporting
+ * Enhanced implementation of {@link android.support.v4.util.SimpleArrayMap} supporting
  * parcelable serialization, iteration and proper equals implementation
- * (<a href="https://code.google.com/p/android/issues/detail?id=68406">issue 68406</a>).
+ * (see <a href="https://code.google.com/p/android/issues/detail?id=68406">issue 68406</a>).
  *
  * @param <K> The key type.
  * @param <V> The value type.

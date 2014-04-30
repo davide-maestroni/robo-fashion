@@ -41,7 +41,7 @@ for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)) {
 }
 ```
 
-Or through a more fluent syntax, like:
+Through a more fluent syntax, like:
 
 ```java
 AndroidCollections.iterate(array)
@@ -52,7 +52,7 @@ AndroidCollections.iterate(array)
                   });
 ```
 
-Finally, even by mixing the two:
+Or even by mixing the two:
 
 ```java
 for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)
@@ -124,6 +124,8 @@ for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)) {
 
 Complete [Javadocs][4] with insights and examples are available.
 
+The project contains an additional sample module showing how to implement an enhanced version of a [SimpleArrayMap][7] supporting parcelable serialization, iteration and proper *equals()* implementation (see issue [68406][6]).
+
 ##Performance
 
 The iterator implementation is generally faster than the correspondent Java map collection, but, in any case, slower than directly accessing the Android collection object. In fact, there could be nothing faster than reading an element from a primitive array by its index. It is also true that the sparse collections were designed for best performances when holding a relative small number of elements. In such cases iteration is for sure not the bottleneck, so you'd better have flexibility and readability than speed.
@@ -154,3 +156,5 @@ The iterator implementation is generally faster than the correspondent Java map 
 [3]:https://github.com/davide-maestroni/robo-fashion/blob/master/lib/src/main/java/com/bmd/android/collection/filter/Filters.java
 [4]:http://davide-maestroni.github.io/robo-fashion/javadoc/
 [5]:http://square.github.io/fest-android/
+[6]:https://code.google.com/p/android/issues/detail?id=68406
+[7]:https://github.com/davide-maestroni/robo-fashion/blob/master/sample/src/main/java/com/bmd/android/collection/example/EnhancedArrayMap.java
