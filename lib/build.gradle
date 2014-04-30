@@ -127,7 +127,7 @@ uploadArchives {
                 name = archivesBaseName
                 packaging = 'jar'
                 description = 'Easily iterate through Android sparse collections'
-                url = 'https://github.com/davide-maestroni/robo-fashion'
+                url = 'http://davide-maestroni.github.io/robo-fashion/'
 
                 scm {
                     url = 'git@github.com:davide-maestroni/robo-fashion.git'
