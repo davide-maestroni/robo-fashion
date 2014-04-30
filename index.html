@@ -70,6 +70,11 @@
 <p>The project contains an additional sample module showing how to implement an enhanced version of a <a href="http://developer.android.com/reference/android/support/v4/util/SimpleArrayMap.html">SimpleArrayMap</a> supporting parcelable serialization, iteration and proper <em>equals()</em> implementation (see issue <a href="https://code.google.com/p/android/issues/detail?id=68406">68406</a>).</p>
 
 <h2>
+<a name="performance" class="anchor" href="#performance"><span class="octicon octicon-link"></span></a>Performance</h2>
+
+<p>The iterator implementation is generally faster than the correspondent Java map collection, but, in any case, slower than directly accessing the Android collection object. In fact, there could be nothing faster than reading an element from a primitive array by its index. It is also true that the sparse collections were designed for best performances when holding a relative small number of elements. In such cases iteration is for sure not the bottleneck, so you'd better have flexibility and readability than speed.</p>
+
+<h2>
 <a name="version" class="anchor" href="#version"><span class="octicon octicon-link"></span></a>Version</h2>
 
 <p>1.0</p>
