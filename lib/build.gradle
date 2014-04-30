@@ -17,7 +17,7 @@ apply plugin: 'android-library'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
-group = 'com.bmd.android'
+group = 'com.github.davide-maestroni'
 version = '1.0'
 archivesBaseName = project.parent.name
 
@@ -128,7 +128,7 @@ uploadArchives {
                 url 'https://github.com/davide-maestroni/robo-fashion'
 
                 scm {
-                    url 'scm:git:git@github.com:davide-maestroni/robo-fashion.git'
+                    url 'git@github.com:davide-maestroni/robo-fashion.git'
                     connection 'scm:git:git@github.com:davide-maestroni/robo-fashion.git'
                     developerConnection 'scm:git:git@github.com:davide-maestroni/robo-fashion.git'
                 }
