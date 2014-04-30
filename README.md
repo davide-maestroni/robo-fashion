@@ -14,7 +14,7 @@ for (final Entry<Integer,MyClass> entry : map.entrySet()) {
 }
 ```
 
-when employing Android sparse collections, you quickly end up in rewriting one time to often the same ugly code:
+when employing Android sparse collections, you quickly end up in rewriting one time too often the same ugly code:
 
 ```java
 final int size = collection.size();
@@ -92,6 +92,8 @@ will be:
   1
 ```
 
+The [Filters][2] class already provides several filter implementations (like last *N* elements or first *N* elements), but additional custom filters can be easily implemented and concatenated with the existing ones.
+
 The iterable implementation is not thread safe (unless differently specified) and not fail-fast, that is, if the wrapped collection is changed during the iteration no exception will be thrown, and further call to the iterator or to the entries methods might lead to unexpected results.
 
 The entries returned by the iterator can be safely accessed only inside the iteration loop, since they have direct access to the wrapped sparse collection. This is an explicit design choice to try preserving both highest performances and lowest memory consumption.
@@ -117,9 +119,6 @@ for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)) {
   }
 }
 ```
-
-The [Filters][2] class already provides several filter implementations (like last *N* elements or first *N* elements), but additional custom filters can be easily implemented and concatenated with the existing ones.
-
 
 ##Version
 
