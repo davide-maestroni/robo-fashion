@@ -157,4 +157,4 @@ The iterator implementation is generally faster than the correspondent Java map 
 [4]:http://davide-maestroni.github.io/robo-fashion/javadoc/
 [5]:http://square.github.io/fest-android/
 [6]:https://code.google.com/p/android/issues/detail?id=68406
-[7]:https://github.com/davide-maestroni/robo-fashion/blob/master/sample/src/main/java/com/bmd/android/collection/example/EnhancedArrayMap.java
+[7]:http://developer.android.com/reference/android/support/v4/util/SimpleArrayMap.html
