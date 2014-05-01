@@ -11,7 +11,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.bmd.android.collection.internal;
+package com.bmd.android.collection;
 
 import android.support.v4.util.LongSparseArray;
 import android.support.v4.util.SimpleArrayMap;
@@ -19,29 +19,28 @@ import android.support.v4.util.SparseArrayCompat;
 import android.util.SparseArray;
 import android.util.SparseBooleanArray;
 import android.util.SparseIntArray;
-import android.util.SparseLongArray;
 
-import com.bmd.android.collection.iterator.LongSparseArrayIterable;
+import com.bmd.android.collection.internal.CompatIterableFactory;
 import com.bmd.android.collection.iterator.SimpleArrayMapIterable;
 import com.bmd.android.collection.iterator.SparseArrayCompatIterable;
 import com.bmd.android.collection.iterator.SparseArrayIterable;
 import com.bmd.android.collection.iterator.SparseBooleanArrayIterable;
 import com.bmd.android.collection.iterator.SparseIntArrayIterable;
-import com.bmd.android.collection.iterator.SparseLongArrayIterable;
 import com.bmd.android.collection.iterator.SupportLongSparseArrayIterable;
 
 /**
- * Utility class implementing a factory of
- * {@link com.bmd.android.collection.iterator.SparseIterable} instances wrapping specific sparse
- * collections.
+ * This utility class creates objects wrapping an Android sparse collection, such as
+ * {@link android.util.SparseArray} and {@link android.support.v4.util.SparseArrayCompat}, to give
+ * it the base functionalities of an {@link java.lang.Iterable} object.
  * <p/>
- * This class represents the only entry point to the internal package.
- * <p/>
- * Created by davide on 3/10/14.
+ * Created by davide on 3/9/14.
  */
-public class SparseIterableFactory {
+public class CompatCollections {
 
-    private SparseIterableFactory() {
+    /**
+     * Avoid direct instantiation.
+     */
+    CompatCollections() {
 
     }
 
@@ -53,33 +52,9 @@ public class SparseIterableFactory {
      * @param <V>      The element value type.
      * @return The iterable instance.
      */
-    public static <K, V> SimpleArrayMapIterable<K, V> create(final SimpleArrayMap<K, V> arrayMap) {
+    public static <K, V> SimpleArrayMapIterable<K, V> iterate(final SimpleArrayMap<K, V> arrayMap) {
 
-        return new SimpleArrayMapIterableImpl<K, V>(arrayMap);
-    }
-
-    /**
-     * Wraps the specified {@link android.util.SparseLongArray} into an iterable.
-     *
-     * @param sparseArray The sparse array to wrap.
-     * @return The iterable instance.
-     */
-    public static SparseLongArrayIterable create(final SparseLongArray sparseArray) {
-
-        return new SparseLongArrayIterableImpl(sparseArray);
-    }
-
-    /**
-     * Wraps the specified {@link android.util.LongSparseArray} into an iterable.
-     *
-     * @param sparseArray The sparse array to wrap.
-     * @param <V>         The element value type.
-     * @return The iterable instance.
-     */
-    public static <V> LongSparseArrayIterable<V> create(
-            final android.util.LongSparseArray<V> sparseArray) {
-
-        return new LongSparseArrayIterableImpl<V>(sparseArray);
+        return CompatIterableFactory.create(arrayMap);
     }
 
     /**
@@ -89,10 +64,10 @@ public class SparseIterableFactory {
      * @param <V>         The element value type.
      * @return The iterable instance.
      */
-    public static <V> SupportLongSparseArrayIterable<V> create(
+    public static <V> SupportLongSparseArrayIterable<V> iterate(
             final LongSparseArray<V> sparseArray) {
 
-        return new SupportLongSparseArrayIterableImpl<V>(sparseArray);
+        return CompatIterableFactory.create(sparseArray);
     }
 
     /**
@@ -102,9 +77,9 @@ public class SparseIterableFactory {
      * @param <V>         The element value type.
      * @return The iterable instance.
      */
-    public static <V> SparseArrayIterable<V> create(final SparseArray<V> sparseArray) {
+    public static <V> SparseArrayIterable<V> iterate(final SparseArray<V> sparseArray) {
 
-        return new SparseArrayIterableImpl<V>(sparseArray);
+        return CompatIterableFactory.create(sparseArray);
     }
 
     /**
@@ -114,20 +89,9 @@ public class SparseIterableFactory {
      * @param <V>         The element value type.
      * @return The iterable instance.
      */
-    public static <V> SparseArrayCompatIterable<V> create(final SparseArrayCompat<V> sparseArray) {
+    public static <V> SparseArrayCompatIterable<V> iterate(final SparseArrayCompat<V> sparseArray) {
 
-        return new SparseArrayCompatIterableImpl<V>(sparseArray);
-    }
-
-    /**
-     * Wraps the specified {@link android.util.SparseBooleanArray} into an iterable.
-     *
-     * @param sparseArray The sparse array to wrap.
-     * @return The iterable instance.
-     */
-    public static SparseBooleanArrayIterable create(final SparseBooleanArray sparseArray) {
-
-        return new SparseBooleanArrayIterableImpl(sparseArray);
+        return CompatIterableFactory.create(sparseArray);
     }
 
     /**
@@ -136,8 +100,19 @@ public class SparseIterableFactory {
      * @param sparseArray The sparse array to wrap.
      * @return The iterable instance.
      */
-    public static SparseIntArrayIterable create(final SparseIntArray sparseArray) {
+    public static SparseIntArrayIterable iterate(final SparseIntArray sparseArray) {
 
-        return new SparseIntArrayIterableImpl(sparseArray);
+        return CompatIterableFactory.create(sparseArray);
+    }
+
+    /**
+     * Wraps the specified {@link android.util.SparseBooleanArray} into an iterable.
+     *
+     * @param sparseArray The sparse array to wrap.
+     * @return The iterable instance.
+     */
+    public static SparseBooleanArrayIterable iterate(final SparseBooleanArray sparseArray) {
+
+        return CompatIterableFactory.create(sparseArray);
     }
 }

@@ -13,6 +13,7 @@
  */
 package com.bmd.android.collection.iterator;
 
+import android.annotation.TargetApi;
 import android.os.Parcelable;
 import android.util.SparseLongArray;
 
@@ -36,6 +37,7 @@ import java.util.SortedMap;
  * <p/>
  * Created by davide on 3/10/14.
  */
+@TargetApi(18)
 public interface SparseLongArrayIterable extends SparseIterable<SparseLongArrayEntry> {
 
     /**

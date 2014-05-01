@@ -17,7 +17,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.support.v4.util.SimpleArrayMap;
 
-import com.bmd.android.collection.AndroidCollections;
+import com.bmd.android.collection.CompatCollections;
 import com.bmd.android.collection.entry.SimpleArrayMapEntry;
 
 import junit.framework.TestCase;
@@ -85,7 +85,7 @@ public class EnhancedArrayMapTest extends TestCase {
         parcel.setDataPosition(0);
 
         final Bundle out = parcel.readBundle();
-        out.setClassLoader(AndroidCollections.class.getClassLoader());
+        out.setClassLoader(CompatCollections.class.getClassLoader());
 
         assertThat(out.getParcelable("array")).isEqualTo(mArray);
     }

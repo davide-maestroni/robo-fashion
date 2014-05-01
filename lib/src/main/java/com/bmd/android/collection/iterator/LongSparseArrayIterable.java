@@ -13,6 +13,7 @@
  */
 package com.bmd.android.collection.iterator;
 
+import android.annotation.TargetApi;
 import android.os.Parcelable;
 import android.util.LongSparseArray;
 
@@ -38,6 +39,7 @@ import java.util.SortedMap;
  *
  * @param <V> The element value type.
  */
+@TargetApi(16)
 public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArrayEntry<V>> {
 
     /**

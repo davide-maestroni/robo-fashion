@@ -17,7 +17,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.util.SimpleArrayMap;
 
-import com.bmd.android.collection.AndroidCollections;
+import com.bmd.android.collection.CompatCollections;
 import com.bmd.android.collection.entry.ParcelableObjectSparseObjectEntry;
 import com.bmd.android.collection.entry.SimpleArrayMapEntry;
 import com.bmd.android.collection.iterator.SimpleArrayMapIterable;
@@ -55,7 +55,7 @@ public class EnhancedArrayMap<K, V> extends SimpleArrayMap<K, V>
      */
     public EnhancedArrayMap() {
 
-        mIterable = AndroidCollections.iterate(this);
+        mIterable = CompatCollections.iterate(this);
     }
 
     /**
@@ -67,7 +67,7 @@ public class EnhancedArrayMap<K, V> extends SimpleArrayMap<K, V>
 
         super(capacity);
 
-        mIterable = AndroidCollections.iterate(this);
+        mIterable = CompatCollections.iterate(this);
     }
 
     /**
@@ -79,7 +79,7 @@ public class EnhancedArrayMap<K, V> extends SimpleArrayMap<K, V>
 
         super(map);
 
-        mIterable = AndroidCollections.iterate(this);
+        mIterable = CompatCollections.iterate(this);
     }
 
     private EnhancedArrayMap(final Parcel parcel) {
@@ -96,7 +96,7 @@ public class EnhancedArrayMap<K, V> extends SimpleArrayMap<K, V>
             put(entry.getKey(), entry.getValue());
         }
 
-        mIterable = AndroidCollections.iterate(this);
+        mIterable = CompatCollections.iterate(this);
     }
 
     @Override
