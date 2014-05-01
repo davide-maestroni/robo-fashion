@@ -158,6 +158,10 @@ To run the Android lint:
 
 For additional commands please refer to the [Gradle Android Plugin User Guide][9].
 
+##Downloads
+
+The project artifacts are available on [Maven Central Repository][10] for direct donwload or inclusion as a dependency.
+
 ##Version
 
 1.0
@@ -179,6 +183,15 @@ For additional commands please refer to the [Gradle Android Plugin User Guide][9
 
 **It's open! Feel free to contribute!!**
 
+
+###References
+
+- [Stackoverflow answer][11] on how to generate a library Jar from an Android project with Gradle
+- [Very useful blog][12] on how to automate the deployment of artifacts with Gradle
+- [Sonatype User Guide][13] on how to deploy project artifacts to the Maven Central Repository
+- [Another useful blog post][14] on how to upload Javadocs to a GitHub repository
+
+
 [1]:http://developer.android.com/sdk/terms.html
 [2]:http://www.apache.org/licenses/LICENSE-2.0
 [3]:https://github.com/davide-maestroni/robo-fashion/blob/master/lib/src/main/java/com/bmd/android/collection/filter/Filters.java
@@ -188,3 +201,8 @@ For additional commands please refer to the [Gradle Android Plugin User Guide][9
 [7]:http://developer.android.com/reference/android/support/v4/util/SimpleArrayMap.html
 [8]:http://docs.oracle.com/javase/8/docs/api/index.html?java/util/stream/package-summary.html
 [9]:http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Android-tasks
+[10]:http://search.maven.org/#artifactdetails%7Ccom.github.davide-maestroni%7Crobo-fashion%7C1.0%7Cjar
+[11]:http://stackoverflow.com/a/19484146
+[12]:http://jedicoder.blogspot.it/2011/11/automated-gradle-project-deployment-to.html
+[13]:https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide
+[14]:http://assylias.wordpress.com/2013/01/06/upload-javadoc-to-github/
