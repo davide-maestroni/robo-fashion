@@ -4,7 +4,7 @@ This library employs builder and fluent design patterns to enable easy iteration
 
 ##Overview
 
-The Android platform introduced a few collection classes based on the sparse array implementation. Although they bring improved performances and optimized memory usage to the classic Java collections world, they sometimes become awkward to use when implementing the most basic pieces of code. For example, good old iteration is not supported, so that, while all Java developers are by now used to the short and elegant syntax:
+The Android platform introduced a few collection classes based on the sparse array implementation. Although they bring improved performance and optimized memory usage to the classic Java collections world, they sometimes become awkward to use when implementing the most basic pieces of code. For example, good old iteration is not supported, so that, while all Java developers are by now used to the short and elegant syntax:
 
 ```java
 for (final Entry<Integer,MyClass> entry : map.entrySet()) {
@@ -96,7 +96,7 @@ The [Filters][3] class already provides several filter implementations (like las
 
 The iterable implementation is not thread safe (unless differently specified) and not fail-fast, that is, if the wrapped collection is changed during the iteration no exception will be thrown, and further call to the iterator or to the entries methods might lead to unexpected results.
 
-The entries returned by the iterator can be safely accessed only inside the iteration loop, since they have direct access to the wrapped sparse collection. This is an explicit design choice to try preserving both highest performances and lowest memory consumption.
+The entries returned by the iterator can be safely accessed only inside the iteration loop, since they have direct access to the wrapped sparse collection. This is an explicit design choice to try preserving both highest performance and lowest memory consumption.
 In case the caller needed to retain an entry instance outside the loop, it must create an immutable or parcelable copy and retain that instead:
 
 ```java
@@ -128,7 +128,7 @@ The project contains an additional sample module showing how to implement an enh
 
 ##Performance
 
-The iterator implementation is generally faster than the correspondent Java map collection, but, in any case, slower than directly accessing the Android collection object. In fact, there could be nothing faster than reading an element from a primitive array by its index. It is also true that the sparse collections were designed for best performances when holding a relative small number of elements. In such cases iteration is for sure not the bottleneck, so you'd better have flexibility and readability than speed.
+The iterator implementation is generally faster than the correspondent Java map collection, but, in any case, slower than directly accessing the Android collection object. In fact, there could be nothing faster than reading an element from a primitive array by its index. It is also true that the sparse collections were designed for best performance when holding a relative small number of elements. In such cases iteration is for sure not the bottleneck, so you'd better have flexibility and readability than speed.
 
 ##Further development
 
