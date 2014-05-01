@@ -14,6 +14,8 @@
 package com.bmd.android.collection;
 
 import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -52,6 +54,11 @@ public class LongSparseArrayTest extends TestCase {
     private LongSparseArray<String> mArray;
 
     public void testContains() {
+
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN) {
+
+            return;
+        }
 
         assertThat(AndroidCollections.iterate(mArray).but().to(2)
                                      .contains(SparseEntries.entry(3L, "3"))).isTrue();
@@ -161,6 +168,11 @@ public class LongSparseArrayTest extends TestCase {
 
     public void testConversions() {
 
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN) {
+
+            return;
+        }
+
         assertThat(AndroidCollections.iterate(mArray)
                                      .toLongs(new Translator<LongSparseArrayEntry<String>, Long>() {
 
@@ -195,6 +207,11 @@ public class LongSparseArrayTest extends TestCase {
     }
 
     public void testCount() {
+
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN) {
+
+            return;
+        }
 
         assertThat(AndroidCollections.iterate(mArray).countOf(SparseEntries.entry(1L, "1")))
                 .isEqualTo(1);
@@ -235,6 +252,11 @@ public class LongSparseArrayTest extends TestCase {
     }
 
     public void testEquals() {
+
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN) {
+
+            return;
+        }
 
         final android.support.v4.util.LongSparseArray<String> supportArray =
                 new android.support.v4.util.LongSparseArray<String>();
@@ -301,6 +323,11 @@ public class LongSparseArrayTest extends TestCase {
     }
 
     public void testFilters() {
+
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN) {
+
+            return;
+        }
 
         assertThat(AndroidCollections.iterate(mArray).only().last(2).toMap())
                 .contains(MapEntry.entry(3L, "3"), MapEntry.entry(4L, "4"));
@@ -417,6 +444,11 @@ public class LongSparseArrayTest extends TestCase {
 
     public void testImmutable() {
 
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN) {
+
+            return;
+        }
+
         final ArrayList<LongSparseObjectEntry<String>> arrayList =
                 AndroidCollections.iterate(mArray).only().first(2).toImmutableList();
 
@@ -471,6 +503,11 @@ public class LongSparseArrayTest extends TestCase {
     }
 
     public void testIterator() {
+
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN) {
+
+            return;
+        }
 
         final ArrayList<LongSparseObjectEntry<String>> forList =
                 new ArrayList<LongSparseObjectEntry<String>>();
@@ -609,6 +646,11 @@ public class LongSparseArrayTest extends TestCase {
 
     public void testParcelable() {
 
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN) {
+
+            return;
+        }
+
         final ParcelableLongSparseObjectEntry[] parcelableArray =
                 AndroidCollections.iterate(mArray).only().values("4", "1")
                                   .toParcelableArray(ParcelableLongSparseObjectEntry.class);
@@ -685,6 +727,11 @@ public class LongSparseArrayTest extends TestCase {
 
     public void testRemove() throws Exception {
 
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN) {
+
+            return;
+        }
+
         assertThat(AndroidCollections.iterate(mArray).only().from(2).but().last(2).keys().remove())
                 .containsExactly(0L, 1L, 3L, 4L);
 
@@ -696,6 +743,11 @@ public class LongSparseArrayTest extends TestCase {
 
     public void testRetain() throws Exception {
 
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN) {
+
+            return;
+        }
+
         assertThat(AndroidCollections.iterate(mArray).only().from(2).but().last(2).keys().retain())
                 .containsExactly(2L);
 
@@ -706,6 +758,11 @@ public class LongSparseArrayTest extends TestCase {
     }
 
     public void testTranslations() {
+
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN) {
+
+            return;
+        }
 
         final LongSparseArray<Integer> array1 = AndroidCollections.iterate(mArray).translateValues(
                 new Translator<String, Integer>() {
@@ -891,6 +948,11 @@ public class LongSparseArrayTest extends TestCase {
     protected void setUp() throws Exception {
 
         super.setUp();
+
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN) {
+
+            return;
+        }
 
         final LongSparseArray<String> array = new LongSparseArray<String>();
 

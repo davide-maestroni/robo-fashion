@@ -14,6 +14,8 @@
 package com.bmd.android.collection;
 
 import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -53,6 +55,11 @@ public class SparseLongArrayTest extends TestCase {
     private SparseLongArray mArray;
 
     public void testContains() {
+
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN_MR2) {
+
+            return;
+        }
 
         assertThat(
                 AndroidCollections.iterate(mArray).but().to(2).contains(SparseEntries.entry(3, 3L)))
@@ -165,6 +172,11 @@ public class SparseLongArrayTest extends TestCase {
 
     public void testConversions() {
 
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN_MR2) {
+
+            return;
+        }
+
         assertThat(AndroidCollections.iterate(mArray)
                                      .toLongs(new Translator<SparseLongArrayEntry, Long>() {
 
@@ -200,6 +212,11 @@ public class SparseLongArrayTest extends TestCase {
     }
 
     public void testCount() {
+
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN_MR2) {
+
+            return;
+        }
 
         assertThat(AndroidCollections.iterate(mArray).countOf(SparseEntries.entry(1, 1L)))
                 .isEqualTo(1);
@@ -239,6 +256,11 @@ public class SparseLongArrayTest extends TestCase {
     }
 
     public void testEquals() {
+
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN_MR2) {
+
+            return;
+        }
 
         final SparseLongArray array = new SparseLongArray();
 
@@ -303,6 +325,11 @@ public class SparseLongArrayTest extends TestCase {
     }
 
     public void testFilters() {
+
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN_MR2) {
+
+            return;
+        }
 
         assertThat(AndroidCollections.iterate(mArray).only().last(2).toMap())
                 .contains(MapEntry.entry(3, 3L), MapEntry.entry(4, 4L));
@@ -418,6 +445,11 @@ public class SparseLongArrayTest extends TestCase {
 
     public void testImmutable() {
 
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN_MR2) {
+
+            return;
+        }
+
         final ArrayList<IntSparseLongEntry> arrayList =
                 AndroidCollections.iterate(mArray).only().first(2).toImmutableList();
 
@@ -471,6 +503,11 @@ public class SparseLongArrayTest extends TestCase {
     }
 
     public void testIterator() {
+
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN_MR2) {
+
+            return;
+        }
 
         final ArrayList<IntSparseLongEntry> forList = new ArrayList<IntSparseLongEntry>();
 
@@ -605,6 +642,11 @@ public class SparseLongArrayTest extends TestCase {
 
     public void testParcelable() {
 
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN_MR2) {
+
+            return;
+        }
+
         final ParcelableIntSparseLongEntry[] parcelableArray =
                 AndroidCollections.iterate(mArray).only().values(4, 1)
                                   .toParcelableArray(ParcelableIntSparseLongEntry.class);
@@ -680,6 +722,11 @@ public class SparseLongArrayTest extends TestCase {
 
     public void testRemove() throws Exception {
 
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN_MR2) {
+
+            return;
+        }
+
         assertThat(AndroidCollections.iterate(mArray).only().from(2).but().last(2).keys().remove())
                 .containsExactly(0, 1, 3, 4);
 
@@ -691,6 +738,11 @@ public class SparseLongArrayTest extends TestCase {
 
     public void testRetain() throws Exception {
 
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN_MR2) {
+
+            return;
+        }
+
         assertThat(AndroidCollections.iterate(mArray).only().from(2).but().last(2).keys().retain())
                 .containsExactly(2);
 
@@ -701,6 +753,11 @@ public class SparseLongArrayTest extends TestCase {
     }
 
     public void testTranslations() {
+
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN_MR2) {
+
+            return;
+        }
 
         final SparseLongArray array1 =
                 AndroidCollections.iterate(mArray).translateValues(new LongTranslator() {
@@ -878,6 +935,11 @@ public class SparseLongArrayTest extends TestCase {
     protected void setUp() throws Exception {
 
         super.setUp();
+
+        if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN_MR2) {
+
+            return;
+        }
 
         final SparseLongArray array = new SparseLongArray();
 

@@ -14,6 +14,8 @@
 package com.bmd.android.collection;
 
 import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -233,29 +235,51 @@ public class SupportLongSparseArrayTest extends TestCase {
                 .isEqualTo(1);
     }
 
-    @TargetApi(16)
     public void testEquals() {
 
-        final android.util.LongSparseArray<String> supportArray =
-                new android.util.LongSparseArray<String>();
+        if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN) {
 
-        for (int i = 0; i < 5; i++) {
+            final android.util.LongSparseArray<String> array =
+                    new android.util.LongSparseArray<String>();
 
-            supportArray.append(i, String.valueOf(i));
+            for (int i = 0; i < 5; i++) {
+
+                array.append(i, String.valueOf(i));
+            }
+
+            assertThat(AndroidCollections.iterate(mArray)
+                                         .isStrictlyEqualTo(AndroidCollections.iterate(array)))
+                    .isTrue();
+            assertThat(AndroidCollections.iterate(array)
+                                         .isStrictlyEqualTo(AndroidCollections.iterate(mArray)))
+                    .isTrue();
+            assertThat(AndroidCollections.iterate(array).only().key(2).remove()
+                                         .isStrictlyEqualTo(AndroidCollections.iterate(mArray)))
+                    .isFalse();
+            assertThat(AndroidCollections.iterate(mArray)
+                                         .isStrictlyEqualTo(AndroidCollections.iterate(array)))
+                    .isFalse();
+
+        } else {
+
+            final LongSparseArray<String> supportArray = new LongSparseArray<String>();
+
+            for (int i = 0; i < 5; i++) {
+
+                supportArray.append(i, String.valueOf(i));
+            }
+
+            assertThat(AndroidCollections.iterate(mArray).isStrictlyEqualTo(
+                    AndroidCollections.iterate(supportArray))).isTrue();
+            assertThat(AndroidCollections.iterate(supportArray)
+                                         .isStrictlyEqualTo(AndroidCollections.iterate(mArray)))
+                    .isTrue();
+            assertThat(AndroidCollections.iterate(supportArray).only().key(2).remove()
+                                         .isStrictlyEqualTo(AndroidCollections.iterate(mArray)))
+                    .isFalse();
+            assertThat(AndroidCollections.iterate(mArray).isStrictlyEqualTo(
+                    AndroidCollections.iterate(supportArray))).isFalse();
         }
-
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .isStrictlyEqualTo(AndroidCollections.iterate(supportArray)))
-                .isTrue();
-        assertThat(AndroidCollections.iterate(supportArray)
-                                     .isStrictlyEqualTo(AndroidCollections.iterate(mArray)))
-                .isTrue();
-        assertThat(AndroidCollections.iterate(supportArray).only().key(2).remove()
-                                     .isStrictlyEqualTo(AndroidCollections.iterate(mArray)))
-                .isFalse();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .isStrictlyEqualTo(AndroidCollections.iterate(supportArray)))
-                .isFalse();
 
         final LongSparseArray<String> sparseArray =
                 AndroidCollections.iterate(mArray).toSparseArray();
