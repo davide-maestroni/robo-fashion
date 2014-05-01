@@ -156,6 +156,8 @@ To run the Android lint:
 ./gradlew lR
 ```
 
+For additional commands please refer to the [Gradle User Guide][9].
+
 ##Version
 
 1.0
@@ -185,3 +187,4 @@ To run the Android lint:
 [6]:https://code.google.com/p/android/issues/detail?id=68406
 [7]:http://developer.android.com/reference/android/support/v4/util/SimpleArrayMap.html
 [8]:http://docs.oracle.com/javase/8/docs/api/index.html?java/util/stream/package-summary.html
+[9]:http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Android-tasks
