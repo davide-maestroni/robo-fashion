@@ -132,7 +132,29 @@ The iterator implementation is generally faster than the correspondent Java map 
 
 ##Further development
 
-When Java 8 will be ported to Android, the library might need to be updated in order to support the Java 8 [Stream][8] APIs. 
+When Java 8 will be ported to Android, the library might need to be updated in order to support the new [Stream][8] APIs.
+
+##Build instructions
+
+To generate the library JAR just run on a command line:
+```sh
+./gradlew jarR
+```
+
+For the Javadocs run:
+```sh
+./gradlew javadocR
+```
+
+To run the tests on a connected device:
+```sh
+./gradlew cAT
+```
+
+To run the Android lint:
+```sh
+./gradlew lR
+```
 
 ##Version
 
