@@ -138,22 +138,22 @@ When Java 8 will be ported to Android, the library might need to be updated in o
 
 To generate the library JAR just run on a command line:
 ```sh
-./gradlew jarR
+gradlew jarR
 ```
 
 For the Javadocs run:
 ```sh
-./gradlew javadocR
+gradlew javadocR
 ```
 
 To run the tests on a connected device:
 ```sh
-./gradlew cAT
+gradlew cAT
 ```
 
 To run the Android lint:
 ```sh
-./gradlew lR
+gradlew lR
 ```
 
 For additional commands please refer to the [Gradle Android Plugin User Guide][9].
