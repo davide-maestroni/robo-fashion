@@ -130,6 +130,10 @@ The project contains an additional sample module showing how to implement an enh
 
 The iterator implementation is generally faster than the correspondent Java map collection, but, in any case, slower than directly accessing the Android collection object. In fact, there could be nothing faster than reading an element from a primitive array by its index. It is also true that the sparse collections were designed for best performances when holding a relative small number of elements. In such cases iteration is for sure not the bottleneck, so you'd better have flexibility and readability than speed.
 
+##Further development
+
+When Java 8 will be ported to Android, the library might need to be updated in order to support the Java 8 [Stream][8] APIs. 
+
 ##Version
 
 1.0
@@ -158,3 +162,4 @@ The iterator implementation is generally faster than the correspondent Java map 
 [5]:http://square.github.io/fest-android/
 [6]:https://code.google.com/p/android/issues/detail?id=68406
 [7]:http://developer.android.com/reference/android/support/v4/util/SimpleArrayMap.html
+[8]:http://docs.oracle.com/javase/8/docs/api/index.html?java/util/stream/package-summary.html
