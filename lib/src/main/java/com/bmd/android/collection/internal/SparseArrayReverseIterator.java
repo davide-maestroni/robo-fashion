@@ -13,6 +13,7 @@
  */
 package com.bmd.android.collection.internal;
 
+import android.annotation.TargetApi;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.util.SparseArray;
@@ -123,6 +124,7 @@ class SparseArrayReverseIterator<V> extends AbstractReverseSparseIterator<Sparse
     }
 
     @Override
+    @TargetApi(11)
     protected void removeElement() {
 
         if (VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB) {
