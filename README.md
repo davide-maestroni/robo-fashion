@@ -156,7 +156,7 @@ To run the Android lint:
 ./gradlew lR
 ```
 
-For additional commands please refer to the [Gradle User Guide][9].
+For additional commands please refer to the [Gradle Android Plugin User Guide][9].
 
 ##Version
 
