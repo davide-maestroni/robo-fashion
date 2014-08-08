@@ -44,7 +44,7 @@ import java.util.TreeMap;
  * <p/>
  * Created by davide on 3/12/14.
  *
- * @param <V> The entry value type.
+ * @param <V> the entry value type.
  */
 class SparseArrayCompatIterableImpl<V> extends AbstractSparseIterable<SparseArrayEntry<V>>
         implements SparseArrayCompatIterable<V> {

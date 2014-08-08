@@ -16,11 +16,11 @@ package com.bmd.android.collection.filter;
 import com.bmd.android.collection.translator.Translator;
 
 /**
- * Filter matching <code>null</code> values.
+ * Filter matching null values.
  * <p/>
  * Created by davide on 3/14/14.
  *
- * @param <E> The filtered element type.
+ * @param <E> the filtered element type.
  */
 class NullFilter<E> implements Filter<E> {
 

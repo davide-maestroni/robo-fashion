@@ -21,7 +21,7 @@ import com.bmd.android.collection.translator.ToBooleanTranslator;
  * <p/>
  * Created by davide on 3/14/14.
  *
- * @param <E> The element type.
+ * @param <E> the element type.
  */
 class BooleanValueFilter<E> implements Filter<E> {
 

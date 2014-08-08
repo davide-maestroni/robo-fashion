@@ -19,7 +19,7 @@ import com.bmd.android.collection.iterator.BooleanSparseIterable;
 import com.bmd.android.collection.translator.ToBooleanTranslator;
 
 /**
- * Implementation of a {@link com.bmd.android.collection.filter.BooleanFilterBuilder}.
+ * Implementation of a {@link BooleanFilterBuilder}.
  * <p/>
  * Created by davide on 3/19/14.
  */

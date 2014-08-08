@@ -30,7 +30,7 @@ import java.util.Collection;
  * <p/>
  * Created by davide on 3/16/14.
  *
- * @param <V> The entry value type.
+ * @param <V> the entry value type.
  */
 class SparseArrayCompatFilterBuilderImpl<V>
         extends FilterBuilderImpl<SparseArrayCompatIterable<V>, SparseArrayEntry<V>>

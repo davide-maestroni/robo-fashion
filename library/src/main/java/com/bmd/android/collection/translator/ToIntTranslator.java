@@ -18,15 +18,15 @@ package com.bmd.android.collection.translator;
  * <p/>
  * Created by davide on 3/14/14.
  *
- * @param <E> The element type.
+ * @param <E> the element type.
  */
 public interface ToIntTranslator<E> {
 
     /**
      * Translates the specified element.
      *
-     * @param element The element to translate.
-     * @return The translated element.
+     * @param element the element to translate.
+     * @return the translated element.
      */
     public int translate(E element);
 }

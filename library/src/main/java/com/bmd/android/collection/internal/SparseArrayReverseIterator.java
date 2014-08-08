@@ -26,12 +26,11 @@ import com.bmd.android.collection.entry.SparseEntries;
 import java.util.NoSuchElementException;
 
 /**
- * Same as {@link com.bmd.android.collection.internal.SparseArrayIterator} but looping the
- * elements in the reverse order.
+ * Same as {@link SparseArrayIterator} but looping the elements in the reverse order.
  * <p/>
  * Created by davide on 3/10/14.
  *
- * @param <V> The entry value type.
+ * @param <V> the entry value type.
  */
 class SparseArrayReverseIterator<V> extends AbstractReverseSparseIterator<SparseArrayEntry<V>>
         implements SparseArrayEntry<V> {

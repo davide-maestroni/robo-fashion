@@ -23,7 +23,7 @@ import java.util.Arrays;
  * <p/>
  * Created by davide on 3/14/14.
  *
- * @param <E> The filtered element type.
+ * @param <E> the filtered element type.
  */
 class IntArrayFilter<E> implements Filter<E> {
 

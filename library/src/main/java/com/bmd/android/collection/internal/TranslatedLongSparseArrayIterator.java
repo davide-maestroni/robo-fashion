@@ -21,28 +21,28 @@ import com.bmd.android.collection.translator.FullLongTranslator;
 import com.bmd.android.collection.translator.FullTranslator;
 
 /**
- * Implementation of {@link com.bmd.android.collection.internal.SparseIterator} of
+ * Implementation of {@link SparseIterator} of
  * {@link com.bmd.android.collection.entry.LongSparseArrayEntry} elements whose keys and values are
  * transformed through the specified translators.
  * <p/>
  * Created by davide on 3/31/14.
  *
- * @param <Tv> The translated element value type.
- * @param <V>  The original element value type.
+ * @param <TV> the translated element value type.
+ * @param <V>  the original element value type.
  */
-class TranslatedLongSparseArrayIterator<Tv, V>
-        implements SparseIterator<LongSparseArrayEntry<Tv>>, LongSparseArrayEntry<Tv> {
+class TranslatedLongSparseArrayIterator<TV, V>
+        implements SparseIterator<LongSparseArrayEntry<TV>>, LongSparseArrayEntry<TV> {
 
     private final SparseIterator<LongSparseArrayEntry<V>> mIterator;
 
     private final FullLongTranslator mKeyTranslator;
 
-    private final FullTranslator<V, Tv> mValueTranslator;
+    private final FullTranslator<V, TV> mValueTranslator;
 
     private LongSparseArrayEntry<V> mEntry;
 
     public TranslatedLongSparseArrayIterator(final SparseIterator<LongSparseArrayEntry<V>> wrapped,
-            final FullLongTranslator keyTranslator, final FullTranslator<V, Tv> valueTranslator) {
+            final FullLongTranslator keyTranslator, final FullTranslator<V, TV> valueTranslator) {
 
         mIterator = wrapped;
         mKeyTranslator = keyTranslator;
@@ -62,25 +62,25 @@ class TranslatedLongSparseArrayIterator<Tv, V>
     }
 
     @Override
-    public Tv getValue() {
+    public TV getValue() {
 
         return mValueTranslator.translate(mEntry.getValue());
     }
 
     @Override
-    public void setValue(final Tv value) {
+    public void setValue(final TV value) {
 
         mEntry.setValue(mValueTranslator.revert(value));
     }
 
     @Override
-    public LongSparseObjectEntry<Tv> toImmutable() {
+    public LongSparseObjectEntry<TV> toImmutable() {
 
         return SparseEntries.entry(getKey(), getValue());
     }
 
     @Override
-    public ParcelableLongSparseObjectEntry<Tv> toParcelable() {
+    public ParcelableLongSparseObjectEntry<TV> toParcelable() {
 
         return SparseEntries.parcelableEntry(getKey(), getValue());
     }
@@ -92,7 +92,7 @@ class TranslatedLongSparseArrayIterator<Tv, V>
     }
 
     @Override
-    public LongSparseArrayEntry<Tv> next() {
+    public LongSparseArrayEntry<TV> next() {
 
         mEntry = mIterator.next();
 

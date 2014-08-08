@@ -21,12 +21,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * This interface extends the {@link com.bmd.android.collection.iterator.SparseIterable} one
- * by adding specific methods handling serialization of the elements to lists and arrays.
+ * This interface extends the {@link SparseIterable} one by adding specific methods handling
+ * serialization of the elements to lists and arrays.
  * <p/>
  * Created by davide on 3/10/14.
  *
- * @param <E> The element type.
+ * @param <E> the element type.
  */
 public interface ElementSparseIterable<E> extends SparseIterable<E> {
 
@@ -61,8 +61,8 @@ public interface ElementSparseIterable<E> extends SparseIterable<E> {
      * Fills the specified collection with the elements returned by this iterable, in the iteration
      * order.
      *
-     * @param collection The collection to fill.
-     * @return This iterable.
+     * @param collection the collection to fill.
+     * @return this iterable.
      */
     public ElementSparseIterable<E> fill(Collection<? super E> collection);
 
@@ -76,9 +76,9 @@ public interface ElementSparseIterable<E> extends SparseIterable<E> {
      * Note also that, in case the array is not big enough to contain all the elements, an
      * {@link java.lang.IndexOutOfBoundsException} will be thrown.
      *
-     * @param array The array to fill.
-     * @param <T>   The array elements type.
-     * @return This iterable.
+     * @param array the array to fill.
+     * @param <T>   the array elements type.
+     * @return this iterable.
      */
     public <T> ElementSparseIterable<E> fill(T[] array);
 
@@ -92,10 +92,10 @@ public interface ElementSparseIterable<E> extends SparseIterable<E> {
      * Note also that, in case the array is not big enough to contain all the elements, an
      * {@link java.lang.IndexOutOfBoundsException} will be thrown.
      *
-     * @param array  The array to fill.
-     * @param offset The offset from which to start filling the array.
-     * @param <T>    The array elements type.
-     * @return This iterable.
+     * @param array  the array to fill.
+     * @param offset the offset from which to start filling the array.
+     * @param <T>    the array elements type.
+     * @return this iterable.
      */
     public <T> ElementSparseIterable<E> fill(T[] array, int offset);
 
@@ -106,9 +106,9 @@ public interface ElementSparseIterable<E> extends SparseIterable<E> {
      * Note that, if the elements returned by the iterable cannot be cast to the array elements
      * type, a {@link java.lang.ClassCastException} will be thrown.
      *
-     * @param type The array elements class.
-     * @param <T>  The array elements type.
-     * @return The new array.
+     * @param type the array elements class.
+     * @param <T>  the array elements type.
+     * @return the new array.
      */
     public <T> T[] toArray(Class<T> type);
 
@@ -116,7 +116,7 @@ public interface ElementSparseIterable<E> extends SparseIterable<E> {
      * Creates and returns a new list filled with the elements returned by this iterable, in the
      * iteration order.
      *
-     * @return The new list.
+     * @return the new list.
      */
     public ArrayList<E> toList();
 
@@ -126,9 +126,9 @@ public interface ElementSparseIterable<E> extends SparseIterable<E> {
      * <p/>
      * Note that all the filters and the iteration order are retained in the translation.
      *
-     * @param translator The translator used to convert the elements.
-     * @param <T>        The new iterable elements type.
-     * @return The new iterable.
+     * @param translator the translator used to convert the elements.
+     * @param <T>        the new iterable elements type.
+     * @return the new iterable.
      */
     public <T> ElementSparseIterable<T> translate(Translator<E, T> translator);
 }

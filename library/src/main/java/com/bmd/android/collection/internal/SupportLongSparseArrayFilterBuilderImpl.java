@@ -30,7 +30,7 @@ import java.util.Collection;
  * <p/>
  * Created by davide on 3/16/14.
  *
- * @param <V> The element value type.
+ * @param <V> the element value type.
  */
 class SupportLongSparseArrayFilterBuilderImpl<V>
         extends FilterBuilderImpl<SupportLongSparseArrayIterable<V>, LongSparseArrayEntry<V>>

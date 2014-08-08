@@ -14,8 +14,7 @@
 package com.bmd.android.collection.translator;
 
 /**
- * This interface extends {@link com.bmd.android.collection.translator.LongTranslator} by
- * adding the reverse translation of the value.
+ * This interface extends {@link LongTranslator} by adding the reverse translation of the value.
  * <p/>
  * Created by davide on 3/13/14.
  */
@@ -24,8 +23,8 @@ public interface FullLongTranslator extends LongTranslator {
     /**
      * Reverts the translation of the specified value.
      *
-     * @param value The value to translate back.
-     * @return The reverted value.
+     * @param value the value to translate back.
+     * @return the reverted value.
      */
     public long revert(long value);
 }

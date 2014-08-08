@@ -22,8 +22,7 @@ import com.bmd.android.collection.translator.Translators;
 import java.util.Collection;
 
 /**
- * Utility class providing helper methods for creating and managing
- * {@link com.bmd.android.collection.filter.Filter} objects.
+ * Utility class providing helper methods for creating and managing {@link Filter} objects.
  * <p/>
  * Created by davide on 3/11/14.
  */
@@ -37,12 +36,11 @@ public class Filters {
     }
 
     /**
-     * Creates an {@link com.bmd.android.collection.filter.AdvancedFilter} wrapping the specified
-     * simple {@link com.bmd.android.collection.filter.Filter}.
+     * Creates an {@link AdvancedFilter} wrapping the specified simple {@link Filter}.
      *
-     * @param filter The filter to wrap.
-     * @param <E>    The filtered element type.
-     * @return The advanced filter.
+     * @param filter the filter to wrap.
+     * @param <E>    the filtered element type.
+     * @return the advanced filter.
      */
     public static <E> AdvancedFilter<E> advanced(final Filter<E> filter) {
 
@@ -69,11 +67,11 @@ public class Filters {
     /**
      * Creates a filter matching all the int values contained in the specified array.
      *
-     * @param translator The translator transsforming into an int value the sparse iterable
+     * @param translator the translator transforming into an int value the sparse iterable
      *                   element.
-     * @param values     The values to match.
-     * @param <E>        The filtered element type.
-     * @return The new filter.
+     * @param values     the values to match.
+     * @param <E>        the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> containedIn(final ToIntTranslator<E> translator,
             final int[] values) {
@@ -84,10 +82,10 @@ public class Filters {
     /**
      * Creates a filter matching all the long values contained in the specified array.
      *
-     * @param translator The translator transforming into a long value the sparse iterable element.
-     * @param values     The values to match.
-     * @param <E>        The filtered element type.
-     * @return The new filter.
+     * @param translator the translator transforming into a long value the sparse iterable element.
+     * @param values     the values to match.
+     * @param <E>        the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> containedIn(final ToLongTranslator<E> translator,
             final long[] values) {
@@ -98,11 +96,11 @@ public class Filters {
     /**
      * Creates a filter matching all the values contained in the specified collection.
      *
-     * @param translator The translator transforming into an object value the sparse iterable
+     * @param translator the translator transforming into an object value the sparse iterable
      *                   element.
-     * @param collection The values to match.
-     * @param <E>        The filtered element type.
-     * @return The new filter.
+     * @param collection the values to match.
+     * @param <E>        the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> containedIn(final Translator<E, ?> translator,
             final Collection<?> collection) {
@@ -113,11 +111,11 @@ public class Filters {
     /**
      * Creates a filter matching all the values returned by the specified iterable.
      *
-     * @param translator The translator transforming into an object value the sparse iterable
+     * @param translator the translator transforming into an object value the sparse iterable
      *                   element.
-     * @param iterable   The values to match.
-     * @param <E>        The filtered element type.
-     * @return The new filter.
+     * @param iterable   the values to match.
+     * @param <E>        the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> containedIn(final Translator<E, ?> translator,
             final Iterable<?> iterable) {
@@ -128,9 +126,9 @@ public class Filters {
     /**
      * Creates a filter matching all the values contained in the specified collection.
      *
-     * @param collection The values to match.
-     * @param <E>        The filtered element type.
-     * @return The new filter.
+     * @param collection the values to match.
+     * @param <E>        the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> containedIn(final Collection<?> collection) {
 
@@ -142,9 +140,9 @@ public class Filters {
     /**
      * Creates a filter matching all the values returned by the specified iterable.
      *
-     * @param iterable The iterable returning the values to match.
-     * @param <E>      The filtered element type.
-     * @return The new filter.
+     * @param iterable the iterable returning the values to match.
+     * @param <E>      the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> containedIn(final Iterable<?> iterable) {
 
@@ -156,8 +154,8 @@ public class Filters {
     /**
      * Creates a filter matching the first <code>count</code> elements.
      *
-     * @param count The elements count.
-     * @return The new filter.
+     * @param count the elements count.
+     * @return the new filter.
      */
     public static <E> Filter<E> first(final int count) {
 
@@ -168,9 +166,9 @@ public class Filters {
      * Creates a filter matching all the elements whose index is included in the specified index
      * collection.
      *
-     * @param indexes The collection of indexes.
-     * @param <E>     The filtered element type.
-     * @return The new filter.
+     * @param indexes the collection of indexes.
+     * @param <E>     the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> indexes(final Collection<Integer> indexes) {
 
@@ -181,9 +179,9 @@ public class Filters {
      * Creates a filter matching all the elements whose index is included in the specified index
      * iterable.
      *
-     * @param indexes The index iterable.
-     * @param <E>     The filtered element type.
-     * @return The new filter.
+     * @param indexes the index iterable.
+     * @param <E>     the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> indexes(final Iterable<Integer> indexes) {
 
@@ -194,9 +192,9 @@ public class Filters {
      * Creates a filter matching all the elements whose index is included in the specified index
      * array.
      *
-     * @param indexes The array of indexes.
-     * @param <E>     The filtered element type.
-     * @return The new filter.
+     * @param indexes the array of indexes.
+     * @param <E>     the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> indexes(final int... indexes) {
 
@@ -207,9 +205,9 @@ public class Filters {
      * Creates a filter which is the inverse of the specified one. That is, all the originally
      * matching elements will not match anymore and viceversa.
      *
-     * @param filter The original filter.
-     * @param <E>    The filtered element type.
-     * @return The inverted filter.
+     * @param filter the original filter.
+     * @param <E>    the filtered element type.
+     * @return the inverted filter.
      */
     public static <E> Filter<E> inverse(final Filter<E> filter) {
 
@@ -220,9 +218,9 @@ public class Filters {
      * Creates a filter which is the inverse of the specified one. That is, all the originally
      * matching elements will not match anymore and viceversa.
      *
-     * @param filter The original filter.
-     * @param <E>    The filtered element type.
-     * @return The inverted filter.
+     * @param filter the original filter.
+     * @param <E>    the filtered element type.
+     * @return the inverted filter.
      */
     public static <E> AdvancedFilter<E> inverse(final AdvancedFilter<E> filter) {
 
@@ -245,9 +243,9 @@ public class Filters {
     /**
      * Creates a filter matching the last <code>count</code> elements in the iterattion.
      *
-     * @param count The elements count.
-     * @param <E>   The filtered element type.
-     * @return The new filter.
+     * @param count the elements count.
+     * @param <E>   the filtered element type.
+     * @return the new filter.
      */
     public static <E> AdvancedFilter<E> last(final int count) {
 
@@ -255,14 +253,13 @@ public class Filters {
     }
 
     /**
-     * Creates a filter from the specified {@link com.bmd.android.collection.filter.IntFilter}
-     * by translating the iteration elements using the passed
-     * {@link com.bmd.android.collection.translator.ToIntTranslator} instance.
+     * Creates a filter from the specified {@link IntFilter} by translating the iteration elements
+     * using the passed {@link com.bmd.android.collection.translator.ToIntTranslator} instance.
      *
-     * @param translator The translator to int values.
-     * @param filter     The int filter.
-     * @param <E>        The filtered element type.
-     * @return The new filter.
+     * @param translator the translator to int values.
+     * @param filter     the int filter.
+     * @param <E>        the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> matching(final ToIntTranslator<E> translator,
             final IntFilter filter) {
@@ -278,14 +275,13 @@ public class Filters {
     }
 
     /**
-     * Creates a filter from the specified {@link com.bmd.android.collection.filter.LongFilter}
-     * by translating the iteration elements using the passed
-     * {@link com.bmd.android.collection.translator.ToLongTranslator} instance.
+     * Creates a filter from the specified {@link LongFilter} by translating the iteration elements
+     * using the passed {@link com.bmd.android.collection.translator.ToLongTranslator} instance.
      *
-     * @param translator The translator to long values.
-     * @param filter     The long filter.
-     * @param <E>        The filtered element type.
-     * @return The new filter.
+     * @param translator the translator to long values.
+     * @param filter     the long filter.
+     * @param <E>        the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> matching(final ToLongTranslator<E> translator,
             final LongFilter filter) {
@@ -301,14 +297,14 @@ public class Filters {
     }
 
     /**
-     * Creates a filter from the specified {@link com.bmd.android.collection.filter.BooleanFilter}
-     * by translating the iteration elements using the passed
-     * {@link com.bmd.android.collection.translator.ToBooleanTranslator} instance.
+     * Creates a filter from the specified {@link BooleanFilter} by translating the iteration
+     * elements using the passed {@link com.bmd.android.collection.translator.ToBooleanTranslator}
+     * instance.
      *
-     * @param translator The translator to boolean values.
-     * @param filter     The boolean filter.
-     * @param <E>        The filtered element type.
-     * @return The new filter.
+     * @param translator the translator to boolean values.
+     * @param filter     the boolean filter.
+     * @param <E>        the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> matching(final ToBooleanTranslator<E> translator,
             final BooleanFilter filter) {
@@ -327,10 +323,10 @@ public class Filters {
      * Creates a filter matching the specified value by translating the iteration elements using
      * the passed {@link com.bmd.android.collection.translator.ToIntTranslator} instance.
      *
-     * @param translator The translator to int values.
-     * @param value      The int value to match.
-     * @param <E>        The filtered element type.
-     * @return The new filter.
+     * @param translator the translator to int values.
+     * @param value      the int value to match.
+     * @param <E>        the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> matching(final ToIntTranslator<E> translator, final int value) {
 
@@ -341,10 +337,10 @@ public class Filters {
      * Creates a filter matching the specified value by translating the iteration elements using
      * the passed {@link com.bmd.android.collection.translator.ToLongTranslator} instance.
      *
-     * @param translator The translator to long values.
-     * @param value      The long value to match.
-     * @param <E>        The filtered element type.
-     * @return The new filter.
+     * @param translator the translator to long values.
+     * @param value      the long value to match.
+     * @param <E>        the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> matching(final ToLongTranslator<E> translator, final long value) {
 
@@ -354,9 +350,9 @@ public class Filters {
     /**
      * Creates a filter matching the specified value.
      *
-     * @param value The value to match.
-     * @param <E>   The filtered element type.
-     * @return The new filter.
+     * @param value the value to match.
+     * @param <E>   the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> matching(final Object value) {
 
@@ -374,10 +370,10 @@ public class Filters {
      * Creates a filter matching the specified value by translating the iteration elements using
      * the passed {@link com.bmd.android.collection.translator.Translator} instance.
      *
-     * @param translator The translator.
-     * @param value      The value to match.
-     * @param <E>        The filtered element type.
-     * @return The new filter.
+     * @param translator the translator.
+     * @param value      the value to match.
+     * @param <E>        the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> matching(final Translator<E, ?> translator, final Object value) {
 
@@ -393,10 +389,10 @@ public class Filters {
      * Creates a filter matching the specified value by translating the iteration elements using
      * the passed {@link com.bmd.android.collection.translator.ToBooleanTranslator} instance.
      *
-     * @param translator The translator to boolean values.
-     * @param value      The boolean value to match.
-     * @param <E>        The filtered element type.
-     * @return The new filter.
+     * @param translator the translator to boolean values.
+     * @param value      the boolean value to match.
+     * @param <E>        the filtered element type.
+     * @return the new filter.
      */
     public static <E> Filter<E> matching(final ToBooleanTranslator<E> translator,
             final boolean value) {

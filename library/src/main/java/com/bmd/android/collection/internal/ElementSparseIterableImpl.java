@@ -27,7 +27,7 @@ import java.util.Collection;
  * <p/>
  * Created by davide on 3/19/14.
  *
- * @param <E> The element type.
+ * @param <E> the element type.
  */
 abstract class ElementSparseIterableImpl<E> extends AbstractSparseIterable<E>
         implements ElementSparseIterable<E> {

@@ -33,17 +33,17 @@ public interface SparseIterable<E> extends Iterable<E> {
     /**
      * Applies the specified condition to all the elements returned by the iterator in the
      * iteration order. The iteration is stopped as soon as the call to the condition returns with
-     * <code>true</code>.
+     * true.
      *
-     * @param condition The condition to apply.
-     * @return Whether the call to the condition returns <code>true</code> for at least one element.
+     * @param condition the condition to apply.
+     * @return whether the call to the condition returns true for at least one element.
      */
     public boolean any(Condition<E> condition);
 
     /**
      * Returns an exclusion filter builder.
      *
-     * @return The filter builder instance.
+     * @return the filter builder instance.
      */
     public FilterBuilder<? extends SparseIterable<E>, E> but();
 
@@ -54,8 +54,8 @@ public interface SparseIterable<E> extends Iterable<E> {
      * {@link com.bmd.android.collection.filter.Filter} or an
      * {@link com.bmd.android.collection.filter.AdvancedFilter} instance.
      *
-     * @param filter The filter to add.
-     * @return This iterable.
+     * @param filter the filter to add.
+     * @return this iterable.
      */
     public SparseIterable<E> but(Filter<E> filter);
 
@@ -63,8 +63,8 @@ public interface SparseIterable<E> extends Iterable<E> {
      * Checks if the elements returned by the current filtered iterator contain the specified
      * object.
      *
-     * @param element The element to search for.
-     * @return Whether the element belongs to the iteration.
+     * @param element the element to search for.
+     * @return whether the element belongs to the iteration.
      */
     public boolean contains(Object element);
 
@@ -72,8 +72,8 @@ public interface SparseIterable<E> extends Iterable<E> {
      * Checks if the elements returned by the current filtered iterator contain all the specified
      * objects in any order.
      *
-     * @param elements The elements to search for.
-     * @return Whether all the elements belong to the iteration.
+     * @param elements the elements to search for.
+     * @return whether all the elements belong to the iteration.
      */
     public boolean containsAll(Object... elements);
 
@@ -81,8 +81,8 @@ public interface SparseIterable<E> extends Iterable<E> {
      * Checks if the elements returned by the current filtered iterator contain all the ones
      * returned by the specified iterable in any order.
      *
-     * @param elements The iterable of elements to search for.
-     * @return Whether all the elements belong to the iteration.
+     * @param elements the iterable of elements to search for.
+     * @return whether all the elements belong to the iteration.
      */
     public boolean containsAll(Iterable<?> elements);
 
@@ -90,8 +90,8 @@ public interface SparseIterable<E> extends Iterable<E> {
      * Checks if the elements returned by the current filtered iterator contain at least one of
      * the specified objects.
      *
-     * @param elements The elements to search for.
-     * @return Whether any of the elements belong to the iteration.
+     * @param elements the elements to search for.
+     * @return whether any of the elements belong to the iteration.
      */
     public boolean containsAny(Object... elements);
 
@@ -99,8 +99,8 @@ public interface SparseIterable<E> extends Iterable<E> {
      * Checks if the elements returned by the current filtered iterator contain any of the ones
      * returned by the specified iterable.
      *
-     * @param elements The iterable of elements to search for.
-     * @return Whether any of the elements belong to the iteration.
+     * @param elements the iterable of elements to search for.
+     * @return whether any of the elements belong to the iteration.
      */
     public boolean containsAny(Iterable<?> elements);
 
@@ -108,36 +108,36 @@ public interface SparseIterable<E> extends Iterable<E> {
      * Returns the total number of times an element equal to the specified one is encountered
      * during the iteration.
      *
-     * @param element The element to search for.
-     * @return The total occurrences.
+     * @param element the element to search for.
+     * @return the total occurrences.
      */
     public int countOf(Object element);
 
     /**
      * Applies the specified condition to all the elements returned by the iterator in the
      * iteration order. The iteration is stopped as soon as the call to the condition returns with
-     * <code>false</code>.
+     * false.
      *
-     * @param condition The condition to apply.
-     * @return This iterable.
+     * @param condition the condition to apply.
+     * @return this iterable.
      */
     public SparseIterable<E> doWhile(Condition<E> condition);
 
     /**
      * Applies the specified condition to all the elements returned by the iterator in the
      * iteration order. The iteration is stopped as soon as the call to the condition returns with
-     * <code>false</code>.
+     * false.
      *
-     * @param condition The condition to apply.
-     * @return Whether the call to the condition returns <code>true</code> for each element.
+     * @param condition the condition to apply.
+     * @return whether the call to the condition returns true for each element.
      */
     public boolean each(Condition<E> condition);
 
     /**
      * Finds the index of the first element, in the iteration order, equals to the specified one.
      *
-     * @param element The element to search for.
-     * @return The index in the iteration, or -1 if the object is not found.
+     * @param element the element to search for.
+     * @return the index in the iteration, or -1 if the object is not found.
      */
     public int firstIndexOf(Object element);
 
@@ -148,8 +148,8 @@ public interface SparseIterable<E> extends Iterable<E> {
      * applied to this iterable, the returned number might not match with the index in the sparse
      * collection.
      *
-     * @param element The element to search for.
-     * @return The position in the iteration, or -1 if the object is not found.
+     * @param element the element to search for.
+     * @return the position in the iteration, or -1 if the object is not found.
      */
     public int firstPositionOf(Object element);
 
@@ -157,8 +157,8 @@ public interface SparseIterable<E> extends Iterable<E> {
      * Applies the specified action to all the elements returned by the iterator in the iteration
      * order.
      *
-     * @param action The action to apply.
-     * @return This iterable.
+     * @param action the action to apply.
+     * @return this iterable.
      */
     public SparseIterable<E> forEach(Action<E> action);
 
@@ -166,8 +166,8 @@ public interface SparseIterable<E> extends Iterable<E> {
      * Checks if all and only the elements returned by the this iterable are contained in the
      * specified collection.
      *
-     * @param collection The collection to compare.
-     * @return Whether the specified collection equals this iterable.
+     * @param collection the collection to compare.
+     * @return whether the specified collection equals this iterable.
      */
     public boolean isEqualTo(Collection<?> collection);
 
@@ -175,15 +175,15 @@ public interface SparseIterable<E> extends Iterable<E> {
      * Checks if every element returned by the specified iterable is equal to the one returned by
      * this iterator in the same order.
      *
-     * @param iterable The iterable to compare.
-     * @return Whether the specified iterable equals this one.
+     * @param iterable the iterable to compare.
+     * @return whether the specified iterable equals this one.
      */
     public boolean isStrictlyEqualTo(Iterable<?> iterable);
 
     /**
      * Returns an inclusion filter builder.
      *
-     * @return The filter builder instance.
+     * @return the filter builder instance.
      */
     public FilterBuilder<? extends SparseIterable<E>, E> only();
 
@@ -194,15 +194,15 @@ public interface SparseIterable<E> extends Iterable<E> {
      * {@link com.bmd.android.collection.filter.Filter} or an
      * {@link com.bmd.android.collection.filter.AdvancedFilter} instance.
      *
-     * @param filter The filter to add.
-     * @return This iterable.
+     * @param filter the filter to add.
+     * @return this iterable.
      */
     public SparseIterable<E> only(Filter<E> filter);
 
     /**
      * Removes from the wrapped sparse collection all the elements returned by this iterable.
      *
-     * @return This iterable
+     * @return this iterable
      */
     public SparseIterable<E> remove();
 
@@ -210,14 +210,14 @@ public interface SparseIterable<E> extends Iterable<E> {
      * Retains in the wrapped sparse collection all the elements returned by this iterable. That
      * is, all the other elements will be removed.
      *
-     * @return This iterable
+     * @return this iterable
      */
     public SparseIterable<E> retain();
 
     /**
      * Reverse the iteration order.
      *
-     * @return This iterable
+     * @return this iterable
      */
     public SparseIterable<E> reverse();
 
@@ -228,8 +228,8 @@ public interface SparseIterable<E> extends Iterable<E> {
      * <p/>
      * Note that the returned iterable is backed by the same sparse collection.
      *
-     * @param translator The translator.
-     * @return The new iterable.
+     * @param translator the translator.
+     * @return the new iterable.
      */
     public BooleanSparseIterable toBooleans(Translator<E, Boolean> translator);
 
@@ -239,8 +239,8 @@ public interface SparseIterable<E> extends Iterable<E> {
      * <p/>
      * Note that the returned iterable is backed by the same sparse collection.
      *
-     * @param translator The translator.
-     * @return The new iterable.
+     * @param translator the translator.
+     * @return the new iterable.
      */
     public IntSparseIterable toIntegers(Translator<E, Integer> translator);
 
@@ -250,24 +250,24 @@ public interface SparseIterable<E> extends Iterable<E> {
      * <p/>
      * Note that the returned iterable is backed by the same sparse collection.
      *
-     * @param translator The translator.
-     * @return The new iterable.
+     * @param translator the translator.
+     * @return the new iterable.
      */
     public LongSparseIterable toLongs(Translator<E, Long> translator);
 
     /**
      * This interface defines an action to be applied to the iterable elements.
      *
-     * @param <E> The element type.
+     * @param <E> the element type.
      */
     public interface Action<E> {
 
         /**
          * This function will be called for each element returned by the iterable.
          *
-         * @param element The element instance.
-         * @param count   The number of element iterated until now.
-         * @param index   The index of the element in the sparse collection.
+         * @param element the element instance.
+         * @param count   the number of element iterated until now.
+         * @param index   the index of the element in the sparse collection.
          */
         public void onNext(E element, int count, int index);
     }
@@ -275,17 +275,17 @@ public interface SparseIterable<E> extends Iterable<E> {
     /**
      * This interface defines a condition to be applied to the iterable elements.
      *
-     * @param <E> The element type.
+     * @param <E> the element type.
      */
     public interface Condition<E> {
 
         /**
          * This function will be called for each element returned by the iterable.
          *
-         * @param element The element instance.
-         * @param count   The number of element iterated until now.
-         * @param index   The index of the element in the sparse collection.
-         * @return Whether to proceed with the iteration.
+         * @param element the element instance.
+         * @param count   the number of element iterated until now.
+         * @param index   the index of the element in the sparse collection.
+         * @return whether to proceed with the iteration.
          */
         public boolean onNext(E element, int count, int index);
     }

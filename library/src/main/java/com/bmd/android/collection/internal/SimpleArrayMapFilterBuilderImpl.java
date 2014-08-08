@@ -29,8 +29,8 @@ import java.util.Collection;
  * <p/>
  * Created by davide on 3/16/14.
  *
- * @param <K> The entry key type.
- * @param <V> The entry value type.
+ * @param <K> the entry key type.
+ * @param <V> the entry value type.
  */
 class SimpleArrayMapFilterBuilderImpl<K, V>
         extends FilterBuilderImpl<SimpleArrayMapIterable<K, V>, SimpleArrayMapEntry<K, V>>

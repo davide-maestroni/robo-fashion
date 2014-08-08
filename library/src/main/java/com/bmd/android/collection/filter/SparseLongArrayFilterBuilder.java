@@ -19,9 +19,8 @@ import com.bmd.android.collection.iterator.SparseLongArrayIterable;
 import java.util.Collection;
 
 /**
- * This interface extends the {@link com.bmd.android.collection.filter.FilterBuilder} one by
- * providing specific methods handling {@link com.bmd.android.collection.entry.SparseLongArrayEntry}
- * elements.
+ * This interface extends the {@link FilterBuilder} one by providing specific methods handling
+ * {@link com.bmd.android.collection.entry.SparseLongArrayEntry} elements.
  * <p/>
  * Created by davide on 3/16/14.
  */
@@ -31,64 +30,64 @@ public interface SparseLongArrayFilterBuilder
     /**
      * Creates a filter matching the specified entry key.
      *
-     * @param key The key to match.
-     * @return The filtered iterable.
+     * @param key the key to match.
+     * @return the filtered iterable.
      */
     public SparseLongArrayIterable key(int key);
 
     /**
      * Creates a filter matching the specified entry keys.
      *
-     * @param keys The keys to match.
-     * @return The filtered iterable.
+     * @param keys the keys to match.
+     * @return the filtered iterable.
      */
     public SparseLongArrayIterable keys(int... keys);
 
     /**
      * Creates a filter matching the specified collection of entry keys.
      *
-     * @param keys The keys to match.
-     * @return The filtered iterable.
+     * @param keys the keys to match.
+     * @return the filtered iterable.
      */
     public SparseLongArrayIterable keys(Collection<Integer> keys);
 
     /**
      * Creates a filter matching the entry keys returned by the specified iterable.
      *
-     * @param keys The iterable of keys to match.
-     * @return The filtered iterable.
+     * @param keys the iterable of keys to match.
+     * @return the filtered iterable.
      */
     public SparseLongArrayIterable keys(Iterable<Integer> keys);
 
     /**
      * Creates a filter matching the specified entry value.
      *
-     * @param value The value to match.
-     * @return The filtered iterable.
+     * @param value the value to match.
+     * @return the filtered iterable.
      */
     public SparseLongArrayIterable value(long value);
 
     /**
      * Creates a filter matching the specified entry values.
      *
-     * @param values The values to match.
-     * @return The filtered iterable.
+     * @param values the values to match.
+     * @return the filtered iterable.
      */
     public SparseLongArrayIterable values(long... values);
 
     /**
      * Creates a filter matching the specified collection of entry values.
      *
-     * @param values The values to match.
-     * @return The filtered iterable.
+     * @param values the values to match.
+     * @return the filtered iterable.
      */
     public SparseLongArrayIterable values(Collection<Long> values);
 
     /**
      * Creates a filter matching the entry values returned by the specified iterable.
      *
-     * @param values The iterable of values to match.
-     * @return The filtered iterable.
+     * @param values the iterable of values to match.
+     * @return the filtered iterable.
      */
     public SparseLongArrayIterable values(Iterable<Long> values);
 }

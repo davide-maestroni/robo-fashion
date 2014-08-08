@@ -44,7 +44,7 @@ import java.util.TreeMap;
  * <p/>
  * Created by davide on 3/11/14.
  *
- * @param <V> The element value type.
+ * @param <V> the element value type.
  */
 class SupportLongSparseArrayIterableImpl<V> extends AbstractSparseIterable<LongSparseArrayEntry<V>>
         implements SupportLongSparseArrayIterable<V> {

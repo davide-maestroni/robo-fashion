@@ -23,13 +23,12 @@ import com.bmd.android.collection.entry.SparseEntries;
 import java.util.NoSuchElementException;
 
 /**
- * Same as {@link com.bmd.android.collection.internal.SimpleArrayMapIterator} but looping the
- * elements in the reverse order.
+ * Same as {@link SimpleArrayMapIterator} but looping the elements in the reverse order.
  * <p/>
  * Created by davide on 3/10/14.
  *
- * @param <K> The entry key type.
- * @param <V> The entry value type.
+ * @param <K> the entry key type.
+ * @param <V> the entry value type.
  */
 class SimpleArrayMapReverseIterator<K, V>
         extends AbstractReverseSparseIterator<SimpleArrayMapEntry<K, V>>

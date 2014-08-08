@@ -128,8 +128,7 @@ import com.bmd.android.collection.iterator.SparseLongArrayIterable;
  *  </code>
  * </pre>
  * <p/>
- * For JellyBean retro-compatible implementation refer to
- * {@link com.bmd.android.collection.JellyBeanCollections}.
+ * For JellyBean retro-compatible implementation refer to {@link JellyBeanCollections}.
  * <p/>
  * Created by davide on 5/1/14.
  *
@@ -148,8 +147,8 @@ public class AndroidCollections extends JellyBeanCollections {
     /**
      * Wraps the specified {@link android.util.SparseLongArray} into an iterable.
      *
-     * @param sparseArray The sparse array to wrap.
-     * @return The iterable instance.
+     * @param sparseArray the sparse array to wrap.
+     * @return the iterable instance.
      */
     public static SparseLongArrayIterable iterate(final SparseLongArray sparseArray) {
 

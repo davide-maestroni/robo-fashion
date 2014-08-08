@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * <p/>
  * Created by davide on 3/14/14.
  *
- * @param <E> The filtered element type.
+ * @param <E> the filtered element type.
  */
 class IterableFilter<E> implements Filter<E> {
 

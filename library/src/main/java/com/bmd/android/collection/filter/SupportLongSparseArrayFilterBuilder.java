@@ -19,13 +19,12 @@ import com.bmd.android.collection.iterator.SupportLongSparseArrayIterable;
 import java.util.Collection;
 
 /**
- * This interface extends the {@link com.bmd.android.collection.filter.FilterBuilder} one by
- * providing specific methods handling {@link com.bmd.android.collection.entry.LongSparseArrayEntry}
- * elements.
+ * This interface extends the {@link FilterBuilder} one by providing specific methods handling
+ * {@link com.bmd.android.collection.entry.LongSparseArrayEntry} elements.
  * <p/>
  * Created by davide on 3/16/14.
  *
- * @param <V> The entry value type.
+ * @param <V> the entry value type.
  */
 public interface SupportLongSparseArrayFilterBuilder<V>
         extends FilterBuilder<SupportLongSparseArrayIterable<V>, LongSparseArrayEntry<V>> {
@@ -33,64 +32,64 @@ public interface SupportLongSparseArrayFilterBuilder<V>
     /**
      * Creates a filter matching the specified entry key.
      *
-     * @param key The key to match.
-     * @return The filtered iterable.
+     * @param key the key to match.
+     * @return the filtered iterable.
      */
     public SupportLongSparseArrayIterable<V> key(long key);
 
     /**
      * Creates a filter matching the specified entry keys.
      *
-     * @param keys The keys to match.
-     * @return The filtered iterable.
+     * @param keys the keys to match.
+     * @return the filtered iterable.
      */
     public SupportLongSparseArrayIterable<V> keys(long... keys);
 
     /**
      * Creates a filter matching the specified collection of entry keys.
      *
-     * @param keys The keys to match.
-     * @return The filtered iterable.
+     * @param keys the keys to match.
+     * @return the filtered iterable.
      */
     public SupportLongSparseArrayIterable<V> keys(Collection<Long> keys);
 
     /**
      * Creates a filter matching the entry keys returned by the specified iterable.
      *
-     * @param keys The iterable of keys to match.
-     * @return The filtered iterable.
+     * @param keys the iterable of keys to match.
+     * @return the filtered iterable.
      */
     public SupportLongSparseArrayIterable<V> keys(Iterable<Long> keys);
 
     /**
      * Creates a filter matching the specified entry value.
      *
-     * @param value The value to match.
-     * @return The filtered iterable.
+     * @param value the value to match.
+     * @return the filtered iterable.
      */
     public SupportLongSparseArrayIterable<V> value(Object value);
 
     /**
      * Creates a filter matching the specified entry values.
      *
-     * @param values The values to match.
-     * @return The filtered iterable.
+     * @param values the values to match.
+     * @return the filtered iterable.
      */
     public SupportLongSparseArrayIterable<V> values(Object... values);
 
     /**
      * Creates a filter matching the specified collection of entry values.
      *
-     * @param values The values to match.
-     * @return The filtered iterable.
+     * @param values the values to match.
+     * @return the filtered iterable.
      */
     public SupportLongSparseArrayIterable<V> values(Collection<Object> values);
 
     /**
      * Creates a filter matching the entry values returned by the specified iterable.
      *
-     * @param values The iterable of values to match.
-     * @return The filtered iterable.
+     * @param values the iterable of values to match.
+     * @return the filtered iterable.
      */
     public SupportLongSparseArrayIterable<V> values(Iterable<Object> values);
 }

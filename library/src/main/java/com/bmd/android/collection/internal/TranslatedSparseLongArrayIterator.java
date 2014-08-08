@@ -21,7 +21,7 @@ import com.bmd.android.collection.translator.FullIntTranslator;
 import com.bmd.android.collection.translator.FullLongTranslator;
 
 /**
- * Implementation of {@link com.bmd.android.collection.internal.SparseIterator} of
+ * Implementation of {@link SparseIterator} of
  * {@link com.bmd.android.collection.entry.SparseLongArrayEntry} elements whose keys and values are
  * transformed through the specified translators.
  * <p/>

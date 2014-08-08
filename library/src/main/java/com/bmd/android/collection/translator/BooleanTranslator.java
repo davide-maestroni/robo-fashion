@@ -23,8 +23,8 @@ public interface BooleanTranslator {
     /**
      * Translates the specified value.
      *
-     * @param value The value to translate.
-     * @return The translated value.
+     * @param value the value to translate.
+     * @return the translated value.
      */
     public boolean translate(boolean value);
 }

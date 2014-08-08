@@ -19,8 +19,8 @@ import com.bmd.android.collection.filter.IntFilterBuilder;
 import java.util.Collection;
 
 /**
- * This interface extends the {@link com.bmd.android.collection.iterator.ElementSparseIterable} one
- * by adding specific methods handling int elements.
+ * This interface extends the {@link ElementSparseIterable} one by adding specific methods handling
+ * int elements.
  * <p/>
  * Created by davide on 3/10/14.
  */
@@ -63,8 +63,8 @@ public interface IntSparseIterable extends ElementSparseIterable<Integer> {
      * Note that, in case the array is not big enough to contain all the elements, an
      * {@link java.lang.IndexOutOfBoundsException} will be thrown.
      *
-     * @param array The array to fill.
-     * @return This iterable.
+     * @param array the array to fill.
+     * @return this iterable.
      */
     public IntSparseIterable fill(int[] array);
 
@@ -75,9 +75,9 @@ public interface IntSparseIterable extends ElementSparseIterable<Integer> {
      * Note that, in case the array is not big enough to contain all the elements, an
      * {@link java.lang.IndexOutOfBoundsException} will be thrown.
      *
-     * @param array  The array to fill.
-     * @param offset The offset from which to start filling the array.
-     * @return This iterable.
+     * @param array  the array to fill.
+     * @param offset the offset from which to start filling the array.
+     * @return this iterable.
      */
     public IntSparseIterable fill(int[] array, int offset);
 
@@ -85,7 +85,7 @@ public interface IntSparseIterable extends ElementSparseIterable<Integer> {
      * Creates and returns a new array filled with the elements returned by this iterable, in the
      * iteration order.
      *
-     * @return The new array.
+     * @return the new array.
      */
     public int[] toArray();
 }

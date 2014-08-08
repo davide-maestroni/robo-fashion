@@ -24,12 +24,11 @@ import com.bmd.android.collection.entry.SparseEntries;
 import java.util.NoSuchElementException;
 
 /**
- * Same as {@link com.bmd.android.collection.internal.LongSparseArrayIterator} but looping the
- * elements in the reverse order.
+ * Same as {@link LongSparseArrayIterator} but looping the elements in the reverse order.
  * <p/>
  * Created by davide on 3/10/14.
  *
- * @param <V> The entry value type.
+ * @param <V> the entry value type.
  */
 @TargetApi(16)
 class LongSparseArrayReverseIterator<V>

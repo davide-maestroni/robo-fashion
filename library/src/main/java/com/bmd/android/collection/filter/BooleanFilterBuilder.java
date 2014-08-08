@@ -16,12 +16,18 @@ package com.bmd.android.collection.filter;
 import com.bmd.android.collection.iterator.BooleanSparseIterable;
 
 /**
- * This interface defines a {@link com.bmd.android.collection.filter.FilterBuilder} associated with
+ * This interface defines a {@link FilterBuilder} associated with
  * {@link com.bmd.android.collection.iterator.BooleanSparseIterable} objects.
  * <p/>
  * Created by davide on 3/16/14.
  */
 public interface BooleanFilterBuilder extends FilterBuilder<BooleanSparseIterable, Boolean> {
 
+    /**
+     * Creates a filter matching the specified boolean value and returns the filtered iterable.
+     *
+     * @param element the boolean value to match with the iterable element.
+     * @return the filtered iterable.
+     */
     public BooleanSparseIterable element(boolean element);
 }

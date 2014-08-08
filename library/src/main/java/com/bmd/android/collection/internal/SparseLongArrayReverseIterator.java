@@ -24,8 +24,7 @@ import com.bmd.android.collection.entry.SparseLongArrayEntry;
 import java.util.NoSuchElementException;
 
 /**
- * Same as {@link com.bmd.android.collection.internal.SparseLongArrayIterator} but looping the
- * elements in the reverse order.
+ * Same as {@link SparseLongArrayIterator} but looping the elements in the reverse order.
  * <p/>
  * Created by davide on 3/10/14.
  */

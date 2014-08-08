@@ -23,8 +23,7 @@ import com.bmd.android.collection.entry.SparseEntries;
 import java.util.NoSuchElementException;
 
 /**
- * Same as {@link com.bmd.android.collection.internal.SparseBooleanArrayIterator} but looping the
- * elements in the reverse order.
+ * Same as {@link SparseBooleanArrayIterator} but looping the elements in the reverse order.
  * <p/>
  * Created by davide on 3/10/14.
  */

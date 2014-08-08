@@ -43,8 +43,8 @@ public class AndroidIterableFactory extends JellyBeanIterableFactory {
     /**
      * Wraps the specified {@link android.util.SparseLongArray} into an iterable.
      *
-     * @param sparseArray The sparse array to wrap.
-     * @return The iterable instance.
+     * @param sparseArray the sparse array to wrap.
+     * @return the iterable instance.
      */
     public static SparseLongArrayIterable create(final SparseLongArray sparseArray) {
 

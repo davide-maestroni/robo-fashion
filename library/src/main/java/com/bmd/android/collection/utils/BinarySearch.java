@@ -34,10 +34,10 @@ public class BinarySearch {
      * Note that the elements in the array must be sorted previously to call this method, otherwise
      * unexpected results will be generated.
      *
-     * @param array The array to analyze.
-     * @param count The max number of elements to analyze.
-     * @param value The value to search for.
-     * @return Whether the value has been found in the first <code>count</code> elements.
+     * @param array the array to analyze.
+     * @param count the max number of elements to analyze.
+     * @param value the value to search for.
+     * @return whether the value has been found in the first <code>count</code> elements.
      */
     public static boolean contains(final int[] array, final int count, final int value) {
 

@@ -23,24 +23,24 @@ import java.util.Collection;
  * <p/>
  * Created by davide on 3/16/14.
  *
- * @param <T> The iterable type.
- * @param <E> The element type.
+ * @param <T> the iterable type.
+ * @param <E> the element type.
  */
 public interface FilterBuilder<T extends SparseIterable<E>, E> {
 
     /**
      * Creates a filter matching the specified object and returns the filtered iterable.
      *
-     * @param element The object to match with the iterable element.
-     * @return The filtered iterable.
+     * @param element the object to match with the iterable element.
+     * @return the filtered iterable.
      */
     public T element(Object element);
 
     /**
      * Creates a filter matching the specified objects and returns the filtered iterable.
      *
-     * @param elements The objects to match with the iterable element.
-     * @return The filtered iterable.
+     * @param elements the objects to match with the iterable element.
+     * @return the filtered iterable.
      */
     public T elements(Object... elements);
 
@@ -48,8 +48,8 @@ public interface FilterBuilder<T extends SparseIterable<E>, E> {
      * Creates a filter matching the specified collection of objects and returns the filtered
      * iterable.
      *
-     * @param elements The collection to match with the iterable element.
-     * @return The filtered iterable.
+     * @param elements the collection to match with the iterable element.
+     * @return the filtered iterable.
      */
     public T elements(Collection<?> elements);
 
@@ -57,8 +57,8 @@ public interface FilterBuilder<T extends SparseIterable<E>, E> {
      * Creates a filter matching the objects returned by the specified iterable and returns the
      * filtered iterable.
      *
-     * @param elements The iterable of objects to match with the iterable element.
-     * @return The filtered iterable.
+     * @param elements the iterable of objects to match with the iterable element.
+     * @return the filtered iterable.
      */
     public T elements(Iterable<?> elements);
 
@@ -66,8 +66,8 @@ public interface FilterBuilder<T extends SparseIterable<E>, E> {
      * Creates a filter matching the first <code>count</code> elements and returns the filtered
      * iterable.
      *
-     * @param count The elements count.
-     * @return The filtered iterable.
+     * @param count the elements count.
+     * @return the filtered iterable.
      */
     public T first(int count);
 
@@ -75,8 +75,8 @@ public interface FilterBuilder<T extends SparseIterable<E>, E> {
      * Creates a filter matching all the elements greater or equal than the specified index and
      * returns the filtered iterable.
      *
-     * @param index The index from which the elements match.
-     * @return The filtered iterable.
+     * @param index the index from which the elements match.
+     * @return the filtered iterable.
      */
     public T from(int index);
 
@@ -84,8 +84,8 @@ public interface FilterBuilder<T extends SparseIterable<E>, E> {
      * Creates a filter matching all the elements whose index is included in the specified index
      * array and returns the filtered iterable.
      *
-     * @param indexes The indexes of the matching elements.
-     * @return The filtered iterable.
+     * @param indexes the indexes of the matching elements.
+     * @return the filtered iterable.
      */
     public T indexes(int... indexes);
 
@@ -93,8 +93,8 @@ public interface FilterBuilder<T extends SparseIterable<E>, E> {
      * Creates a filter matching all the elements whose index is included in the specified index
      * collection and returns the filtered iterable.
      *
-     * @param indexes The collection of indexes of the matching elements.
-     * @return The filtered iterable.
+     * @param indexes the collection of indexes of the matching elements.
+     * @return the filtered iterable.
      */
     public T indexes(Collection<Integer> indexes);
 
@@ -102,8 +102,8 @@ public interface FilterBuilder<T extends SparseIterable<E>, E> {
      * Creates a filter matching all the elements whose index is included in the specified index
      * iterable and returns the filtered iterable.
      *
-     * @param indexes The iterable returning the indexes of the matching elements.
-     * @return The filtered iterable.
+     * @param indexes the iterable returning the indexes of the matching elements.
+     * @return the filtered iterable.
      */
     public T indexes(Iterable<Integer> indexes);
 
@@ -111,24 +111,24 @@ public interface FilterBuilder<T extends SparseIterable<E>, E> {
      * Creates a filter matching the last <code>count</code> elements and returns the filtered
      * iterable.
      *
-     * @param count The elements count.
-     * @return The filtered iterable.
+     * @param count the elements count.
+     * @return the filtered iterable.
      */
     public T last(int count);
 
     /**
      * Add the specified filter to the iterable and returns the latter.
      *
-     * @param filter The filter.
-     * @return The filtered iterable.
+     * @param filter the filter.
+     * @return the filtered iterable.
      */
     public T matching(Filter<E> filter);
 
     /**
      * Add the specified advanced filter to the iterable and returns the latter.
      *
-     * @param filter The filter.
-     * @return The filtered iterable.
+     * @param filter the filter.
+     * @return the filtered iterable.
      */
     public T matching(AdvancedFilter<E> filter);
 
@@ -136,8 +136,8 @@ public interface FilterBuilder<T extends SparseIterable<E>, E> {
      * Creates a filter matching all the elements less or equal than the specified index and
      * returns the filtered iterable.
      *
-     * @param index The index until which the elements match.
-     * @return The filtered iterable.
+     * @param index the index until which the elements match.
+     * @return the filtered iterable.
      */
     public T to(int index);
 }

@@ -18,16 +18,16 @@ package com.bmd.android.collection.translator;
  * <p/>
  * Created by davide on 3/13/14.
  *
- * @param <I> The input object type.
- * @param <O> The output element type.
+ * @param <I> the input object type.
+ * @param <O> the output element type.
  */
 public interface Translator<I, O> {
 
     /**
      * Translates the specified object.
      *
-     * @param element The element to translate.
-     * @return The translated element.
+     * @param element the element to translate.
+     * @return the translated element.
      */
     public O translate(I element);
 }

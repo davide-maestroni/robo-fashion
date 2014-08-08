@@ -20,9 +20,12 @@ import com.bmd.android.collection.filter.AdvancedFilter.FilterIterator;
  * <p/>
  * Created by davide on 3/10/14.
  *
- * @param <E> The element type.
+ * @param <E> the element type.
  */
 interface SparseIterator<E> extends FilterIterator<E> {
 
+    /**
+     * Resets this iterator so that it goes back to the first element.
+     */
     void reset();
 }

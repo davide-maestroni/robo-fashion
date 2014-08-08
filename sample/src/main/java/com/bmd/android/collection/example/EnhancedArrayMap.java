@@ -29,8 +29,8 @@ import java.util.Iterator;
  * parcelable serialization, iteration and proper equals implementation
  * (see <a href="https://code.google.com/p/android/issues/detail?id=68406">issue 68406</a>).
  *
- * @param <K> The key type.
- * @param <V> The value type.
+ * @param <K> the key type.
+ * @param <V> the value type.
  */
 public class EnhancedArrayMap<K, V> extends SimpleArrayMap<K, V>
         implements Iterable<SimpleArrayMapEntry<K, V>>, Parcelable {
@@ -61,7 +61,7 @@ public class EnhancedArrayMap<K, V> extends SimpleArrayMap<K, V>
     /**
      * Overrides {@link android.support.v4.util.SimpleArrayMap#SimpleArrayMap(int)}.
      *
-     * @param capacity Initial capacity.
+     * @param capacity the initial capacity.
      */
     public EnhancedArrayMap(final int capacity) {
 
@@ -71,9 +71,10 @@ public class EnhancedArrayMap<K, V> extends SimpleArrayMap<K, V>
     }
 
     /**
-     * Overrides {@link android.support.v4.util.SimpleArrayMap#SimpleArrayMap(android.support.v4.util.SimpleArrayMap)}.
+     * Overrides
+     * {@link android.support.v4.util.SimpleArrayMap#SimpleArrayMap(android.support.v4.util.SimpleArrayMap)}.
      *
-     * @param map The map from which to copy the initial elements.
+     * @param map the map from which to copy the initial elements.
      */
     public EnhancedArrayMap(final SimpleArrayMap map) {
 

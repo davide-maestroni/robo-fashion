@@ -24,7 +24,7 @@ import com.bmd.android.collection.entry.SparseLongArrayEntry;
 import java.util.NoSuchElementException;
 
 /**
- * Implementation of a {@link com.bmd.android.collection.internal.SparseIterator} of
+ * Implementation of a {@link SparseIterator} of
  * {@link com.bmd.android.collection.entry.SparseLongArrayEntry} elements.
  * <p/>
  * To let this class implement both the iterator and the entry is a precise design choice in order

@@ -16,8 +16,8 @@ package com.bmd.android.collection.filter;
 import com.bmd.android.collection.iterator.IntSparseIterable;
 
 /**
- * This interface extends the {@link com.bmd.android.collection.filter.FilterBuilder} one by
- * providing specific methods handling int elements.
+ * This interface extends the {@link FilterBuilder} one by providing specific methods handling int
+ * elements.
  * <p/>
  * Created by davide on 3/16/14.
  */
@@ -26,16 +26,16 @@ public interface IntFilterBuilder extends FilterBuilder<IntSparseIterable, Integ
     /**
      * Creates a filter matching the specified int value.
      *
-     * @param element The int value to match.
-     * @return The filtered iterable.
+     * @param element the int value to match.
+     * @return the filtered iterable.
      */
     public IntSparseIterable element(int element);
 
     /**
      * Creates a filter matching the specified int values.
      *
-     * @param elements The int values to match.
-     * @return The filtered iterable.
+     * @param elements the int values to match.
+     * @return the filtered iterable.
      */
     public IntSparseIterable elements(int... elements);
 }

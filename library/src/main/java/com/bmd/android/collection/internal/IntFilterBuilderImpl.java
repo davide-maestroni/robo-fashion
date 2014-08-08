@@ -19,7 +19,7 @@ import com.bmd.android.collection.iterator.IntSparseIterable;
 import com.bmd.android.collection.translator.ToIntTranslator;
 
 /**
- * Implementation of a {@link com.bmd.android.collection.filter.IntFilterBuilder}.
+ * Implementation of a {@link IntFilterBuilder}.
  * <p/>
  * Created by davide on 3/19/14.
  */

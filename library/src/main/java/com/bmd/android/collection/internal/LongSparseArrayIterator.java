@@ -24,7 +24,7 @@ import com.bmd.android.collection.entry.SparseEntries;
 import java.util.NoSuchElementException;
 
 /**
- * Implementation of a {@link com.bmd.android.collection.internal.SparseIterator} of
+ * Implementation of a {@link SparseIterator} of
  * {@link com.bmd.android.collection.entry.LongSparseArrayEntry} elements.
  * <p/>
  * To let this class implement both the iterator and the entry is a precise design choice in order
@@ -37,7 +37,7 @@ import java.util.NoSuchElementException;
  * <p/>
  * Created by davide on 3/10/14.
  *
- * @param <V> The entry value type.
+ * @param <V> the entry value type.
  */
 @TargetApi(16)
 class LongSparseArrayIterator<V> extends AbstractSparseIterator<LongSparseArrayEntry<V>>

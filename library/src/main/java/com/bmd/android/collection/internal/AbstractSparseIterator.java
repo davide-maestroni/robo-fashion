@@ -16,13 +16,13 @@ package com.bmd.android.collection.internal;
 import java.util.NoSuchElementException;
 
 /**
- * Abstract implementation of a {@link com.bmd.android.collection.internal.SparseIterator}.
+ * Abstract implementation of a {@link SparseIterator}.
  * <p/>
  * This class implements the common logic leaving to the subclass the handling of low level data.
  * <p/>
  * Created by davide on 3/10/14.
  *
- * @param <E> The element type.
+ * @param <E> the element type.
  */
 abstract class AbstractSparseIterator<E> implements SparseIterator<E> {
 
@@ -85,7 +85,18 @@ abstract class AbstractSparseIterator<E> implements SparseIterator<E> {
         mHasCurrent = false;
     }
 
+    /**
+     * Gets the element at the specified position in the sparse collection.
+     *
+     * @param position the element position.
+     * @return the element.
+     */
     protected abstract E getElementAt(int position);
 
+    /**
+     * Removes the last element got from the sparse collection.
+     *
+     * @see #getElementAt(int)
+     */
     protected abstract void removeElement();
 }

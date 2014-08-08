@@ -19,17 +19,17 @@ package com.bmd.android.collection.filter;
  * <p/>
  * Created by davide on 3/14/14.
  *
- * @param <E> The element type.
+ * @param <E> the element type.
  */
 public interface Filter<E> {
 
     /**
-     * Returns <code>true</code> if the specified element matches with the condition.
+     * Returns true if the specified element matches with the condition.
      *
-     * @param element The element to check.
-     * @param count   The number of element iterated until now.
-     * @param index   The index of the element in the sparse collection.
-     * @return Whether the elements matches the condition.
+     * @param element the element to check.
+     * @param count   the number of element iterated until now.
+     * @param index   the index of the element in the sparse collection.
+     * @return whether the elements matches the condition.
      */
     public boolean matches(E element, int count, int index);
 }

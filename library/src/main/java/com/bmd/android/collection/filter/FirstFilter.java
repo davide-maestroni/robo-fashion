@@ -18,7 +18,7 @@ package com.bmd.android.collection.filter;
  * <p/>
  * Created by davide on 3/11/14.
  *
- * @param <E> The filtered element type.
+ * @param <E> the filtered element type.
  */
 class FirstFilter<E> implements Filter<E> {
 

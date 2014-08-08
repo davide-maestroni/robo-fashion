@@ -36,8 +36,8 @@ import java.util.NoSuchElementException;
  * <p/>
  * Created by davide on 3/10/14.
  *
- * @param <K> The entry key type.
- * @param <V> The entry value type.
+ * @param <K> the entry key type.
+ * @param <V> the entry value type.
  */
 class SimpleArrayMapIterator<K, V> extends AbstractSparseIterator<SimpleArrayMapEntry<K, V>>
         implements SimpleArrayMapEntry<K, V> {

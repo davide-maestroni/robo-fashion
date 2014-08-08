@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * <p/>
  * Created by davide on 3/12/14.
  *
- * @param <E> The filtered element type.
+ * @param <E> the filtered element type.
  */
 class IndexIterableFilter<E> implements Filter<E> {
 

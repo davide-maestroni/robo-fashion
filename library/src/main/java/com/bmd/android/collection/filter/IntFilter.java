@@ -21,12 +21,12 @@ package com.bmd.android.collection.filter;
 public interface IntFilter {
 
     /**
-     * Returns <code>true</code> if the specified element matches with the condition.
+     * Returns true if the specified element matches with the condition.
      *
-     * @param element The element to check.
-     * @param count   The number of element iterated until now.
-     * @param index   The index of the element in the sparse collection.
-     * @return Whether the element matches the condition.
+     * @param element the element to check.
+     * @param count   the number of element iterated until now.
+     * @param index   the index of the element in the sparse collection.
+     * @return whether the element matches the condition.
      */
     public boolean matches(int element, int count, int index);
 }

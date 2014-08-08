@@ -47,10 +47,10 @@ public class CompatCollections {
     /**
      * Wraps the specified {@link android.support.v4.util.SimpleArrayMap} into an iterable.
      *
-     * @param arrayMap The array map to wrap.
-     * @param <K>      The element key type.
-     * @param <V>      The element value type.
-     * @return The iterable instance.
+     * @param arrayMap the array map to wrap.
+     * @param <K>      the element key type.
+     * @param <V>      the element value type.
+     * @return the iterable instance.
      */
     public static <K, V> SimpleArrayMapIterable<K, V> iterate(final SimpleArrayMap<K, V> arrayMap) {
 
@@ -60,9 +60,9 @@ public class CompatCollections {
     /**
      * Wraps the specified {@link android.support.v4.util.LongSparseArray} into an iterable.
      *
-     * @param sparseArray The sparse array to wrap.
-     * @param <V>         The element value type.
-     * @return The iterable instance.
+     * @param sparseArray the sparse array to wrap.
+     * @param <V>         the element value type.
+     * @return the iterable instance.
      */
     public static <V> SupportLongSparseArrayIterable<V> iterate(
             final LongSparseArray<V> sparseArray) {
@@ -73,9 +73,9 @@ public class CompatCollections {
     /**
      * Wraps the specified {@link android.util.SparseArray} into an iterable.
      *
-     * @param sparseArray The sparse array to wrap.
-     * @param <V>         The element value type.
-     * @return The iterable instance.
+     * @param sparseArray the sparse array to wrap.
+     * @param <V>         the element value type.
+     * @return the iterable instance.
      */
     public static <V> SparseArrayIterable<V> iterate(final SparseArray<V> sparseArray) {
 
@@ -85,9 +85,9 @@ public class CompatCollections {
     /**
      * Wraps the specified {@link android.support.v4.util.SparseArrayCompat} into an iterable.
      *
-     * @param sparseArray The sparse array to wrap.
-     * @param <V>         The element value type.
-     * @return The iterable instance.
+     * @param sparseArray the sparse array to wrap.
+     * @param <V>         the element value type.
+     * @return the iterable instance.
      */
     public static <V> SparseArrayCompatIterable<V> iterate(final SparseArrayCompat<V> sparseArray) {
 
@@ -97,8 +97,8 @@ public class CompatCollections {
     /**
      * Wraps the specified {@link android.util.SparseIntArray} into an iterable.
      *
-     * @param sparseArray The sparse array to wrap.
-     * @return The iterable instance.
+     * @param sparseArray the sparse array to wrap.
+     * @return the iterable instance.
      */
     public static SparseIntArrayIterable iterate(final SparseIntArray sparseArray) {
 
@@ -108,8 +108,8 @@ public class CompatCollections {
     /**
      * Wraps the specified {@link android.util.SparseBooleanArray} into an iterable.
      *
-     * @param sparseArray The sparse array to wrap.
-     * @return The iterable instance.
+     * @param sparseArray the sparse array to wrap.
+     * @return the iterable instance.
      */
     public static SparseBooleanArrayIterable iterate(final SparseBooleanArray sparseArray) {
 

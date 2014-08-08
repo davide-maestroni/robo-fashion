@@ -14,8 +14,7 @@
 package com.bmd.android.collection.translator;
 
 /**
- * This interface extends {@link com.bmd.android.collection.translator.IntTranslator} by
- * adding the reverse translation of the value.
+ * This interface extends {@link IntTranslator} by adding the reverse translation of the value.
  * <p/>
  * Created by davide on 3/31/14.
  */
@@ -24,8 +23,8 @@ public interface FullIntTranslator extends IntTranslator {
     /**
      * Reverts the translation of the specified value.
      *
-     * @param value The value to translate back.
-     * @return The reverted value.
+     * @param value the value to translate back.
+     * @return the reverted value.
      */
     public int revert(int value);
 }

@@ -40,8 +40,8 @@ import java.util.TreeMap;
  * <p/>
  * Created by davide on 3/11/14.
  *
- * @param <K> The entry key type.
- * @param <V> The entry value type.
+ * @param <K> the entry key type.
+ * @param <V> the entry value type.
  */
 class SimpleArrayMapIterableImpl<K, V> extends AbstractSparseIterable<SimpleArrayMapEntry<K, V>>
         implements SimpleArrayMapIterable<K, V> {

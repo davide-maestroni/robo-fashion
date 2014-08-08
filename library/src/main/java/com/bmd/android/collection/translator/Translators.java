@@ -22,8 +22,7 @@ import com.bmd.android.collection.entry.SparseLongArrayEntry;
 import com.bmd.android.collection.entry.SparseObjectEntry;
 
 /**
- * Utility class providing helper methods for creating and managing
- * {@link com.bmd.android.collection.translator.Translator} objects.
+ * Utility class providing helper methods for creating and managing {@link Translator} objects.
  * <p/>
  * Created by davide on 3/15/14.
  */
@@ -71,10 +70,10 @@ public class Translators {
     }
 
     /**
-     * Returns a {@link com.bmd.android.collection.translator.FullBooleanTranslator} instance that pass
-     * the specified values through the translation unchanged.
+     * Returns a {@link FullBooleanTranslator} instance that pass the specified values through the
+     * translation unchanged.
      *
-     * @return The translator.
+     * @return the translator.
      */
     public static FullBooleanTranslator booleanIdentity() {
 
@@ -103,8 +102,8 @@ public class Translators {
      * Returns a translator which extracts the boolean value from
      * {@link com.bmd.android.collection.entry.SparseBooleanArrayEntry} elements.
      *
-     * @param <E> The element type.
-     * @return The translator.
+     * @param <E> the element type.
+     * @return the translator.
      */
     public static <E extends SparseBooleanArrayEntry> ToBooleanTranslator<E> booleanValue() {
 
@@ -128,8 +127,8 @@ public class Translators {
      * Returns a translator which extracts the boolean value as an object from
      * {@link com.bmd.android.collection.entry.SparseBooleanArrayEntry} elements.
      *
-     * @param <E> The element type.
-     * @return The translator.
+     * @param <E> the element type.
+     * @return the translator.
      */
     public static <E extends SparseBooleanArrayEntry> Translator<E, ?> booleanValueObject() {
 
@@ -150,14 +149,14 @@ public class Translators {
     }
 
     /**
-     * Creates an {@link com.bmd.android.collection.translator.FullBooleanTranslator} wrapping the
-     * specified simple {@link com.bmd.android.collection.translator.BooleanTranslator}.
+     * Creates an {@link FullBooleanTranslator} wrapping the specified simple
+     * {@link BooleanTranslator}.
      * <p/>
      * Not that the returned translator will throw an exception if the reverse translation method
      * is called.
      *
-     * @param translator The translator to wrap.
-     * @return The full translator.
+     * @param translator the translator to wrap.
+     * @return the full translator.
      */
     public static FullBooleanTranslator full(final BooleanTranslator translator) {
 
@@ -183,14 +182,13 @@ public class Translators {
     }
 
     /**
-     * Creates an {@link com.bmd.android.collection.translator.FullLongTranslator} wrapping the
-     * specified simple {@link com.bmd.android.collection.translator.LongTranslator}.
+     * Creates an {@link FullLongTranslator} wrapping the specified simple {@link LongTranslator}.
      * <p/>
      * Not that the returned translator will throw an exception if the reverse translation method
      * is called.
      *
-     * @param translator The translator to wrap.
-     * @return The full translator.
+     * @param translator the translator to wrap.
+     * @return the full translator.
      */
     public static FullLongTranslator full(final LongTranslator translator) {
 
@@ -216,14 +214,13 @@ public class Translators {
     }
 
     /**
-     * Creates an {@link com.bmd.android.collection.translator.FullIntTranslator} wrapping the
-     * specified simple {@link com.bmd.android.collection.translator.IntTranslator}.
+     * Creates an {@link FullIntTranslator} wrapping the specified simple {@link IntTranslator}.
      * <p/>
      * Not that the returned translator will throw an exception if the reverse translation method
      * is called.
      *
-     * @param translator The translator to wrap.
-     * @return The full translator.
+     * @param translator the translator to wrap.
+     * @return the full translator.
      */
     public static FullIntTranslator full(final IntTranslator translator) {
 
@@ -249,16 +246,15 @@ public class Translators {
     }
 
     /**
-     * Creates an {@link com.bmd.android.collection.translator.FullTranslator} wrapping the
-     * specified simple {@link com.bmd.android.collection.translator.Translator}.
+     * Creates an {@link FullTranslator} wrapping the specified simple {@link Translator}.
      * <p/>
      * Not that the returned translator will throw an exception if the reverse translation method
      * is called.
      *
-     * @param translator The translator to wrap.
-     * @param <I>        The input object type.
-     * @param <O>        The output element type.
-     * @return The full translator.
+     * @param translator the translator to wrap.
+     * @param <I>        the input object type.
+     * @param <O>        the output element type.
+     * @return the full translator.
      */
     public static <I, O> FullTranslator<I, O> full(final Translator<I, O> translator) {
 
@@ -284,11 +280,11 @@ public class Translators {
     }
 
     /**
-     * Returns a {@link com.bmd.android.collection.translator.FullTranslator} instance that pass
-     * the specified elements through the translation unchanged.
+     * Returns a {@link FullTranslator} instance that pass the specified elements through the
+     * translation unchanged.
      *
-     * @param <E> The element type.
-     * @return The translator.
+     * @param <E> the element type.
+     * @return the translator.
      */
     public static <E> FullTranslator<E, E> identity() {
 
@@ -315,10 +311,10 @@ public class Translators {
     }
 
     /**
-     * Returns a {@link com.bmd.android.collection.translator.FullIntTranslator} instance that pass
-     * the specified values through the translation unchanged.
+     * Returns a {@link FullIntTranslator} instance that pass the specified values through the
+     * translation unchanged.
      *
-     * @return The translator.
+     * @return the translator.
      */
     public static FullIntTranslator intIdentity() {
 
@@ -347,8 +343,8 @@ public class Translators {
      * Returns a translator which extracts the int key from
      * {@link com.bmd.android.collection.entry.IntSparseEntry} elements.
      *
-     * @param <E> The element type.
-     * @return The translator.
+     * @param <E> the element type.
+     * @return the translator.
      */
     public static <E extends IntSparseEntry> ToIntTranslator<E> intKey() {
 
@@ -372,8 +368,8 @@ public class Translators {
      * Returns a translator which extracts the int key as an object from
      * {@link com.bmd.android.collection.entry.IntSparseEntry} elements.
      *
-     * @param <E> The element type.
-     * @return The translator.
+     * @param <E> the element type.
+     * @return the translator.
      */
     public static <E extends IntSparseEntry> Translator<E, ?> intKeyObject() {
 
@@ -397,8 +393,8 @@ public class Translators {
      * Returns a translator which extracts the int value from
      * {@link com.bmd.android.collection.entry.SparseIntArrayEntry} elements.
      *
-     * @param <E> The element type.
-     * @return The translator.
+     * @param <E> the element type.
+     * @return the translator.
      */
     public static <E extends SparseIntArrayEntry> ToIntTranslator<E> intValue() {
 
@@ -422,8 +418,8 @@ public class Translators {
      * Returns a translator which extracts the int value as an object from
      * {@link com.bmd.android.collection.entry.SparseIntArrayEntry} elements.
      *
-     * @param <E> The element type.
-     * @return The translator.
+     * @param <E> the element type.
+     * @return the translator.
      */
     public static <E extends SparseIntArrayEntry> Translator<E, ?> intValueObject() {
 
@@ -444,10 +440,10 @@ public class Translators {
     }
 
     /**
-     * Returns a {@link com.bmd.android.collection.translator.FullLongTranslator} instance that pass
-     * the specified values through the translation unchanged.
+     * Returns a {@link FullLongTranslator} instance that pass the specified values through the
+     * translation unchanged.
      *
-     * @return The translator.
+     * @return the translator.
      */
     public static FullLongTranslator longIdentity() {
 
@@ -476,8 +472,8 @@ public class Translators {
      * Returns a translator which extracts the long key from
      * {@link com.bmd.android.collection.entry.LongSparseEntry} elements.
      *
-     * @param <E> The element type.
-     * @return The translator.
+     * @param <E> the element type.
+     * @return the translator.
      */
     public static <E extends LongSparseEntry> ToLongTranslator<E> longKey() {
 
@@ -501,8 +497,8 @@ public class Translators {
      * Returns a translator which extracts the long key as an object from
      * {@link com.bmd.android.collection.entry.LongSparseEntry} elements.
      *
-     * @param <E> The element type.
-     * @return The translator.
+     * @param <E> the element type.
+     * @return the translator.
      */
     public static <E extends LongSparseEntry> Translator<E, ?> longKeyObject() {
 
@@ -526,8 +522,8 @@ public class Translators {
      * Returns a translator which extracts the long value from
      * {@link com.bmd.android.collection.entry.SparseLongArrayEntry} elements.
      *
-     * @param <E> The element type.
-     * @return The translator.
+     * @param <E> the element type.
+     * @return the translator.
      */
     public static <E extends SparseLongArrayEntry> ToLongTranslator<E> longValue() {
 
@@ -551,8 +547,8 @@ public class Translators {
      * Returns a translator which extracts the long value as an object from
      * {@link com.bmd.android.collection.entry.SparseLongArrayEntry} elements.
      *
-     * @param <E> The element type.
-     * @return The translator.
+     * @param <E> the element type.
+     * @return the translator.
      */
     public static <E extends SparseLongArrayEntry> Translator<E, ?> longValueObject() {
 
@@ -575,8 +571,8 @@ public class Translators {
     /**
      * Returns a translator which returns elements as objects.
      *
-     * @param <E> The element type.
-     * @return The translator.
+     * @param <E> the element type.
+     * @return the translator.
      */
     public static <E> Translator<E, ?> object() {
 
@@ -600,8 +596,8 @@ public class Translators {
      * Returns a translator which extracts the key as an object from
      * {@link com.bmd.android.collection.entry.ObjectSparseEntry} elements.
      *
-     * @param <E> The element type.
-     * @return The translator.
+     * @param <E> the element type.
+     * @return the translator.
      */
     public static <E extends ObjectSparseEntry<?>> Translator<E, ?> objectKey() {
 
@@ -625,8 +621,8 @@ public class Translators {
      * Returns a translator which extracts the value as an object from
      * {@link com.bmd.android.collection.entry.SparseObjectEntry} elements.
      *
-     * @param <E> The element type.
-     * @return The translator.
+     * @param <E> the element type.
+     * @return the translator.
      */
     public static <E extends SparseObjectEntry<?>> Translator<E, ?> objectValue() {
 

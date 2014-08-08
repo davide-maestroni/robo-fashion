@@ -20,7 +20,7 @@ import com.bmd.android.collection.translator.Translator;
  * <p/>
  * Created by davide on 3/14/14.
  *
- * @param <E> The filtered element type.
+ * @param <E> the filtered element type.
  */
 class ObjectFilter<E> implements Filter<E> {
 

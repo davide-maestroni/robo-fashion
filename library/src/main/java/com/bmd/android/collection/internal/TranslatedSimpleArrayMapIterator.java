@@ -20,31 +20,31 @@ import com.bmd.android.collection.entry.SparseEntries;
 import com.bmd.android.collection.translator.FullTranslator;
 
 /**
- * Implementation of {@link com.bmd.android.collection.internal.SparseIterator} of
+ * Implementation of {@link SparseIterator} of
  * {@link com.bmd.android.collection.entry.SimpleArrayMapEntry} elements whose keys and values are
  * transformed through the specified translators.
  * <p/>
  * Created by davide on 3/31/14.
  *
- * @param <Tk> The translated element key type.
- * @param <K>  The original element key type.
- * @param <Tv> The translated element value type.
- * @param <V>  The original element value type.
+ * @param <TK> the translated element key type.
+ * @param <K>  the original element key type.
+ * @param <TV> the translated element value type.
+ * @param <V>  the original element value type.
  */
-class TranslatedSimpleArrayMapIterator<Tk, K, Tv, V>
-        implements SparseIterator<SimpleArrayMapEntry<Tk, Tv>>, SimpleArrayMapEntry<Tk, Tv> {
+class TranslatedSimpleArrayMapIterator<TK, K, TV, V>
+        implements SparseIterator<SimpleArrayMapEntry<TK, TV>>, SimpleArrayMapEntry<TK, TV> {
 
     private final SparseIterator<SimpleArrayMapEntry<K, V>> mIterator;
 
-    private final FullTranslator<K, Tk> mKeyTranslator;
+    private final FullTranslator<K, TK> mKeyTranslator;
 
-    private final FullTranslator<V, Tv> mValueTranslator;
+    private final FullTranslator<V, TV> mValueTranslator;
 
     private SimpleArrayMapEntry<K, V> mEntry;
 
     public TranslatedSimpleArrayMapIterator(final SparseIterator<SimpleArrayMapEntry<K, V>> wrapped,
-            final FullTranslator<K, Tk> keyTranslator,
-            final FullTranslator<V, Tv> valueTranslator) {
+            final FullTranslator<K, TK> keyTranslator,
+            final FullTranslator<V, TV> valueTranslator) {
 
         mIterator = wrapped;
         mKeyTranslator = keyTranslator;
@@ -58,31 +58,31 @@ class TranslatedSimpleArrayMapIterator<Tk, K, Tv, V>
     }
 
     @Override
-    public Tk getKey() {
+    public TK getKey() {
 
         return mKeyTranslator.translate(mEntry.getKey());
     }
 
     @Override
-    public Tv getValue() {
+    public TV getValue() {
 
         return mValueTranslator.translate(mEntry.getValue());
     }
 
     @Override
-    public void setValue(final Tv value) {
+    public void setValue(final TV value) {
 
         mEntry.setValue(mValueTranslator.revert(value));
     }
 
     @Override
-    public ObjectSparseObjectEntry<Tk, Tv> toImmutable() {
+    public ObjectSparseObjectEntry<TK, TV> toImmutable() {
 
         return SparseEntries.entry(getKey(), getValue());
     }
 
     @Override
-    public ParcelableObjectSparseObjectEntry<Tk, Tv> toParcelable() {
+    public ParcelableObjectSparseObjectEntry<TK, TV> toParcelable() {
 
         return SparseEntries.parcelableEntry(getKey(), getValue());
     }
@@ -94,7 +94,7 @@ class TranslatedSimpleArrayMapIterator<Tk, K, Tv, V>
     }
 
     @Override
-    public SimpleArrayMapEntry<Tk, Tv> next() {
+    public SimpleArrayMapEntry<TK, TV> next() {
 
         mEntry = mIterator.next();
 

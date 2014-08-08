@@ -20,7 +20,7 @@ import com.bmd.android.collection.translator.ToIntTranslator;
  * <p/>
  * Created by davide on 3/14/14.
  *
- * @param <E> The filtered element type.
+ * @param <E> the filtered element type.
  */
 class IntValueFilter<E> implements Filter<E> {
 

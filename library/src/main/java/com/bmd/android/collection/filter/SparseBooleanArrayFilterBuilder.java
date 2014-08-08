@@ -19,9 +19,8 @@ import com.bmd.android.collection.iterator.SparseBooleanArrayIterable;
 import java.util.Collection;
 
 /**
- * This interface extends the {@link com.bmd.android.collection.filter.FilterBuilder} one by
- * providing specific methods handling {@link com.bmd.android.collection.entry.SparseBooleanArrayEntry}
- * elements.
+ * This interface extends the {@link FilterBuilder} one by providing specific methods handling
+ * {@link com.bmd.android.collection.entry.SparseBooleanArrayEntry} elements.
  * <p/>
  * Created by davide on 3/16/14.
  */
@@ -31,40 +30,40 @@ public interface SparseBooleanArrayFilterBuilder
     /**
      * Creates a filter matching the specified entry key.
      *
-     * @param key The key to match.
-     * @return The filtered iterable.
+     * @param key the key to match.
+     * @return the filtered iterable.
      */
     public SparseBooleanArrayIterable key(int key);
 
     /**
      * Creates a filter matching the specified entry keys.
      *
-     * @param keys The keys to match.
-     * @return The filtered iterable.
+     * @param keys the keys to match.
+     * @return the filtered iterable.
      */
     public SparseBooleanArrayIterable keys(int... keys);
 
     /**
      * Creates a filter matching the specified collection of entry keys.
      *
-     * @param keys The keys to match.
-     * @return The filtered iterable.
+     * @param keys the keys to match.
+     * @return the filtered iterable.
      */
     public SparseBooleanArrayIterable keys(Collection<Integer> keys);
 
     /**
      * Creates a filter matching the entry keys returned by the specified iterable.
      *
-     * @param keys The iterable of keys to match.
-     * @return The filtered iterable.
+     * @param keys the iterable of keys to match.
+     * @return the filtered iterable.
      */
     public SparseBooleanArrayIterable keys(Iterable<Integer> keys);
 
     /**
      * Creates a filter matching the specified entry value.
      *
-     * @param value The value to match.
-     * @return The filtered iterable.
+     * @param value the value to match.
+     * @return the filtered iterable.
      */
     public SparseBooleanArrayIterable value(boolean value);
 }

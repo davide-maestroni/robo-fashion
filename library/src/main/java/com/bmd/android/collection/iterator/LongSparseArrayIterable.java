@@ -31,13 +31,12 @@ import java.util.Map;
 import java.util.SortedMap;
 
 /**
- * This interface extends the {@link com.bmd.android.collection.iterator.SparseIterable} one
- * by adding specific methods handling
+ * This interface extends the {@link SparseIterable} one by adding specific methods handling
  * {@link com.bmd.android.collection.entry.LongSparseArrayEntry} elements.
  * <p/>
  * Created by davide on 3/10/14.
  *
- * @param <V> The element value type.
+ * @param <V> the element value type.
  */
 @TargetApi(16)
 public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArrayEntry<V>> {
@@ -45,8 +44,8 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
     /**
      * Appends all the elements returned by this iterable to the specified sparse collection.
      *
-     * @param other The sparse collection to append the elements to.
-     * @return This iterable.
+     * @param other the sparse collection to append the elements to.
+     * @return this iterable.
      */
     public LongSparseArrayIterable<V> appendTo(LongSparseArray<V> other);
 
@@ -80,7 +79,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
     /**
      * Checks if all the specified keys are present in the iterated elements.
      *
-     * @param keys The keys to search for.
+     * @param keys the keys to search for.
      * @return Whether all the keys are present.
      */
     public boolean containsAllKeys(long... keys);
@@ -89,7 +88,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Checks if all the keys returned by the specified iterable are present in the iterated
      * elements.
      *
-     * @param keys The keys to search for.
+     * @param keys the keys to search for.
      * @return Whether all the keys are present.
      */
     public boolean containsAllKeys(Iterable<Long> keys);
@@ -97,7 +96,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
     /**
      * Checks if all the specified value objects are present in the iterated elements.
      *
-     * @param values The values to search for.
+     * @param values the values to search for.
      * @return Whether all the values are present.
      */
     public boolean containsAllValues(Object... values);
@@ -106,7 +105,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Checks if all the values returned by the specified iterable are present in the iterated
      * elements.
      *
-     * @param values The values to search for.
+     * @param values the values to search for.
      * @return Whether all the values are present.
      */
     public boolean containsAllValues(Iterable<?> values);
@@ -114,7 +113,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
     /**
      * Checks if at least one of the specified keys is present in the iterated elements.
      *
-     * @param keys The keys to search for.
+     * @param keys the keys to search for.
      * @return Whether at least one key is present.
      */
     public boolean containsAnyKey(long... keys);
@@ -123,7 +122,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Checks if at least one of the keys returned by the specified iterable is present in the
      * iterated elements.
      *
-     * @param keys The keys to search for.
+     * @param keys the keys to search for.
      * @return Whether at least one key is present.
      */
     public boolean containsAnyKey(Iterable<Long> keys);
@@ -131,7 +130,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
     /**
      * Checks if at least one of the specified values is present in the iterated elements.
      *
-     * @param values The values to search for.
+     * @param values the values to search for.
      * @return Whether at least one value is present.
      */
     public boolean containsAnyValue(Object... values);
@@ -140,7 +139,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Checks if at least one of the values returned by the specified iterable is present in the
      * iterated elements.
      *
-     * @param values The values to search for.
+     * @param values the values to search for.
      * @return Whether at least one value is present.
      */
     public boolean containsAnyValue(Iterable<?> values);
@@ -148,7 +147,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
     /**
      * Checks if the specified key is present in the iterated elements.
      *
-     * @param key The key to search for.
+     * @param key the key to search for.
      * @return Whether the key is present.
      */
     public boolean containsKey(long key);
@@ -156,7 +155,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
     /**
      * Checks if the specified value is present in the iterated elements.
      *
-     * @param value The value to search for.
+     * @param value the value to search for.
      * @return Whether the value is present.
      */
     public boolean containsValue(Object value);
@@ -165,8 +164,8 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Fills the specified map with the elements returned by this iterable, in the iteration
      * order.
      *
-     * @param map The map to fill.
-     * @return This iterable.
+     * @param map the map to fill.
+     * @return this iterable.
      */
     public LongSparseArrayIterable<V> fill(Map<? super Long, ? super V> map);
 
@@ -174,8 +173,8 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Fills the specified collection with an immutable copy of the elements returned by this
      * iterable, in the iteration order.
      *
-     * @param collection The collection to fill.
-     * @return This iterable.
+     * @param collection the collection to fill.
+     * @return this iterable.
      */
     public LongSparseArrayIterable<V> fillImmutable(
             Collection<? super LongSparseObjectEntry<V>> collection);
@@ -190,9 +189,9 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Note also that, in case the array is not big enough to contain all the elements, an
      * {@link java.lang.IndexOutOfBoundsException} will be thrown.
      *
-     * @param array The array to fill.
-     * @param <T>   The array element type.
-     * @return This iterable.
+     * @param array the array to fill.
+     * @param <T>   the array element type.
+     * @return this iterable.
      */
     public <T> LongSparseArrayIterable<V> fillImmutable(T[] array);
 
@@ -206,10 +205,10 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Note also that, in case the array is not big enough to contain all the elements, an
      * {@link java.lang.IndexOutOfBoundsException} will be thrown.
      *
-     * @param array  The array to fill.
-     * @param offset The offset from which to start filling the array.
-     * @param <T>    The array element type.
-     * @return This iterable.
+     * @param array  the array to fill.
+     * @param offset the offset from which to start filling the array.
+     * @param <T>    the array element type.
+     * @return this iterable.
      */
     public <T> LongSparseArrayIterable<V> fillImmutable(T[] array, int offset);
 
@@ -217,8 +216,8 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Fills the specified collection with a parcelable copy of the elements returned by this
      * iterable, in the iteration order.
      *
-     * @param collection The collection to fill.
-     * @return This iterable.
+     * @param collection the collection to fill.
+     * @return this iterable.
      */
     public LongSparseArrayIterable<V> fillParcelable(
             Collection<? super ParcelableLongSparseObjectEntry<V>> collection);
@@ -233,9 +232,9 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Note also that, in case the array is not big enough to contain all the elements, an
      * {@link java.lang.IndexOutOfBoundsException} will be thrown.
      *
-     * @param array The array to fill.
-     * @param <T>   The array element type.
-     * @return This iterable.
+     * @param array the array to fill.
+     * @param <T>   the array element type.
+     * @return this iterable.
      */
     public <T extends Parcelable> LongSparseArrayIterable<V> fillParcelable(T[] array);
 
@@ -249,10 +248,10 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Note also that, in case the array is not big enough to contain all the elements, an
      * {@link java.lang.IndexOutOfBoundsException} will be thrown.
      *
-     * @param array  The array to fill.
-     * @param offset The offset from which to start filling the array.
-     * @param <T>    The array element type.
-     * @return This iterable.
+     * @param array  the array to fill.
+     * @param offset the offset from which to start filling the array.
+     * @param <T>    the array element type.
+     * @return this iterable.
      */
     public <T extends Parcelable> LongSparseArrayIterable<V> fillParcelable(T[] array, int offset);
 
@@ -260,8 +259,8 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Finds the index of the first element value, in the iteration order, equals to the specified
      * one.
      *
-     * @param value The value to search for.
-     * @return The index in the iteration, or -1 if the object is not found.
+     * @param value the value to search for.
+     * @return the index in the iteration, or -1 if the object is not found.
      */
     public int firstIndexOfValue(Object value);
 
@@ -273,16 +272,16 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * applied to this iterable, the returned number might not match with the index in the sparse
      * collection.
      *
-     * @param value The value to search for.
-     * @return The position in the iteration, or -1 if the object is not found.
+     * @param value the value to search for.
+     * @return the position in the iteration, or -1 if the object is not found.
      */
     public int firstPositionOfValue(Object value);
 
     /**
      * Finds the index of the specified key in the iteration order.
      *
-     * @param key The key to search for.
-     * @return The index in the iteration, or -1 if the object is not found.
+     * @param key the key to search for.
+     * @return the index in the iteration, or -1 if the object is not found.
      */
     public int indexOfKey(long key);
 
@@ -290,8 +289,8 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Checks if all and only the elements returned by the this iterable are contained in the
      * specified sparse collection.
      *
-     * @param array The sparse collection to compare.
-     * @return Whether the specified collection equals this iterable.
+     * @param array the sparse collection to compare.
+     * @return whether the specified collection equals this iterable.
      */
     boolean isEqualTo(LongSparseArray<?> array);
 
@@ -299,8 +298,8 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Checks if all and only the elements returned by the this iterable are contained in the
      * specified map.
      *
-     * @param map The map to compare.
-     * @return Whether the specified map equals this iterable.
+     * @param map the map to compare.
+     * @return whether the specified map equals this iterable.
      */
     boolean isEqualTo(Map<?, ?> map);
 
@@ -311,7 +310,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Note that, every filter added since the call to this function, will be also applied to the
      * returned iterable.
      *
-     * @return The keys iterable.
+     * @return the keys iterable.
      */
     public LongSparseIterable keys();
 
@@ -322,16 +321,16 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * applied to this iterable, the returned number might not match with the index in the sparse
      * collection.
      *
-     * @param key The key to search for.
-     * @return The position in the iteration, or -1 if the object is not found.
+     * @param key the key to search for.
+     * @return the position in the iteration, or -1 if the object is not found.
      */
     public int positionOfKey(long key);
 
     /**
      * Puts all the elements returned by this iterable into the specified sparse collection.
      *
-     * @param other The sparse collection to put the elements into.
-     * @return This iterable.
+     * @param other the sparse collection to put the elements into.
+     * @return this iterable.
      */
     public LongSparseArrayIterable<V> putInto(LongSparseArray<V> other);
 
@@ -342,8 +341,8 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Note that the replacement will happen in place, and the same key corresponding to each
      * element will be retained.
      *
-     * @param translator The value translator.
-     * @return This iterable.
+     * @param translator the value translator.
+     * @return this iterable.
      */
     public LongSparseArrayIterable<V> replaceValues(Translator<V, V> translator);
 
@@ -354,9 +353,9 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Note that, if the immutable copy of the elements returned by the iterable cannot be cast to
      * the array elements type, a {@link java.lang.ClassCastException} will be thrown.
      *
-     * @param type The array element class.
-     * @param <T>  The array element type.
-     * @return The new array.
+     * @param type the array element class.
+     * @param <T>  the array element type.
+     * @return the new array.
      */
     public <T> T[] toImmutableArray(Class<T> type);
 
@@ -364,7 +363,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Creates and returns a new list filled with an immutable copy of the elements returned by
      * this iterable, in the iteration order.
      *
-     * @return The new list.
+     * @return the new list.
      */
     public ArrayList<LongSparseObjectEntry<V>> toImmutableList();
 
@@ -372,7 +371,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Creates and returns a new map filled with the elements key and values returned by this
      * iterable, in the iteration order.
      *
-     * @return The new array.
+     * @return the new array.
      */
     public Map<Long, V> toMap();
 
@@ -383,9 +382,9 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Note that, if the parcelable copy of the elements returned by the iterable cannot be cast to
      * the array elements type, a {@link java.lang.ClassCastException} will be thrown.
      *
-     * @param type The array element class.
-     * @param <T>  The array element type.
-     * @return The new array.
+     * @param type the array element class.
+     * @param <T>  the array element type.
+     * @return the new array.
      */
     public <T extends Parcelable> T[] toParcelableArray(Class<T> type);
 
@@ -393,7 +392,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Creates and returns a new list filled with an immutable copy of the elements returned by
      * this iterable, in the iteration order.
      *
-     * @return The new list.
+     * @return the new list.
      */
     public ArrayList<ParcelableLongSparseObjectEntry<V>> toParcelableList();
 
@@ -401,7 +400,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Creates and returns a new sorted map filled with the elements key and values returned by
      * this iterable, in the iteration order.
      *
-     * @return The new array.
+     * @return the new array.
      * @see java.util.SortedMap
      */
     public SortedMap<Long, V> toSortedMap();
@@ -410,7 +409,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Returns a new {@link android.util.LongSparseArray} collection filled with the keys and
      * values returned by this iterable.
      *
-     * @return The new collection instance.
+     * @return the new collection instance.
      */
     public LongSparseArray<V> toSparseArray();
 
@@ -422,10 +421,10 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * returned iterable elements will cause an exception to be thrown.
      * Note also that all the filters and the iteration order are retained in the translation.
      *
-     * @param keyTranslator   The translator used to convert the element key.
-     * @param valueTranslator The translator used to convert the element value.
-     * @param <T>             The new iterable element value type.
-     * @return The new iterable.
+     * @param keyTranslator   the translator used to convert the element key.
+     * @param valueTranslator the translator used to convert the element value.
+     * @param <T>             the new iterable element value type.
+     * @return the new iterable.
      */
     public <T> LongSparseArrayIterable<T> translate(LongTranslator keyTranslator,
             Translator<V, T> valueTranslator);
@@ -438,8 +437,8 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * returned iterable elements will cause an exception to be thrown.
      * Note also that all the filters and the iteration order are retained in the translation.
      *
-     * @param keyTranslator The translator used to convert the element key.
-     * @return The new iterable.
+     * @param keyTranslator the translator used to convert the element key.
+     * @return the new iterable.
      */
     public LongSparseArrayIterable<V> translateKeys(LongTranslator keyTranslator);
 
@@ -451,9 +450,9 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * returned iterable elements will cause an exception to be thrown.
      * Note also that all the filters and the iteration order are retained in the translation.
      *
-     * @param valueTranslator The translator used to convert the element value.
-     * @param <T>             The new iterable element value type.
-     * @return The new iterable.
+     * @param valueTranslator the translator used to convert the element value.
+     * @param <T>             the new iterable element value type.
+     * @return the new iterable.
      */
     public <T> LongSparseArrayIterable<T> translateValues(Translator<V, T> valueTranslator);
 
@@ -464,7 +463,7 @@ public interface LongSparseArrayIterable<V> extends SparseIterable<LongSparseArr
      * Note that, every filter added since the call to this function, will be also applied to the
      * returned iterable.
      *
-     * @return The values iterable.
+     * @return the values iterable.
      */
     public ElementSparseIterable<V> values();
 }

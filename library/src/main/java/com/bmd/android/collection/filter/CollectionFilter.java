@@ -25,7 +25,7 @@ import java.util.Collection;
  * <p/>
  * Created by davide on 3/14/14.
  *
- * @param <E> The element type.
+ * @param <E> the element type.
  */
 class CollectionFilter<E> implements Filter<E> {
 

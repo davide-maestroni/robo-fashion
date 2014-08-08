@@ -39,7 +39,7 @@ import java.util.NoSuchElementException;
  * <p/>
  * Created by davide on 3/10/14.
  *
- * @param <E> The element type.
+ * @param <E> the element type.
  */
 abstract class AbstractSparseIterable<E> implements SparseIterable<E> {
 
@@ -443,15 +443,15 @@ abstract class AbstractSparseIterable<E> implements SparseIterable<E> {
      * Returns a copy of this instance.<br/>
      * The backing sparse collection is retained in the process.
      *
-     * @return The copy instance.
+     * @return the copy instance.
      */
     protected abstract AbstractSparseIterable<E> copy();
 
     /**
      * Returns the base iterator on which to apply this instance filters.
      *
-     * @param isReverse Whether to loop in reverse order.
-     * @return The iterator instance.
+     * @param isReverse whether to loop in reverse order.
+     * @return the iterator instance.
      */
     protected abstract SparseIterator<E> createIterator(boolean isReverse);
 
@@ -507,8 +507,8 @@ abstract class AbstractSparseIterable<E> implements SparseIterable<E> {
      * Returns the very basic iterator, without any filter applied, which loops through all the
      * elements of the backing sparse collection.
      *
-     * @param isReverse Whether to loop in reverse order.
-     * @return The iterator instance.
+     * @param isReverse whether to loop in reverse order.
+     * @return the iterator instance.
      */
     protected abstract SparseIterator<E> rawIterator(boolean isReverse);
 
@@ -646,10 +646,9 @@ abstract class AbstractSparseIterable<E> implements SparseIterable<E> {
     }
 
     /**
-     * Wrapper of a {@link com.bmd.android.collection.internal.SparseIterator} instance on which
-     * the specified filter is applied.
+     * Wrapper of a {@link SparseIterator} instance on which the specified filter is applied.
      *
-     * @param <E> The element type.
+     * @param <E> the element type.
      */
     private static class FilteredIterator<E> implements SparseIterator<E> {
 
@@ -872,7 +871,7 @@ abstract class AbstractSparseIterable<E> implements SparseIterable<E> {
      * By employing such snapshot of element indexes we can than reverse the order of the iteration
      * or the logic of the filters themselves.
      *
-     * @param <E> The element type.
+     * @param <E> the element type.
      */
     private static class SnapshotFilter<E> implements AdvancedFilter<E> {
 

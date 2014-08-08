@@ -24,8 +24,7 @@ import com.bmd.android.collection.iterator.LongSparseArrayIterable;
  * <p/>
  * This class represents the entry point to the internal package.
  * <p/>
- * For Froyo retro-compatible implementation refer to
- * {@link com.bmd.android.collection.internal.CompatIterableFactory}.
+ * For Froyo retro-compatible implementation refer to {@link CompatIterableFactory}.
  * <p/>
  * Created by davide on 5/1/14.
  */
@@ -42,9 +41,9 @@ public class JellyBeanIterableFactory extends CompatIterableFactory {
     /**
      * Wraps the specified {@link android.util.LongSparseArray} into an iterable.
      *
-     * @param sparseArray The sparse array to wrap.
-     * @param <V>         The element value type.
-     * @return The iterable instance.
+     * @param sparseArray the sparse array to wrap.
+     * @param <V>         the element value type.
+     * @return the iterable instance.
      */
     public static <V> LongSparseArrayIterable<V> create(
             final android.util.LongSparseArray<V> sparseArray) {

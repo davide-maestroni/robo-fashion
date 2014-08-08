@@ -14,8 +14,7 @@
 package com.bmd.android.collection.translator;
 
 /**
- * This interface extends {@link com.bmd.android.collection.translator.Translator} by adding the
- * reverse translation of the element.
+ * This interface extends {@link Translator} by adding the reverse translation of the element.
  * <p/>
  * Created by davide on 3/31/14.
  */
@@ -24,8 +23,8 @@ public interface FullTranslator<I, O> extends Translator<I, O> {
     /**
      * Reverts the translation of the specified element.
      *
-     * @param element The element to translate back.
-     * @return The reverted element.
+     * @param element the element to translate back.
+     * @return the reverted element.
      */
     public I revert(O element);
 }

@@ -18,8 +18,8 @@ import java.util.Iterator;
 /**
  * This interface defines an advanced element filter.
  * <p/>
- * An advanced filter may retain an internal state which must be reset each time the {#initialize}
- * method is call.
+ * An advanced filter may retain an internal state which must be reset each time the
+ * {@link #initialize(FilterIterator)} method is call.
  * <p/>
  * Created by davide on 3/14/14.
  *

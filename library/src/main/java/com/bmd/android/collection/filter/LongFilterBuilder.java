@@ -16,8 +16,8 @@ package com.bmd.android.collection.filter;
 import com.bmd.android.collection.iterator.LongSparseIterable;
 
 /**
- * This interface extends the {@link com.bmd.android.collection.filter.FilterBuilder} one by
- * providing specific methods handling long elements.
+ * This interface extends the {@link FilterBuilder} one by providing specific methods handling long
+ * elements.
  * <p/>
  * Created by davide on 3/16/14.
  */
@@ -26,16 +26,16 @@ public interface LongFilterBuilder extends FilterBuilder<LongSparseIterable, Lon
     /**
      * Creates a filter matching the specified long value.
      *
-     * @param element The long value to match.
-     * @return The filtered iterable.
+     * @param element the long value to match.
+     * @return the filtered iterable.
      */
     public LongSparseIterable element(long element);
 
     /**
      * Creates a filter matching the specified long values.
      *
-     * @param elements The long values to match.
-     * @return The filtered iterable.
+     * @param elements the long values to match.
+     * @return the filtered iterable.
      */
     public LongSparseIterable elements(long... elements);
 }

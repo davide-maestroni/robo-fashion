@@ -23,12 +23,12 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * Base implementation of a {@link com.bmd.android.collection.filter.FilterBuilder}.
+ * Base implementation of a {@link FilterBuilder}.
  * <p/>
  * Created by davide on 3/16/14.
  *
- * @param <T> The SparseIterable type.
- * @param <E> The element type.
+ * @param <T> the iterable type.
+ * @param <E> the element type.
  */
 class FilterBuilderImpl<T extends SparseIterable<E>, E> implements FilterBuilder<T, E> {
 
