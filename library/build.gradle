@@ -42,7 +42,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:20.0.0'
+    compile 'com.android.support:support-v4:19.1.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     androidTestCompile 'com.squareup:fest-android:1.0.7'

@@ -13,10 +13,9 @@ Android sparse collections.
 
         // Fill with values...
 
-        for (final SimpleArrayMapEntry&lt;String, String> entry : AndroidCollections.iterate(array))
-        {
+        for (final SimpleArrayMapEntry&lt;String, String> entry : AndroidCollections.iterate(array)) {
 
-        System.out.println(entry);
+            System.out.println(entry);
         }
     </code>
 </pre>
@@ -27,24 +26,23 @@ Android sparse collections.
 
         // Fill with values...
 
-        AndroidCollections.iterate(array).only(new Filter&lt;SimpleArrayMapEntry&lt;String,
-        String>>() {
+        AndroidCollections.iterate(array).only(new Filter&lt;SimpleArrayMapEntry&lt;String, String>>() {
 
-        &commat;Override
-        public boolean matches(final SimpleArrayMapEntry&lt;String, String> entry,
-        final int count, final int index) {
+                    &commat;Override
+                    public boolean matches(final SimpleArrayMapEntry&lt;String, String> entry,
+                            final int count, final int index) {
 
-        return entry.getKey().startsWith("a");
-        }
-        }).forEach(new Action&lt;SimpleArrayMapEntry&lt;String, String>>() {
+                        return entry.getKey().startsWith("a");
+                    }
+                }).forEach(new Action&lt;SimpleArrayMapEntry&lt;String, String>>() {
 
-        &commat;Override
-        public void onNext(final SimpleArrayMapEntry&lt;String, String> entry, final int count,
-        final int index) {
+                    &commat;Override
+                    public void onNext(final SimpleArrayMapEntry&lt;String, String> entry, final int count,
+                            final int index) {
 
-        System.out.println(entry);
-        }
-        });
+                        System.out.println(entry);
+                    }
+                });
     </code>
 </pre>
 <b>Example 3:</b> iterate a sparse array collection, except the last two elements, in the reverse
@@ -56,9 +54,9 @@ order:
         // Fill with values...
 
         for (final SparseArrayEntry&lt;String> entry :
-        AndroidCollections.iterate(array).but().last(2)
-        .reverse()) {
-        System.out.println(entry);
+                AndroidCollections.iterate(array).but().last(2).reverse()) {
+
+            System.out.println(entry);
         }
     </code>
 </pre>
@@ -71,13 +69,13 @@ order:
 
         AndroidCollections.iterate(array).only(new Filter&lt;SparseArrayEntry&lt;String>>() {
 
-        &commat;Override
-        public boolean matches(final SparseArrayEntry&lt;String> entry, final int count,
-        final int index) {
+                    &commat;Override
+                    public boolean matches(final SparseArrayEntry&lt;String> entry, final int count,
+                            final int index) {
 
-        return ((entry.getKey() & 0x1) != 0);
-        }
-        }).remove();
+                        return ((entry.getKey() & 0x1) != 0);
+                    }
+                }).remove();
     </code>
 </pre>
 <b>Example 5:</b> retain only last 3 elements of a sparse array collection:
@@ -99,22 +97,20 @@ order:
 
         AndroidCollections.iterate(array).only(new Filter&lt;SparseArrayEntry&lt;String>>() {
 
-        &commat;Override
-        public boolean matches(final SparseArrayEntry&lt;String> entry, final int count,
-        final int index) {
+                    &commat;Override
+                    public boolean matches(final SparseArrayEntry&lt;String> entry, final int count,
+                            final int index) {
 
-        return ((entry.getKey() & 0x1) == 0);
-        }
-        }).replaceValues(new Translator
-        <String
-        , String>() {
+                        return ((entry.getKey() & 0x1) == 0);
+                    }
+                }).replaceValues(new Translator&lt;String, String>() {
 
-        &commat;Override
-        public String translate(final String value) {
+                    &commat;Override
+                    public String translate(final String value) {
 
-        return value.toLowerCase();
-        }
-        });
+                        return value.toLowerCase();
+                    }
+                });
     </code>
 </pre>
 </body>
