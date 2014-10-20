@@ -18,21 +18,20 @@ apply plugin: 'maven'
 apply plugin: 'signing'
 
 group = 'com.github.davide-maestroni'
-version = '1.0'
+version = '1.0.1'
 archivesBaseName = project.parent.name
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.1.0"
+    compileSdkVersion 21
+    buildToolsVersion "21.0.1"
 
     defaultConfig {
         minSdkVersion 8
-        targetSdkVersion 19
+        targetSdkVersion 21
         versionCode 100
         versionName version
-
-        testApplicationId "com.bmd.android.collection.test"
     }
+
     buildTypes {
         release {
             runProguard false
@@ -42,10 +41,10 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:19.1.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:support-v4:21.0.0'
 
-    androidTestCompile 'com.squareup:fest-android:1.0.7'
+    androidTestCompile 'com.squareup:fest-android:1.0.8'
 }
 
 android.libraryVariants.all { variant ->
@@ -69,7 +68,7 @@ android.libraryVariants.all { variant ->
         title = "${archivesBaseName} ${version}"
         options.links("http://docs.oracle.com/javase/7/docs/api/")
         options.linksOffline("http://developer.android.com/reference/", "${android.sdkDirectory}/docs/reference/")
-        options.overview("${project.name}/docs/overview.html")
+        options.overview("${project.projectDir}/docs/overview.html")
         options.windowTitle("Javadoc - ${archivesBaseName}")
         exclude '**/BuildConfig.java'
         exclude '**/R.java'
