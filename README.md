@@ -1,4 +1,5 @@
 #robo-fashion
+[![Build Status](https://travis-ci.org/davide-maestroni/robo-fashion.svg?branch=master)](https://travis-ci.org/davide-maestroni/robo-fashion)
 
 This library employs builder and fluent design patterns to enable easy iteration and manipulation of Android sparse collections.
 
