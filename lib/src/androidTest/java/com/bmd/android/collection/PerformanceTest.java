@@ -23,6 +23,8 @@ import com.bmd.android.collection.iterator.SparseArrayCompatIterable;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -49,8 +51,17 @@ public class PerformanceTest extends AndroidTestCase {
             arrayCompat.append(i, String.valueOf(i));
         }
 
-        final File out = new File(getContext().getExternalFilesDir(null), "profile.txt");
-        final FileWriter writer = new FileWriter(out);
+        Writer writer;
+
+        try {
+
+            final File out = new File(getContext().getExternalFilesDir(null), "profile.txt");
+            writer = new FileWriter(out);
+
+        } catch (final IOException ignored) {
+
+            writer = new StringWriter();
+        }
 
         final String test = "test";
 
