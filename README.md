@@ -161,7 +161,7 @@ For additional commands please refer to the [Gradle Android Plugin User Guide][9
 
 ##Downloads
 
-The project artifacts are available on [Maven Central Repository][10] for direct donwload or inclusion as a dependency.
+The project artifacts are available on [Maven Central Repository][10] for direct download or inclusion as a dependency.
 
 ##Version
 
