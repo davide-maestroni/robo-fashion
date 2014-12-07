@@ -176,7 +176,7 @@ The project artifacts are available on [Maven Central Repository][10] for direct
 
 ####Test dependencies
 
-- [fest-android][5] ([Apache License v2.0][2])
+- [AssertJ][5] ([Apache License v2.0][2])
 
 ##License
 
@@ -197,7 +197,7 @@ The project artifacts are available on [Maven Central Repository][10] for direct
 [2]:http://www.apache.org/licenses/LICENSE-2.0
 [3]:https://github.com/davide-maestroni/robo-fashion/blob/master/lib/src/main/java/com/bmd/android/collection/filter/Filters.java
 [4]:http://davide-maestroni.github.io/robo-fashion/javadoc/
-[5]:http://square.github.io/fest-android/
+[5]:http://joel-costigliola.github.io/assertj/
 [6]:https://code.google.com/p/android/issues/detail?id=68406
 [7]:http://developer.android.com/reference/android/support/v4/util/SimpleArrayMap.html
 [8]:http://docs.oracle.com/javase/8/docs/api/index.html?java/util/stream/package-summary.html
