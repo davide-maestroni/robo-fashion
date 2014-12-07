@@ -1,5 +1,6 @@
 #robo-fashion
 [![Build Status](https://travis-ci.org/davide-maestroni/robo-fashion.svg?branch=master)](https://travis-ci.org/davide-maestroni/robo-fashion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.davide-maestroni/robo-fashion/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.davide-maestroni/robo-fashion)
 
 This library employs builder and fluent design patterns to enable easy iteration and manipulation of Android sparse collections.
 
@@ -159,10 +160,6 @@ gradlew lR
 
 For additional commands please refer to the [Gradle Android Plugin User Guide][9].
 
-##Downloads
-
-The project artifacts are available on [Maven Central Repository][10] for direct download or inclusion as a dependency.
-
 ##Version
 
 1.0
@@ -183,7 +180,6 @@ The project artifacts are available on [Maven Central Repository][10] for direct
 [The Apache Software License, Version 2.0][2]
 
 **It's open! Feel free to contribute!!**
-
 
 ###References
 
