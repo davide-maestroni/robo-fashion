@@ -166,7 +166,11 @@ abstract class LongSparseIterableImpl extends ElementSparseIterableImpl<Long>
 
         int count = 0;
 
-        for (final Long ignored : this) {
+        final SparseIterator<Long> iterator = iterator();
+
+        while (iterator().hasNext()) {
+
+            iterator.next();
 
             ++count;
         }

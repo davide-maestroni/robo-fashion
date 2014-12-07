@@ -48,15 +48,15 @@ import java.util.TreeMap;
 class SparseBooleanArrayIterableImpl extends AbstractSparseIterable<SparseBooleanArrayEntry>
         implements SparseBooleanArrayIterable {
 
+    private static volatile KeyTranslator sKeyTranslator;
+
+    private static volatile ValueTranslator sValueTranslator;
+
     private final SparseBooleanArray mArray;
 
     private SparseBooleanArrayFilterBuilderImpl mExclusionBuilder;
 
     private SparseBooleanArrayFilterBuilderImpl mInclusionBuilder;
-
-    private Translator<SparseBooleanArrayEntry, Integer> mKeyTranslator;
-
-    private Translator<SparseBooleanArrayEntry, Boolean> mValueTranslator;
 
     public SparseBooleanArrayIterableImpl(final SparseBooleanArray array) {
 
@@ -374,19 +374,12 @@ class SparseBooleanArrayIterableImpl extends AbstractSparseIterable<SparseBoolea
     @Override
     public IntSparseIterable keys() {
 
-        if (mKeyTranslator == null) {
+        if (sKeyTranslator == null) {
 
-            mKeyTranslator = new Translator<SparseBooleanArrayEntry, Integer>() {
-
-                @Override
-                public Integer translate(final SparseBooleanArrayEntry element) {
-
-                    return element.getKey();
-                }
-            };
+            sKeyTranslator = new KeyTranslator();
         }
 
-        return toIntegers(mKeyTranslator);
+        return toIntegers(sKeyTranslator);
     }
 
     @Override
@@ -529,19 +522,12 @@ class SparseBooleanArrayIterableImpl extends AbstractSparseIterable<SparseBoolea
     @Override
     public BooleanSparseIterable values() {
 
-        if (mValueTranslator == null) {
+        if (sValueTranslator == null) {
 
-            mValueTranslator = new Translator<SparseBooleanArrayEntry, Boolean>() {
-
-                @Override
-                public Boolean translate(final SparseBooleanArrayEntry element) {
-
-                    return element.getValue();
-                }
-            };
+            sValueTranslator = new ValueTranslator();
         }
 
-        return toBooleans(mValueTranslator);
+        return toBooleans(sValueTranslator);
     }
 
     @Override
@@ -622,6 +608,15 @@ class SparseBooleanArrayIterableImpl extends AbstractSparseIterable<SparseBoolea
         return this;
     }
 
+    private static class KeyTranslator implements Translator<SparseBooleanArrayEntry, Integer> {
+
+        @Override
+        public Integer translate(final SparseBooleanArrayEntry element) {
+
+            return element.getKey();
+        }
+    }
+
     private static class TranslatedSparseBooleanArrayIterableImpl
             extends SparseBooleanArrayIterableImpl {
 
@@ -696,6 +691,15 @@ class SparseBooleanArrayIterableImpl extends AbstractSparseIterable<SparseBoolea
             super.clearFilters();
 
             mIterable.clearFilters();
+        }
+    }
+
+    private static class ValueTranslator implements Translator<SparseBooleanArrayEntry, Boolean> {
+
+        @Override
+        public Boolean translate(final SparseBooleanArrayEntry element) {
+
+            return element.getValue();
         }
     }
 

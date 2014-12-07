@@ -15,6 +15,8 @@ package com.bmd.android.collection.internal;
 
 import java.util.NoSuchElementException;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 /**
  * Abstract implementation of a {@link SparseIterator}.
  * <p/>
@@ -47,6 +49,8 @@ abstract class AbstractSparseIterator<E> implements SparseIterator<E> {
     }
 
     @Override
+    @SuppressFBWarnings(value = "IT_NO_SUCH_ELEMENT",
+                        justification = "getElementAt() can throw it")
     public E next() {
 
         final E next = getElementAt(++mCurrPosition + mRemoveOffset);
@@ -90,6 +94,7 @@ abstract class AbstractSparseIterator<E> implements SparseIterator<E> {
      *
      * @param position the element position.
      * @return the element.
+     * @throws NoSuchElementException if the position is out of bound.
      */
     protected abstract E getElementAt(int position);
 

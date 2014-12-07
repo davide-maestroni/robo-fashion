@@ -26,7 +26,7 @@ import com.bmd.android.collection.translator.ToLongTranslator;
 class LongFilterBuilderImpl extends FilterBuilderImpl<LongSparseIterable, Long>
         implements LongFilterBuilder {
 
-    private static ToLongTranslator<Long> sTranslator;
+    private static volatile ToLongTranslator<Long> sTranslator;
 
     public LongFilterBuilderImpl(final LongSparseIterable iterable, final boolean isInclusive) {
 

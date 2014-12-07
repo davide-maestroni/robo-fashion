@@ -30,7 +30,7 @@ import com.bmd.android.collection.translator.Translator;
 
 import junit.framework.TestCase;
 
-import org.fest.assertions.data.MapEntry;
+import org.assertj.core.data.MapEntry;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,7 +39,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.SortedMap;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Unit test for {@link android.util.SparseArray} class.
@@ -97,14 +97,16 @@ public class SparseArrayTest extends TestCase {
         assertThat(AndroidCollections.iterate(mArray)
                                      .containsAll(Arrays.asList(SparseEntries.entry(3, "3"),
                                                                 SparseEntries.entry(5,
-                                                                                    "5")))).isFalse();
+                                                                                    "5"))))
+                .isFalse();
         assertThat(AndroidCollections.iterate(mArray)
                                      .containsAll(AndroidCollections.iterate(mArray))).isTrue();
         assertThat(AndroidCollections.iterate(mArray)
                                      .containsAny(Arrays.asList(SparseEntries.entry(5, "5"),
                                                                 SparseEntries.entry(3, "3"),
                                                                 SparseEntries.entry(5,
-                                                                                    "5")))).isTrue();
+                                                                                    "5"))))
+                .isTrue();
         assertThat(AndroidCollections.iterate(mArray)
                                      .containsAny(SparseEntries.entry(2, "7"))).isFalse();
         assertThat(AndroidCollections.iterate(mArray)
@@ -688,18 +690,16 @@ public class SparseArrayTest extends TestCase {
         assertThat(
                 AndroidCollections.iterate(mArray).any(new Condition<SparseArrayEntry<String>>() {
 
-                                                           @Override
-                                                           public boolean onNext(
-                                                                   final SparseArrayEntry<String> element,
-                                                                   final int count,
-                                                                   final int index) {
+                    @Override
+                    public boolean onNext(final SparseArrayEntry<String> element, final int count,
+                            final int index) {
 
-                                                               ++totals[0];
-                                                               totals[1] = count + 1;
+                        ++totals[0];
+                        totals[1] = count + 1;
 
-                                                               return element.getKey() != 2;
-                                                           }
-                                                       })).isTrue();
+                        return element.getKey() != 2;
+                    }
+                })).isTrue();
 
         assertThat(totals).containsOnly(1);
 
@@ -883,11 +883,13 @@ public class SparseArrayTest extends TestCase {
 
         final SparseArray<Integer> array1 = AndroidCollections.iterate(mArray)
                                                               .translateValues(
-                                                                      new Translator<String, Integer>() {
+                                                                      new Translator<String,
+                                                                              Integer>() {
 
                                                                           @Override
                                                                           public Integer translate(
-                                                                                  final String element) {
+                                                                                  final String
+                                                                                          element) {
 
                                                                               return Integer.decode(
                                                                                       element);
@@ -963,12 +965,12 @@ public class SparseArrayTest extends TestCase {
                           .keys(2, 3)
                           .translateValues(new Translator<Integer, String>() {
 
-                                               @Override
-                                               public String translate(final Integer element) {
+                              @Override
+                              public String translate(final Integer element) {
 
-                                                   return element.toString();
-                                               }
-                                           })
+                                  return element.toString();
+                              }
+                          })
                           .putInto(mArray);
         assertThat(AndroidCollections.iterate(mArray).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, "0"), SparseEntries.entry(1, "1"),
@@ -979,12 +981,12 @@ public class SparseArrayTest extends TestCase {
                           .keys(2, 3)
                           .translateValues(new Translator<Integer, String>() {
 
-                                               @Override
-                                               public String translate(final Integer element) {
+                              @Override
+                              public String translate(final Integer element) {
 
-                                                   return element.toString();
-                                               }
-                                           })
+                                  return element.toString();
+                              }
+                          })
                           .appendTo(mArray);
         assertThat(AndroidCollections.iterate(mArray).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, "0"), SparseEntries.entry(1, "1"),

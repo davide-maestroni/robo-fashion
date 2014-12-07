@@ -26,7 +26,7 @@ import com.bmd.android.collection.translator.ToBooleanTranslator;
 class BooleanFilterBuilderImpl extends FilterBuilderImpl<BooleanSparseIterable, Boolean>
         implements BooleanFilterBuilder {
 
-    private static ToBooleanTranslator<Boolean> sTranslator;
+    private static volatile ToBooleanTranslator<Boolean> sTranslator;
 
     public BooleanFilterBuilderImpl(final BooleanSparseIterable iterable,
             final boolean isInclusive) {

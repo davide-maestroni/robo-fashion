@@ -33,7 +33,7 @@ import com.bmd.android.collection.translator.Translator;
 
 import junit.framework.TestCase;
 
-import org.fest.assertions.data.MapEntry;
+import org.assertj.core.data.MapEntry;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,7 +42,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.SortedMap;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Unit test for {@link android.util.SparseLongArray} class.
@@ -105,7 +105,8 @@ public class SparseLongArrayTest extends TestCase {
         assertThat(AndroidCollections.iterate(mArray)
                                      .containsAll(Arrays.asList(SparseEntries.entry(3, 3L),
                                                                 SparseEntries.entry(5,
-                                                                                    5L)))).isFalse();
+                                                                                    5L))))
+                .isFalse();
         assertThat(AndroidCollections.iterate(mArray)
                                      .containsAll(AndroidCollections.iterate(mArray))).isTrue();
         assertThat(AndroidCollections.iterate(mArray)
@@ -254,24 +255,24 @@ public class SparseLongArrayTest extends TestCase {
                                      .key(2)
                                      .toBooleans(new Translator<SparseLongArrayEntry, Boolean>() {
 
-                                                     @Override
-                                                     public Boolean translate(
-                                                             final SparseLongArrayEntry element) {
+                                         @Override
+                                         public Boolean translate(
+                                                 final SparseLongArrayEntry element) {
 
-                                                         return (2 == element.getValue());
-                                                     }
-                                                 })).containsExactly(true);
+                                             return (2 == element.getValue());
+                                         }
+                                     })).containsExactly(true);
         assertThat(AndroidCollections.iterate(mArray)
                                      .reverse()
                                      .toIntegers(new Translator<SparseLongArrayEntry, Integer>() {
 
-                                                     @Override
-                                                     public Integer translate(
-                                                             final SparseLongArrayEntry element) {
+                                         @Override
+                                         public Integer translate(
+                                                 final SparseLongArrayEntry element) {
 
-                                                         return element.getKey();
-                                                     }
-                                                 })
+                                             return element.getKey();
+                                         }
+                                     })
                                      .only()
                                      .first(3)
                                      .retain()
@@ -702,17 +703,17 @@ public class SparseLongArrayTest extends TestCase {
 
         assertThat(AndroidCollections.iterate(mArray).each(new Condition<SparseLongArrayEntry>() {
 
-                       @Override
-                       public boolean onNext(final SparseLongArrayEntry element, final int count,
-                               final int index) {
+            @Override
+            public boolean onNext(final SparseLongArrayEntry element, final int count,
+                    final int index) {
 
-                           ++totals[0];
-                           totals[1] = count + 1;
+                ++totals[0];
+                totals[1] = count + 1;
 
-                           return element.getKey() != 2;
-                       }
+                return element.getKey() != 2;
+            }
 
-                   })).isFalse();
+        })).isFalse();
 
         assertThat(totals).containsOnly(3);
 
@@ -720,18 +721,16 @@ public class SparseLongArrayTest extends TestCase {
 
         assertThat(AndroidCollections.iterate(mArray).any(new Condition<SparseLongArrayEntry>() {
 
-                                                              @Override
-                                                              public boolean onNext(
-                                                                      final SparseLongArrayEntry element,
-                                                                      final int count,
-                                                                      final int index) {
+            @Override
+            public boolean onNext(final SparseLongArrayEntry element, final int count,
+                    final int index) {
 
-                                                                  ++totals[0];
-                                                                  totals[1] = count + 1;
+                ++totals[0];
+                totals[1] = count + 1;
 
-                                                                  return element.getKey() != 2;
-                                                              }
-                                                          })).isTrue();
+                return element.getKey() != 2;
+            }
+        })).isTrue();
 
         assertThat(totals).containsOnly(1);
 
@@ -935,24 +934,23 @@ public class SparseLongArrayTest extends TestCase {
         final SparseLongArray array1 =
                 AndroidCollections.iterate(mArray).translateValues(new LongTranslator() {
 
-                                                                       @Override
-                                                                       public long translate(
-                                                                               final long value) {
+                    @Override
+                    public long translate(final long value) {
 
-                                                                           return value;
-                                                                       }
-                                                                   }).toSparseArray();
+                        return value;
+                    }
+                }).toSparseArray();
 
         assertThat(AndroidCollections.iterate(array1).values()).containsExactly(0L, 1L, 2L, 3L, 4L);
         assertThat(AndroidCollections.iterate(array1).replaceValues(new LongTranslator() {
 
-                       @Override
-                       public long translate(final long value) {
+            @Override
+            public long translate(final long value) {
 
-                           return value + 1;
-                       }
+                return value + 1;
+            }
 
-                   }).values()).containsExactly(1L, 2L, 3L, 4L, 5L);
+        }).values()).containsExactly(1L, 2L, 3L, 4L, 5L);
         assertThat(AndroidCollections.iterate(array1).values()).containsExactly(1L, 2L, 3L, 4L, 5L);
         assertThat(AndroidCollections.iterate(array1).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, 1L), SparseEntries.entry(1, 2L), SparseEntries.entry(2, 3L),
@@ -992,27 +990,23 @@ public class SparseLongArrayTest extends TestCase {
 
         AndroidCollections.iterate(array2).only().keys(2, 3).translateValues(new LongTranslator() {
 
-                                                                                 @Override
-                                                                                 public long translate(
-                                                                                         final long value) {
+            @Override
+            public long translate(final long value) {
 
-                                                                                     return value
-                                                                                             + 7;
-                                                                                 }
-                                                                             }).putInto(mArray);
+                return value + 7;
+            }
+        }).putInto(mArray);
         assertThat(AndroidCollections.iterate(mArray).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, 0L), SparseEntries.entry(1, 1L), SparseEntries.entry(2, 10L),
                 SparseEntries.entry(3, 9L), SparseEntries.entry(4, 4L));
         AndroidCollections.iterate(array2).only().keys(2, 3).translateValues(new LongTranslator() {
 
-                                                                                 @Override
-                                                                                 public long translate(
-                                                                                         final long value) {
+            @Override
+            public long translate(final long value) {
 
-                                                                                     return value
-                                                                                             + 7;
-                                                                                 }
-                                                                             }).appendTo(mArray);
+                return value + 7;
+            }
+        }).appendTo(mArray);
         assertThat(AndroidCollections.iterate(mArray).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, 0L), SparseEntries.entry(1, 1L), SparseEntries.entry(2, 10L),
                 SparseEntries.entry(3, 9L), SparseEntries.entry(4, 4L));

@@ -166,7 +166,11 @@ abstract class BooleanSparseIterableImpl extends ElementSparseIterableImpl<Boole
 
         int count = 0;
 
-        for (final Boolean ignored : this) {
+        final SparseIterator<Boolean> iterator = iterator();
+
+        while (iterator().hasNext()) {
+
+            iterator.next();
 
             ++count;
         }

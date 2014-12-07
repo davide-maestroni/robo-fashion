@@ -26,7 +26,7 @@ import com.bmd.android.collection.translator.ToIntTranslator;
 class IntFilterBuilderImpl extends FilterBuilderImpl<IntSparseIterable, Integer>
         implements IntFilterBuilder {
 
-    private static ToIntTranslator<Integer> sTranslator;
+    private static volatile ToIntTranslator<Integer> sTranslator;
 
     public IntFilterBuilderImpl(final IntSparseIterable iterable, final boolean isInclusive) {
 

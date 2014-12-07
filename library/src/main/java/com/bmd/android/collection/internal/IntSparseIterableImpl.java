@@ -166,7 +166,11 @@ abstract class IntSparseIterableImpl extends ElementSparseIterableImpl<Integer>
 
         int count = 0;
 
-        for (final Integer ignored : this) {
+        final SparseIterator<Integer> iterator = iterator();
+
+        while (iterator().hasNext()) {
+
+            iterator.next();
 
             ++count;
         }

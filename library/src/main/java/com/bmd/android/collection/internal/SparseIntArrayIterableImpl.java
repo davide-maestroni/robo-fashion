@@ -45,15 +45,15 @@ import java.util.TreeMap;
 class SparseIntArrayIterableImpl extends AbstractSparseIterable<SparseIntArrayEntry>
         implements SparseIntArrayIterable {
 
+    private static volatile KeyTranslator sKeyTranslator;
+
+    private static volatile ValueTranslator sValueTranslator;
+
     private final SparseIntArray mArray;
 
     private SparseIntArrayFilterBuilderImpl mExclusionBuilder;
 
     private SparseIntArrayFilterBuilderImpl mInclusionBuilder;
-
-    private Translator<SparseIntArrayEntry, Integer> mKeyTranslator;
-
-    private Translator<SparseIntArrayEntry, Integer> mValueTranslator;
 
     public SparseIntArrayIterableImpl(final SparseIntArray array) {
 
@@ -371,19 +371,12 @@ class SparseIntArrayIterableImpl extends AbstractSparseIterable<SparseIntArrayEn
     @Override
     public IntSparseIterable keys() {
 
-        if (mKeyTranslator == null) {
+        if (sKeyTranslator == null) {
 
-            mKeyTranslator = new Translator<SparseIntArrayEntry, Integer>() {
-
-                @Override
-                public Integer translate(final SparseIntArrayEntry element) {
-
-                    return element.getKey();
-                }
-            };
+            sKeyTranslator = new KeyTranslator();
         }
 
-        return toIntegers(mKeyTranslator);
+        return toIntegers(sKeyTranslator);
     }
 
     @Override
@@ -526,19 +519,12 @@ class SparseIntArrayIterableImpl extends AbstractSparseIterable<SparseIntArrayEn
     @Override
     public IntSparseIterable values() {
 
-        if (mValueTranslator == null) {
+        if (sValueTranslator == null) {
 
-            mValueTranslator = new Translator<SparseIntArrayEntry, Integer>() {
-
-                @Override
-                public Integer translate(final SparseIntArrayEntry element) {
-
-                    return element.getValue();
-                }
-            };
+            sValueTranslator = new ValueTranslator();
         }
 
-        return toIntegers(mValueTranslator);
+        return toIntegers(sValueTranslator);
     }
 
     @Override
@@ -619,6 +605,15 @@ class SparseIntArrayIterableImpl extends AbstractSparseIterable<SparseIntArrayEn
         return this;
     }
 
+    private static class KeyTranslator implements Translator<SparseIntArrayEntry, Integer> {
+
+        @Override
+        public Integer translate(final SparseIntArrayEntry element) {
+
+            return element.getKey();
+        }
+    }
+
     private static class TranslatedSparseIntArrayIterableImpl extends SparseIntArrayIterableImpl {
 
         private final SparseIntArrayIterableImpl mIterable;
@@ -687,6 +682,15 @@ class SparseIntArrayIterableImpl extends AbstractSparseIterable<SparseIntArrayEn
             super.clearFilters();
 
             mIterable.clearFilters();
+        }
+    }
+
+    private static class ValueTranslator implements Translator<SparseIntArrayEntry, Integer> {
+
+        @Override
+        public Integer translate(final SparseIntArrayEntry element) {
+
+            return element.getValue();
         }
     }
 

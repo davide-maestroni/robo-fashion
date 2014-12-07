@@ -22,7 +22,7 @@ import com.bmd.android.collection.entry.SimpleArrayMapEntry;
 
 import junit.framework.TestCase;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Unit test for {@link com.bmd.android.collection.example.EnhancedArrayMap} class.

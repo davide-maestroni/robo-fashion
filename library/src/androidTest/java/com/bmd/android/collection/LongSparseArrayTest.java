@@ -32,7 +32,7 @@ import com.bmd.android.collection.translator.Translator;
 
 import junit.framework.TestCase;
 
-import org.fest.assertions.data.MapEntry;
+import org.assertj.core.data.MapEntry;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,7 +41,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.SortedMap;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Unit test for {@link android.util.LongSparseArray} class.

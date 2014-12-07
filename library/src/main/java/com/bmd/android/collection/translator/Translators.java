@@ -28,39 +28,39 @@ import com.bmd.android.collection.entry.SparseObjectEntry;
  */
 public class Translators {
 
-    private static Translator<SparseBooleanArrayEntry, ?> sBooleanValueObjectTranslator;
+    private static volatile Translator<SparseBooleanArrayEntry, ?> sBooleanValueObjectTranslator;
 
-    private static ToBooleanTranslator<SparseBooleanArrayEntry> sBooleanValueTranslator;
+    private static volatile ToBooleanTranslator<SparseBooleanArrayEntry> sBooleanValueTranslator;
 
-    private static Translator<?, ?> sElementObjectTranslator;
+    private static volatile Translator<?, ?> sElementObjectTranslator;
 
-    private static FullBooleanTranslator sIdentityBooleanTranslator;
+    private static volatile FullBooleanTranslator sIdentityBooleanTranslator;
 
-    private static FullIntTranslator sIdentityIntTranslator;
+    private static volatile FullIntTranslator sIdentityIntTranslator;
 
-    private static FullLongTranslator sIdentityLongTranslator;
+    private static volatile FullLongTranslator sIdentityLongTranslator;
 
-    private static FullTranslator<?, ?> sIdentityTranslator;
+    private static volatile FullTranslator<?, ?> sIdentityTranslator;
 
-    private static Translator<IntSparseEntry, ?> sIntKeyObjectTranslator;
+    private static volatile Translator<IntSparseEntry, ?> sIntKeyObjectTranslator;
 
-    private static ToIntTranslator<IntSparseEntry> sIntKeyTranslator;
+    private static volatile ToIntTranslator<IntSparseEntry> sIntKeyTranslator;
 
-    private static Translator<SparseIntArrayEntry, ?> sIntValueObjectTranslator;
+    private static volatile Translator<SparseIntArrayEntry, ?> sIntValueObjectTranslator;
 
-    private static ToIntTranslator<SparseIntArrayEntry> sIntValueTranslator;
+    private static volatile ToIntTranslator<SparseIntArrayEntry> sIntValueTranslator;
 
-    private static Translator<LongSparseEntry, ?> sLongKeyObjectTranslator;
+    private static volatile Translator<LongSparseEntry, ?> sLongKeyObjectTranslator;
 
-    private static ToLongTranslator<LongSparseEntry> sLongKeyTranslator;
+    private static volatile ToLongTranslator<LongSparseEntry> sLongKeyTranslator;
 
-    private static Translator<SparseLongArrayEntry, ?> sLongValueObjectTranslator;
+    private static volatile Translator<SparseLongArrayEntry, ?> sLongValueObjectTranslator;
 
-    private static ToLongTranslator<SparseLongArrayEntry> sLongValueTranslator;
+    private static volatile ToLongTranslator<SparseLongArrayEntry> sLongValueTranslator;
 
-    private static Translator<ObjectSparseEntry<?>, ?> sObjectKeyTranslator;
+    private static volatile Translator<ObjectSparseEntry<?>, ?> sObjectKeyTranslator;
 
-    private static Translator<SparseObjectEntry<?>, ?> sObjectValueTranslator;
+    private static volatile Translator<SparseObjectEntry<?>, ?> sObjectValueTranslator;
 
     /**
      * Avoid direct instantiation.

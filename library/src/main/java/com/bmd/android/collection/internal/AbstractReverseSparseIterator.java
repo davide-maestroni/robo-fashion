@@ -15,6 +15,8 @@ package com.bmd.android.collection.internal;
 
 import java.util.NoSuchElementException;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 /**
  * Abstract implementation of a {@link SparseIterator} which loops the elements in the reverse
  * order.
@@ -46,6 +48,8 @@ abstract class AbstractReverseSparseIterator<E> implements SparseIterator<E> {
     }
 
     @Override
+    @SuppressFBWarnings(value = "IT_NO_SUCH_ELEMENT",
+                        justification = "getElementAt() can throw it")
     public E next() {
 
         final E next = getElementAt(--mCurrPosition);

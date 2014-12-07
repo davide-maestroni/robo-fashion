@@ -30,7 +30,7 @@ import com.bmd.android.collection.translator.Translator;
 
 import junit.framework.TestCase;
 
-import org.fest.assertions.data.MapEntry;
+import org.assertj.core.data.MapEntry;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,7 +39,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.SortedMap;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Unit test for {@link android.util.SparseBooleanArray} class.
@@ -97,14 +97,16 @@ public class SparseBooleanArrayTest extends TestCase {
         assertThat(AndroidCollections.iterate(mArray)
                                      .containsAll(Arrays.asList(SparseEntries.entry(3, false),
                                                                 SparseEntries.entry(5,
-                                                                                    false)))).isFalse();
+                                                                                    false))))
+                .isFalse();
         assertThat(AndroidCollections.iterate(mArray)
                                      .containsAll(AndroidCollections.iterate(mArray))).isTrue();
         assertThat(AndroidCollections.iterate(mArray)
                                      .containsAny(Arrays.asList(SparseEntries.entry(5, false),
                                                                 SparseEntries.entry(3, false),
                                                                 SparseEntries.entry(5,
-                                                                                    false)))).isTrue();
+                                                                                    false))))
+                .isTrue();
         assertThat(AndroidCollections.iterate(mArray)
                                      .containsAny(SparseEntries.entry(2, false))).isFalse();
         assertThat(AndroidCollections.iterate(mArray)
@@ -583,7 +585,8 @@ public class SparseBooleanArrayTest extends TestCase {
                                                                 .only()
                                                                 .key(2)
                                                                 .toImmutableArray(
-                                                                        IntSparseBooleanEntry.class);
+                                                                        IntSparseBooleanEntry
+                                                                                .class);
 
         assertThat(array).hasSize(1);
         assertThat(array[0].getKey()).isEqualTo(2);
@@ -687,18 +690,16 @@ public class SparseBooleanArrayTest extends TestCase {
 
         assertThat(AndroidCollections.iterate(mArray).any(new Condition<SparseBooleanArrayEntry>() {
 
-                                                              @Override
-                                                              public boolean onNext(
-                                                                      final SparseBooleanArrayEntry element,
-                                                                      final int count,
-                                                                      final int index) {
+            @Override
+            public boolean onNext(final SparseBooleanArrayEntry element, final int count,
+                    final int index) {
 
-                                                                  ++totals[0];
-                                                                  totals[1] = count + 1;
+                ++totals[0];
+                totals[1] = count + 1;
 
-                                                                  return element.getKey() != 2;
-                                                              }
-                                                          })).isTrue();
+                return element.getKey() != 2;
+            }
+        })).isTrue();
 
         assertThat(totals).containsOnly(1);
 
@@ -882,25 +883,24 @@ public class SparseBooleanArrayTest extends TestCase {
         final SparseBooleanArray array1 =
                 AndroidCollections.iterate(mArray).translateValues(new BooleanTranslator() {
 
-                                                                       @Override
-                                                                       public boolean translate(
-                                                                               final boolean element) {
+                    @Override
+                    public boolean translate(final boolean element) {
 
-                                                                           return !element;
-                                                                       }
-                                                                   }).toSparseArray();
+                        return !element;
+                    }
+                }).toSparseArray();
 
         assertThat(AndroidCollections.iterate(array1).values()).containsExactly(false, true, false,
                                                                                 true, false);
         assertThat(AndroidCollections.iterate(array1).replaceValues(new BooleanTranslator() {
 
-                       @Override
-                       public boolean translate(final boolean element) {
+            @Override
+            public boolean translate(final boolean element) {
 
-                           return !element;
-                       }
+                return !element;
+            }
 
-                   }).values()).containsExactly(true, false, true, false, true);
+        }).values()).containsExactly(true, false, true, false, true);
         assertThat(AndroidCollections.iterate(array1).values()).containsExactly(true, false, true,
                                                                                 false, true);
         assertThat(AndroidCollections.iterate(array1).toImmutableList()).containsExactly(
@@ -948,12 +948,12 @@ public class SparseBooleanArrayTest extends TestCase {
                           .keys(2, 3)
                           .translateValues(new BooleanTranslator() {
 
-                                               @Override
-                                               public boolean translate(final boolean element) {
+                              @Override
+                              public boolean translate(final boolean element) {
 
-                                                   return !element;
-                                               }
-                                           })
+                                  return !element;
+                              }
+                          })
                           .putInto(mArray);
         assertThat(AndroidCollections.iterate(mArray).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, true), SparseEntries.entry(1, false),
@@ -964,12 +964,12 @@ public class SparseBooleanArrayTest extends TestCase {
                           .keys(2, 3)
                           .translateValues(new BooleanTranslator() {
 
-                                               @Override
-                                               public boolean translate(final boolean element) {
+                              @Override
+                              public boolean translate(final boolean element) {
 
-                                                   return !element;
-                                               }
-                                           })
+                                  return !element;
+                              }
+                          })
                           .appendTo(mArray);
         assertThat(AndroidCollections.iterate(mArray).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, true), SparseEntries.entry(1, false),

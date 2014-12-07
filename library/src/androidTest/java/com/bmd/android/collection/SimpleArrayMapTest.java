@@ -28,7 +28,7 @@ import com.bmd.android.collection.translator.Translator;
 
 import junit.framework.TestCase;
 
-import org.fest.assertions.data.MapEntry;
+import org.assertj.core.data.MapEntry;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,7 +37,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.SortedMap;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Unit test for {@link android.support.v4.util.SimpleArrayMap} class.
@@ -103,20 +103,17 @@ public class SimpleArrayMapTest extends TestCase {
                                                                       "1"))).isTrue();
         assertThat(AndroidCollections.iterate(mArray)
                                      .containsAll(Arrays.asList(
-                                                          SparseEntries.entry(Integer.valueOf(3),
-                                                                              "3"),
-                                                          SparseEntries.entry(Integer.valueOf(5),
-                                                                              "5")))).isFalse();
+                                             SparseEntries.entry(Integer.valueOf(3), "3"),
+                                             SparseEntries.entry(Integer.valueOf(5),
+                                                                 "5")))).isFalse();
         assertThat(AndroidCollections.iterate(mArray)
                                      .containsAll(AndroidCollections.iterate(mArray))).isTrue();
         assertThat(AndroidCollections.iterate(mArray)
                                      .containsAny(Arrays.asList(
-                                                          SparseEntries.entry(Integer.valueOf(5),
-                                                                              "5"),
-                                                          SparseEntries.entry(Integer.valueOf(3),
-                                                                              "3"),
-                                                          SparseEntries.entry(Integer.valueOf(5),
-                                                                              "5")))).isTrue();
+                                             SparseEntries.entry(Integer.valueOf(5), "5"),
+                                             SparseEntries.entry(Integer.valueOf(3), "3"),
+                                             SparseEntries.entry(Integer.valueOf(5),
+                                                                 "5")))).isTrue();
         assertThat(AndroidCollections.iterate(mArray)
                                      .containsAny(SparseEntries.entry(Integer.valueOf(2),
                                                                       "7"))).isFalse();
@@ -234,11 +231,13 @@ public class SimpleArrayMapTest extends TestCase {
 
         assertThat(AndroidCollections.iterate(mArray)
                                      .toLongs(
-                                             new Translator<SimpleArrayMapEntry<Integer, String>, Long>() {
+                                             new Translator<SimpleArrayMapEntry<Integer, String>,
+                                                     Long>() {
 
                                                  @Override
                                                  public Long translate(
-                                                         final SimpleArrayMapEntry<Integer, String> element) {
+                                                         final SimpleArrayMapEntry<Integer,
+                                                                 String> element) {
 
                                                      return Long.decode(element.getValue());
                                                  }
@@ -248,11 +247,13 @@ public class SimpleArrayMapTest extends TestCase {
                                      .only()
                                      .key(2)
                                      .toBooleans(
-                                             new Translator<SimpleArrayMapEntry<Integer, String>, Boolean>() {
+                                             new Translator<SimpleArrayMapEntry<Integer, String>,
+                                                     Boolean>() {
 
                                                  @Override
                                                  public Boolean translate(
-                                                         final SimpleArrayMapEntry<Integer, String> element) {
+                                                         final SimpleArrayMapEntry<Integer,
+                                                                 String> element) {
 
                                                      return "2".equals(element.getValue());
                                                  }
@@ -260,11 +261,13 @@ public class SimpleArrayMapTest extends TestCase {
         assertThat(AndroidCollections.iterate(mArray)
                                      .reverse()
                                      .toIntegers(
-                                             new Translator<SimpleArrayMapEntry<Integer, String>, Integer>() {
+                                             new Translator<SimpleArrayMapEntry<Integer, String>,
+                                                     Integer>() {
 
                                                  @Override
                                                  public Integer translate(
-                                                         final SimpleArrayMapEntry<Integer, String> element) {
+                                                         final SimpleArrayMapEntry<Integer,
+                                                                 String> element) {
 
                                                      return element.getKey();
                                                  }
@@ -597,7 +600,8 @@ public class SimpleArrayMapTest extends TestCase {
                                                                   .only()
                                                                   .key(2)
                                                                   .toImmutableArray(
-                                                                          ObjectSparseObjectEntry.class);
+                                                                          ObjectSparseObjectEntry
+                                                                                  .class);
 
         assertThat(array).hasSize(1);
         assertThat(array[0].getKey()).isEqualTo(2);
@@ -710,17 +714,17 @@ public class SimpleArrayMapTest extends TestCase {
         assertThat(AndroidCollections.iterate(mArray)
                                      .any(new Condition<SimpleArrayMapEntry<Integer, String>>() {
 
-                                              @Override
-                                              public boolean onNext(
-                                                      final SimpleArrayMapEntry<Integer, String> element,
-                                                      final int count, final int index) {
+                                         @Override
+                                         public boolean onNext(
+                                                 final SimpleArrayMapEntry<Integer, String> element,
+                                                 final int count, final int index) {
 
-                                                  ++totals[0];
-                                                  totals[1] = count + 1;
+                                             ++totals[0];
+                                             totals[1] = count + 1;
 
-                                                  return element.getKey() != 2;
-                                              }
-                                          })).isTrue();
+                                             return element.getKey() != 2;
+                                         }
+                                     })).isTrue();
 
         assertThat(totals).containsOnly(1);
 
@@ -917,7 +921,9 @@ public class SimpleArrayMapTest extends TestCase {
                                                                                   new Translator<String, Integer>() {
 
                                                                                       @Override
-                                                                                      public Integer translate(
+                                                                                      public
+                                                                                      Integer
+                                                                                      translate(
                                                                                               final String element) {
 
                                                                                           return Integer
@@ -986,12 +992,12 @@ public class SimpleArrayMapTest extends TestCase {
                           .keys(2, 3)
                           .translateValues(new Translator<Integer, String>() {
 
-                                               @Override
-                                               public String translate(final Integer element) {
+                              @Override
+                              public String translate(final Integer element) {
 
-                                                   return element.toString();
-                                               }
-                                           })
+                                  return element.toString();
+                              }
+                          })
                           .putInto(mArray);
         assertThat(AndroidCollections.iterate(mArray).toImmutableList()).containsExactly(
                 SparseEntries.entry(Integer.valueOf(0), "0"),
