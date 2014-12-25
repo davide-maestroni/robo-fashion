@@ -11,29 +11,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.bmd.android.collection;
+package com.bmd.android.collection.v16;
 
 import android.annotation.TargetApi;
+import android.os.Build.VERSION_CODES;
 
 import com.bmd.android.collection.internal.JellyBeanIterableFactory;
 import com.bmd.android.collection.iterator.LongSparseArrayIterable;
+
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * This utility class creates objects wrapping an Android sparse collection, such as
  * {@link android.util.SparseArray} and {@link android.support.v4.util.SparseArrayCompat}, to give
  * it the base functionalities of an {@link java.lang.Iterable} object.
  * <p/>
- * For Froyo retro-compatible implementation refer to {@link CompatCollections}.
+ * For FROYO retro-compatible implementation refer to
+ * {@link com.bmd.android.collection.v4.AndroidCollections}.
  * <p/>
  * Created by davide on 5/1/14.
  */
-@TargetApi(16)
-public class JellyBeanCollections extends CompatCollections {
+@SuppressFBWarnings(value = "NM_SAME_SIMPLE_NAME_AS_SUPERCLASS",
+                    justification = "utility class extending functionalities of another utility "
+                            + "class")
+@TargetApi(VERSION_CODES.JELLY_BEAN)
+public class AndroidCollections extends com.bmd.android.collection.v4.AndroidCollections {
 
     /**
      * Avoid direct instantiation.
      */
-    JellyBeanCollections() {
+    protected AndroidCollections() {
 
     }
 

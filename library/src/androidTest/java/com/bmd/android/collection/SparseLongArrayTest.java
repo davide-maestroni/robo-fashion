@@ -30,6 +30,7 @@ import com.bmd.android.collection.iterator.SparseIterable.Condition;
 import com.bmd.android.collection.translator.IntTranslator;
 import com.bmd.android.collection.translator.LongTranslator;
 import com.bmd.android.collection.translator.Translator;
+import com.bmd.android.collection.v18.AndroidCollections;
 
 import junit.framework.TestCase;
 
@@ -49,7 +50,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * <p/>
  * Created by davide on 3/15/14.
  */
-@TargetApi(18)
+@TargetApi(VERSION_CODES.JELLY_BEAN_MR2)
 public class SparseLongArrayTest extends TestCase {
 
     private SparseLongArray mArray;

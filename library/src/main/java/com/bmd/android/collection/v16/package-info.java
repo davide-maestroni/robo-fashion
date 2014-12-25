@@ -12,8 +12,8 @@
  * limitations under the License.
  */
 /**
- * Main library package.
+ * Main library package (supports API level >= 16).
  * <p/>
- * Created by davide on 4/3/14.
+ * Created by davide on 12/25/14.
  */
-package com.bmd.android.collection;
+package com.bmd.android.collection.v16;

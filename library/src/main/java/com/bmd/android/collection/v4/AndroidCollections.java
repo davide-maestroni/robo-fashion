@@ -11,7 +11,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.bmd.android.collection;
+package com.bmd.android.collection.v4;
 
 import android.support.v4.util.LongSparseArray;
 import android.support.v4.util.SimpleArrayMap;
@@ -35,12 +35,12 @@ import com.bmd.android.collection.iterator.SupportLongSparseArrayIterable;
  * <p/>
  * Created by davide on 3/9/14.
  */
-public class CompatCollections {
+public class AndroidCollections {
 
     /**
      * Avoid direct instantiation.
      */
-    CompatCollections() {
+    protected AndroidCollections() {
 
     }
 

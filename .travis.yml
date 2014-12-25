@@ -1,8 +1,12 @@
 language: android
+
+# Enable Docker
+sudo: false
+
 android:
   components:
     # The BuildTools version
-    - build-tools-21.0.1
+    - build-tools-21.1.1
 
     # The SDK version
     - android-21
@@ -15,6 +19,7 @@ env:
   matrix:
     - ANDROID_SDKS=android-10            ANDROID_TARGET=android-10  ANDROID_ABI=armeabi
     - ANDROID_SDKS=android-19,sysimg-19  ANDROID_TARGET=android-19  ANDROID_ABI=armeabi-v7a
+    - ANDROID_SDKS=android-21,sysimg-21  ANDROID_TARGET=android-21  ANDROID_ABI=armeabi-v7a
 
 # Emulator Management: Create, Start and Wait
 before_install:

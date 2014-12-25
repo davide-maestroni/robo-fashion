@@ -26,7 +26,7 @@ import com.bmd.android.collection.iterator.SparseLongArrayIterable;
  * This class represents the entry point to the internal package.
  * <p/>
  * For JellyBean retro-compatible implementation refer to
- * {@link com.bmd.android.collection.JellyBeanCollections}.
+ * {@link com.bmd.android.collection.v16.AndroidCollections}.
  * <p/>
  * Created by davide on 5/1/14.
  */

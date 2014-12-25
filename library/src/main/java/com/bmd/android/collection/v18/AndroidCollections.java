@@ -11,13 +11,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.bmd.android.collection;
+package com.bmd.android.collection.v18;
 
 import android.annotation.TargetApi;
+import android.os.Build.VERSION_CODES;
 import android.util.SparseLongArray;
 
 import com.bmd.android.collection.internal.AndroidIterableFactory;
 import com.bmd.android.collection.iterator.SparseLongArrayIterable;
+
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * This utility class creates objects wrapping an Android sparse collection, such as
@@ -128,19 +131,23 @@ import com.bmd.android.collection.iterator.SparseLongArrayIterable;
  *  </code>
  * </pre>
  * <p/>
- * For JellyBean retro-compatible implementation refer to {@link JellyBeanCollections}.
+ * For JELLY BEAN retro-compatible implementation refer to
+ * {@link com.bmd.android.collection.v16.AndroidCollections}.
  * <p/>
  * Created by davide on 5/1/14.
  *
- * @see com.bmd.android.collection.CompatCollections
+ * @see com.bmd.android.collection.v4.AndroidCollections
  */
-@TargetApi(18)
-public class AndroidCollections extends JellyBeanCollections {
+@SuppressFBWarnings(value = "NM_SAME_SIMPLE_NAME_AS_SUPERCLASS",
+                    justification = "utility class extending functionalities of another utility "
+                            + "class")
+@TargetApi(VERSION_CODES.JELLY_BEAN_MR2)
+public class AndroidCollections extends com.bmd.android.collection.v16.AndroidCollections {
 
     /**
      * Avoid direct instantiation.
      */
-    AndroidCollections() {
+    protected AndroidCollections() {
 
     }
 

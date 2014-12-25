@@ -26,6 +26,7 @@ import com.bmd.android.collection.iterator.SparseIterable.Action;
 import com.bmd.android.collection.iterator.SparseIterable.Condition;
 import com.bmd.android.collection.translator.IntTranslator;
 import com.bmd.android.collection.translator.Translator;
+import com.bmd.android.collection.v18.AndroidCollections;
 
 import junit.framework.TestCase;
 

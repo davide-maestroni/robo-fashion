@@ -26,7 +26,7 @@ import java.util.Collection;
  * <p/>
  * Created by davide on 3/10/14.
  *
- * @see com.bmd.android.collection.AndroidCollections
+ * @see com.bmd.android.collection.v18.AndroidCollections
  */
 public interface SparseIterable<E> extends Iterable<E> {
 
