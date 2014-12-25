@@ -127,7 +127,7 @@ for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)) {
 
 ##Documentation
 
-Complete [Javadocs][4] with insights and examples are available.
+Complete [Javadoc][4] with insights and examples are available.
 
 The project contains an additional sample module showing how to implement an enhanced version of a [SimpleArrayMap][7] supporting parcelable serialization, iteration and proper *equals()* implementation (see issue [68406][6]).
 
