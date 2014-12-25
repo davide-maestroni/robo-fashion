@@ -94,12 +94,15 @@ android.libraryVariants.all { variant ->
         source = variant.javaCompile.source
         ext.androidJar =
                 "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
-        classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
+        ext.androidSupportJar =
+                "${android.sdkDirectory}/extras/android/support/v4/android-support-v4.jar"
+        classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar) + files(ext.androidSupportJar)
         title = "${archivesBaseName} ${version}"
-        options.links("http://docs.oracle.com/javase/7/docs/api/")
-        options.linksOffline("http://developer.android.com/reference/", "${android.sdkDirectory}/docs/reference/")
+        options.links('http://docs.oracle.com/javase/7/docs/api/')
+        options.linksOffline('http://developer.android.com/reference/', "${android.sdkDirectory}/docs/reference/")
         options.overview("${project.projectDir}/docs/overview.html")
         options.windowTitle("Javadoc - ${archivesBaseName}")
+        options.setMemberLevel(JavadocMemberLevel.PUBLIC)
         exclude '**/BuildConfig.java'
         exclude '**/R.java'
     }
