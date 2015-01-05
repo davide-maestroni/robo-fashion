@@ -1,7 +1,9 @@
-com.bmd.android.collection
 com.bmd.android.collection.entry
 com.bmd.android.collection.filter
 com.bmd.android.collection.internal
 com.bmd.android.collection.iterator
 com.bmd.android.collection.translator
 com.bmd.android.collection.utils
+com.bmd.android.collection.v16
+com.bmd.android.collection.v18
+com.bmd.android.collection.v4
