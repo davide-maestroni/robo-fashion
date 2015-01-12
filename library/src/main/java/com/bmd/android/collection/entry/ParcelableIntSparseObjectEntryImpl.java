@@ -52,7 +52,7 @@ class ParcelableIntSparseObjectEntryImpl<V> implements ParcelableIntSparseObject
 
         mKey = parcel.readInt();
         //noinspection unchecked
-        mValue = (V) parcel.readValue(null);
+        mValue = (V) parcel.readValue(getClass().getClassLoader());
     }
 
     @Override

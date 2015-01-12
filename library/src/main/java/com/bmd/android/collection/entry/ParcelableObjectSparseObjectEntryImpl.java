@@ -53,8 +53,9 @@ class ParcelableObjectSparseObjectEntryImpl<K, V>
     @SuppressWarnings("unchecked")
     public ParcelableObjectSparseObjectEntryImpl(final Parcel parcel) {
 
-        mKey = (K) parcel.readValue(null);
-        mValue = (V) parcel.readValue(null);
+        final ClassLoader classLoader = getClass().getClassLoader();
+        mKey = (K) parcel.readValue(classLoader);
+        mValue = (V) parcel.readValue(classLoader);
     }
 
     @Override

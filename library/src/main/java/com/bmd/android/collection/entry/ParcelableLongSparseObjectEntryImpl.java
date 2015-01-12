@@ -52,7 +52,7 @@ class ParcelableLongSparseObjectEntryImpl<V> implements ParcelableLongSparseObje
 
         mKey = parcel.readLong();
         //noinspection unchecked
-        mValue = (V) parcel.readValue(null);
+        mValue = (V) parcel.readValue(getClass().getClassLoader());
     }
 
     @Override
