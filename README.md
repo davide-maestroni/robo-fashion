@@ -190,7 +190,7 @@ For additional commands please refer to the [Gradle Android Plugin User Guide][9
 
 [1]:http://developer.android.com/sdk/terms.html
 [2]:http://www.apache.org/licenses/LICENSE-2.0
-[3]:https://github.com/davide-maestroni/robo-fashion/blob/master/lib/src/main/java/com/bmd/android/collection/filter/Filters.java
+[3]:http://davide-maestroni.github.io/robo-fashion/javadoc/com/gh/bmd/rfc/android/filter/Filters.html
 [4]:http://davide-maestroni.github.io/robo-fashion/javadoc/
 [5]:http://joel-costigliola.github.io/assertj/
 [6]:https://code.google.com/p/android/issues/detail?id=68406
