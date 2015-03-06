@@ -4,31 +4,40 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Robo-fashion by davide-maestroni</title>
-
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
   <body>
-    <div class="wrapper">
+
       <header>
-        <h1 class="header">Robo-fashion</h1>
-        <p class="header">Easy iteration and manipulation of Android sparse collections</p>
-
-        <ul>
-          <li class="download"><a class="buttons" href="https://github.com/davide-maestroni/robo-fashion/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/davide-maestroni/robo-fashion/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/davide-maestroni/robo-fashion">View On GitHub</a></li>
-        </ul>
-
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/davide-maestroni">davide-maestroni</a></p>
-
-
+        <h1>Robo-fashion</h1>
+        <p>Easy iteration and manipulation of Android sparse collections</p>
       </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/davide-maestroni/robo-fashion" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/davide-maestroni/robo-fashion/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/davide-maestroni/robo-fashion/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
       <section>
         <h1>
 <a id="robo-fashion" class="anchor" href="#robo-fashion" aria-hidden="true"><span class="octicon octicon-link"></span></a>robo-fashion</h1>
@@ -66,6 +75,85 @@
 <p>The purpose of this library is to provide an easy way to iterate through the elements of the Android sparse collections and manipulate them in the while.</p>
 
 <h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>The specific sparse collection can be iterated both by using the classic Java syntax:</p>
+
+<div class="highlight highlight-java"><pre><span class="pl-k">for</span> (<span class="pl-s">final</span> <span class="pl-st">SparseArrayEntry&lt;<span class="pl-stj">String</span>&gt;</span> entry<span class="pl-k">:</span> <span class="pl-stj">SparseCollections</span><span class="pl-k">.</span>iterate(array)) {
+
+  <span class="pl-c">// ... do your stuff ...</span>
+}</pre></div>
+
+<p>Through a more fluent syntax, like:</p>
+
+<div class="highlight highlight-java"><pre><span class="pl-stj">SparseCollections</span><span class="pl-k">.</span>iterate(array)
+                 .only()
+                 .from(<span class="pl-c1">4</span>)
+                 .forEach((element, index) <span class="pl-k">-</span><span class="pl-k">&gt;</span> {
+                   <span class="pl-c">// ... do your stuff ...</span>
+                 });</pre></div>
+
+<p>Or even by mixing the two:</p>
+
+<div class="highlight highlight-java"><pre><span class="pl-k">for</span> (<span class="pl-s">final</span> <span class="pl-st">SparseArrayEntry&lt;<span class="pl-stj">String</span>&gt;</span> entry<span class="pl-k">:</span> <span class="pl-stj">SparseCollections</span><span class="pl-k">.</span>iterate(array)
+                                                            .only()
+                                                            .first(<span class="pl-c1">3</span>)) {
+
+  <span class="pl-c">// ... do your stuff ...</span>
+}</pre></div>
+
+<p>As shown in the above examples inclusion and exclusion filters can be applied to the iteration. Besides, multiple filters can be concatenated so to include in the iteration only the elements matching specific requirements.
+In order to fully understand the filter concatenation behavior, note that the output of the following code:</p>
+
+<div class="highlight highlight-java"><pre><span class="pl-s">final</span> <span class="pl-st">SparseArrayCompat&lt;<span class="pl-stj">String</span>&gt;</span> array <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-st">SparseArrayCompat&lt;<span class="pl-stj">String</span>&gt;</span>();
+
+<span class="pl-k">for</span> (<span class="pl-st">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> <span class="pl-c1">5</span>; i<span class="pl-k">++</span>) {
+
+  array<span class="pl-k">.</span>append(i, <span class="pl-stj">String</span><span class="pl-k">.</span>valueOf(i));
+}
+
+<span class="pl-stj">SparseCollections</span><span class="pl-k">.</span>iterate(array)
+                 .only()
+                 .first(<span class="pl-c1">3</span>)
+                 .only()
+                 .last(<span class="pl-c1">2</span>)
+                 .reverse()
+                 .forEach((element, index) <span class="pl-k">-</span><span class="pl-k">&gt;</span> {
+                   <span class="pl-stj">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(element<span class="pl-k">.</span>getValue());
+                 });</pre></div>
+
+<p>will be:</p>
+
+<div class="highlight highlight-java"><pre>  <span class="pl-c1">2</span>
+  <span class="pl-c1">1</span></pre></div>
+
+<p>The <a href="http://davide-maestroni.github.io/robo-fashion/javadoc/com/gh/bmd/rfc/android/filter/Filters.html">Filters</a> class already provides several filter implementations (like last <em>N</em> elements or first <em>N</em> elements), but additional custom filters can be easily implemented and concatenated with the existing ones.</p>
+
+<p>The iterable implementation is not thread safe (unless differently specified) and not fail-fast, that is, if the wrapped collection is changed during the iteration no exception will be thrown, and further call to the iterator or to the entries methods might lead to unexpected results.</p>
+
+<p>The entries returned by the iterator can be safely accessed only inside the iteration loop, since they have direct access to the wrapped sparse collection. This is an explicit design choice to try preserving both highest performance and lowest memory consumption.
+In case the caller needed to retain an entry instance outside the loop, it must create an immutable or parcelable copy and retain that instead:</p>
+
+<div class="highlight highlight-java"><pre><span class="pl-s">final</span> <span class="pl-st">SparseArrayCompat&lt;<span class="pl-stj">String</span>&gt;</span> array <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-st">SparseArrayCompat&lt;<span class="pl-stj">String</span>&gt;</span>();
+
+<span class="pl-k">for</span> (<span class="pl-st">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> <span class="pl-c1">5</span>; i<span class="pl-k">++</span>) {
+
+  array<span class="pl-k">.</span>append(i, <span class="pl-stj">String</span><span class="pl-k">.</span>valueOf(i));
+}
+
+<span class="pl-st">IntSparseObjectEntry&lt;<span class="pl-stj">String</span>&gt;</span> myEntry;
+
+<span class="pl-k">for</span> (<span class="pl-s">final</span> <span class="pl-st">SparseArrayEntry&lt;<span class="pl-stj">String</span>&gt;</span> entry<span class="pl-k">:</span> <span class="pl-stj">SparseCollections</span><span class="pl-k">.</span>iterate(array)) {
+
+  <span class="pl-k">if</span> (<span class="pl-s1"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span><span class="pl-k">.</span>equals(entry<span class="pl-k">.</span>getValue())) {
+
+    myEntry <span class="pl-k">=</span> entry<span class="pl-k">.</span>toImmutable();
+
+    <span class="pl-k">break</span>;
+  }
+}</pre></div>
+
+<h2>
 <a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h2>
 
 <p>Complete <a href="http://davide-maestroni.github.io/robo-fashion/javadoc/">Javadoc</a> with insights and examples are available.</p>
@@ -78,6 +166,25 @@
 <p>The iterator implementation is generally faster than the correspondent Java map collection, but, in any case, slower than directly accessing the Android collection object. In fact, there could be nothing faster than reading an element from a primitive array by its index. It is also true that the sparse collections were designed for best performance when holding a relative small number of elements. In such cases iteration is for sure not the bottleneck, so you'd better have flexibility and readability than speed.</p>
 
 <h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<h4>
+<a id="source-dependencies" class="anchor" href="#source-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Source dependencies</h4>
+
+<ul>
+<li>Android SDK (<a href="http://developer.android.com/sdk/terms.html">Terms and Condition</a>)</li>
+<li>Android Support Library (<a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License v2.0</a>)</li>
+</ul>
+
+<h4>
+<a id="test-dependencies" class="anchor" href="#test-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test dependencies</h4>
+
+<ul>
+<li>
+<a href="http://joel-costigliola.github.io/assertj/">AssertJ</a> (<a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License v2.0</a>)</li>
+</ul>
+
+<h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p><a href="http://www.apache.org/licenses/LICENSE-2.0">The Apache Software License, Version 2.0</a></p>
@@ -85,10 +192,11 @@
 <p><strong>It's open! Feel free to contribute!!</strong></p>
       </section>
       <footer>
-        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+        <p>Project maintained by <a href="https://github.com/davide-maestroni">davide-maestroni</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
+    
   </body>
 </html>
