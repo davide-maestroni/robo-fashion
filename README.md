@@ -40,7 +40,7 @@ The purpose of this library is to provide an easy way to iterate through the ele
 The specific sparse collection can be iterated both by using the classic Java syntax:
 
 ```java
-for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)) {
+for (final SparseArrayEntry<String> entry: SparseCollections.iterate(array)) {
 
   // ... do your stuff ...
 }
@@ -49,20 +49,20 @@ for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)) {
 Through a more fluent syntax, like:
 
 ```java
-AndroidCollections.iterate(array)
-                  .only()
-                  .from(4)
-                  .forEach((element, index) -> {
-                    // ... do your stuff ...
-                  });
+SparseCollections.iterate(array)
+                 .only()
+                 .from(4)
+                 .forEach((element, index) -> {
+                   // ... do your stuff ...
+                 });
 ```
 
 Or even by mixing the two:
 
 ```java
-for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)
-                                                             .only()
-                                                             .first(3)) {
+for (final SparseArrayEntry<String> entry: SparseCollections.iterate(array)
+                                                            .only()
+                                                            .first(3)) {
 
   // ... do your stuff ...
 }
@@ -79,15 +79,15 @@ for (int i = 0; i < 5; i++) {
   array.append(i, String.valueOf(i));
 }
 
-AndroidCollections.iterate(array)
-                  .only()
-                  .first(3)
-                  .only()
-                  .last(2)
-                  .reverse()
-                  .forEach((element, index) -> {
-                    System.out.println(element.getValue());
-                  });
+SparseCollections.iterate(array)
+                 .only()
+                 .first(3)
+                 .only()
+                 .last(2)
+                 .reverse()
+                 .forEach((element, index) -> {
+                   System.out.println(element.getValue());
+                 });
 ```
 
 will be:
@@ -114,7 +114,7 @@ for (int i = 0; i < 5; i++) {
 
 IntSparseObjectEntry<String> myEntry;
 
-for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)) {
+for (final SparseArrayEntry<String> entry: SparseCollections.iterate(array)) {
 
   if ("3".equals(entry.getValue())) {
 

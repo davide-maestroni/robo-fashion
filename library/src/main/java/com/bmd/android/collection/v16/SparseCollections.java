@@ -27,7 +27,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
  * it the base functionalities of an {@link java.lang.Iterable} object.
  * <p/>
  * For FROYO retro-compatible implementation refer to
- * {@link com.bmd.android.collection.v4.AndroidCollections}.
+ * {@link com.bmd.android.collection.v4.SparseCollections}.
  * <p/>
  * Created by davide on 5/1/14.
  */
@@ -35,12 +35,12 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
                     justification = "utility class extending functionalities of another utility "
                             + "class")
 @TargetApi(VERSION_CODES.JELLY_BEAN)
-public class AndroidCollections extends com.bmd.android.collection.v4.AndroidCollections {
+public class SparseCollections extends com.bmd.android.collection.v4.SparseCollections {
 
     /**
      * Avoid direct instantiation.
      */
-    protected AndroidCollections() {
+    protected SparseCollections() {
 
     }
 

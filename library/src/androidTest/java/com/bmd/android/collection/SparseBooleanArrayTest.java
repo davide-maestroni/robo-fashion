@@ -27,7 +27,7 @@ import com.bmd.android.collection.iterator.SparseIterable.Condition;
 import com.bmd.android.collection.translator.BooleanTranslator;
 import com.bmd.android.collection.translator.IntTranslator;
 import com.bmd.android.collection.translator.Translator;
-import com.bmd.android.collection.v18.AndroidCollections;
+import com.bmd.android.collection.v18.SparseCollections;
 
 import junit.framework.TestCase;
 
@@ -53,237 +53,232 @@ public class SparseBooleanArrayTest extends TestCase {
 
     public void testContains() {
 
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .but()
-                                     .to(2)
-                                     .contains(SparseEntries.entry(3, false))).isTrue();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .contains(SparseEntries.entry(3, false))).isFalse();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .but()
+                                    .to(2)
+                                    .contains(SparseEntries.entry(3, false))).isTrue();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .to(2)
+                                    .reverse()
+                                    .contains(SparseEntries.entry(3, false))).isFalse();
 
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .but()
-                                     .to(2)
-                                     .firstPositionOf(SparseEntries.entry(3, false))).isEqualTo(0);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .but()
-                                     .to(2)
-                                     .firstIndexOf(SparseEntries.entry(3, false))).isEqualTo(3);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .firstPositionOf(SparseEntries.entry(3, false))).isEqualTo(-1);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .firstIndexOf(SparseEntries.entry(3, false))).isEqualTo(-1);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .firstPositionOf(SparseEntries.entry(0, true))).isEqualTo(2);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .firstIndexOf(SparseEntries.entry(0, true))).isEqualTo(0);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .but()
+                                    .to(2)
+                                    .firstPositionOf(SparseEntries.entry(3, false))).isEqualTo(0);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .but()
+                                    .to(2)
+                                    .firstIndexOf(SparseEntries.entry(3, false))).isEqualTo(3);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .to(2)
+                                    .reverse()
+                                    .firstPositionOf(SparseEntries.entry(3, false))).isEqualTo(-1);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .to(2)
+                                    .reverse()
+                                    .firstIndexOf(SparseEntries.entry(3, false))).isEqualTo(-1);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .to(2)
+                                    .reverse()
+                                    .firstPositionOf(SparseEntries.entry(0, true))).isEqualTo(2);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .to(2)
+                                    .reverse()
+                                    .firstIndexOf(SparseEntries.entry(0, true))).isEqualTo(0);
 
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .containsAll(SparseEntries.entry(3, false),
-                                                  SparseEntries.entry(1, false))).isTrue();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .containsAll(Arrays.asList(SparseEntries.entry(3, false),
-                                                                SparseEntries.entry(5,
-                                                                                    false))))
+        assertThat(SparseCollections.iterate(mArray)
+                                    .containsAll(SparseEntries.entry(3, false),
+                                                 SparseEntries.entry(1, false))).isTrue();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .containsAll(Arrays.asList(SparseEntries.entry(3, false),
+                                                               SparseEntries.entry(5,
+                                                                                   false))))
                 .isFalse();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .containsAll(AndroidCollections.iterate(mArray))).isTrue();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .containsAny(Arrays.asList(SparseEntries.entry(5, false),
-                                                                SparseEntries.entry(3, false),
-                                                                SparseEntries.entry(5,
-                                                                                    false))))
+        assertThat(SparseCollections.iterate(mArray).containsAll(SparseCollections.iterate(mArray)))
                 .isTrue();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .containsAny(SparseEntries.entry(2, false))).isFalse();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .containsAny(AndroidCollections.iterate(mArray))).isTrue();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .containsAny(Arrays.asList(SparseEntries.entry(5, false),
+                                                               SparseEntries.entry(3, false),
+                                                               SparseEntries.entry(5,
+                                                                                   false))))
+                .isTrue();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .containsAny(SparseEntries.entry(2, false))).isFalse();
+        assertThat(SparseCollections.iterate(mArray).containsAny(SparseCollections.iterate(mArray)))
+                .isTrue();
 
-        assertThat(AndroidCollections.iterate(mArray).but().to(2).containsKey(3)).isTrue();
+        assertThat(SparseCollections.iterate(mArray).but().to(2).containsKey(3)).isTrue();
         assertThat(
-                AndroidCollections.iterate(mArray).only().to(2).reverse().containsKey(3)).isFalse();
+                SparseCollections.iterate(mArray).only().to(2).reverse().containsKey(3)).isFalse();
 
-        assertThat(AndroidCollections.iterate(mArray).but().to(2).positionOfKey(3)).isEqualTo(0);
-        assertThat(AndroidCollections.iterate(mArray).but().to(2).indexOfKey(3)).isEqualTo(3);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .positionOfKey(3)).isEqualTo(-1);
+        assertThat(SparseCollections.iterate(mArray).but().to(2).positionOfKey(3)).isEqualTo(0);
+        assertThat(SparseCollections.iterate(mArray).but().to(2).indexOfKey(3)).isEqualTo(3);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .to(2)
+                                    .reverse()
+                                    .positionOfKey(3)).isEqualTo(-1);
         assertThat(
-                AndroidCollections.iterate(mArray).only().to(2).reverse().indexOfKey(3)).isEqualTo(
+                SparseCollections.iterate(mArray).only().to(2).reverse().indexOfKey(3)).isEqualTo(
                 -1);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .positionOfKey(0)).isEqualTo(2);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .to(2)
+                                    .reverse()
+                                    .positionOfKey(0)).isEqualTo(2);
         assertThat(
-                AndroidCollections.iterate(mArray).only().to(2).reverse().indexOfKey(0)).isEqualTo(
+                SparseCollections.iterate(mArray).only().to(2).reverse().indexOfKey(0)).isEqualTo(
                 0);
 
-        assertThat(AndroidCollections.iterate(mArray).but().to(2).containsKey(3)).isTrue();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .containsAllKeys(2, 3)).isFalse();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .containsAnyKey(2, 3)).isTrue();
-        assertThat(
-                AndroidCollections.iterate(mArray).but().to(2).containsAllKeys(Arrays.asList(2, 3)))
-                .isFalse();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .but()
-                                     .to(2)
-                                     .containsAnyKey(Arrays.asList(2, 3))).isTrue();
+        assertThat(SparseCollections.iterate(mArray).but().to(2).containsKey(3)).isTrue();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .to(2)
+                                    .reverse()
+                                    .containsAllKeys(2, 3)).isFalse();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .to(2)
+                                    .reverse()
+                                    .containsAnyKey(2, 3)).isTrue();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .but()
+                                    .to(2)
+                                    .containsAllKeys(Arrays.asList(2, 3))).isFalse();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .but()
+                                    .to(2)
+                                    .containsAnyKey(Arrays.asList(2, 3))).isTrue();
 
-        assertThat(AndroidCollections.iterate(mArray).but().to(2).containsValue(false)).isTrue();
-        assertThat(AndroidCollections.iterate(mArray).but().to(2).containsValue(false)).isTrue();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .containsValue(false)).isTrue();
+        assertThat(SparseCollections.iterate(mArray).but().to(2).containsValue(false)).isTrue();
+        assertThat(SparseCollections.iterate(mArray).but().to(2).containsValue(false)).isTrue();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .to(2)
+                                    .reverse()
+                                    .containsValue(false)).isTrue();
 
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .but()
-                                     .to(2)
-                                     .firstPositionOfValue(false)).isEqualTo(0);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .but()
+                                    .to(2)
+                                    .firstPositionOfValue(false)).isEqualTo(0);
         assertThat(
-                AndroidCollections.iterate(mArray).but().to(2).firstIndexOfValue(false)).isEqualTo(
+                SparseCollections.iterate(mArray).but().to(2).firstIndexOfValue(false)).isEqualTo(
                 3);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .firstPositionOfValue(true)).isEqualTo(0);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .firstIndexOfValue(true)).isEqualTo(2);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .firstPositionOfValue(false)).isEqualTo(1);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .firstIndexOfValue(false)).isEqualTo(1);
+        assertThat(
+                SparseCollections.iterate(mArray).only().to(2).reverse().firstPositionOfValue(true))
+                .isEqualTo(0);
+        assertThat(SparseCollections.iterate(mArray).only().to(2).reverse().firstIndexOfValue(true))
+                .isEqualTo(2);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .to(2)
+                                    .reverse()
+                                    .firstPositionOfValue(false)).isEqualTo(1);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .to(2)
+                                    .reverse()
+                                    .firstIndexOfValue(false)).isEqualTo(1);
 
-        assertThat(AndroidCollections.iterate(mArray).but().to(2).containsValue(false)).isTrue();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .containsAllValues(true, false)).isTrue();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .containsAnyValue(false, false)).isTrue();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .but()
-                                     .to(2)
-                                     .containsAllValues(Arrays.asList(true, false))).isTrue();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .but()
-                                     .to(2)
-                                     .containsAnyValue(Arrays.asList(false, false))).isTrue();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .but()
-                                     .to(2)
-                                     .containsAnyValue(Arrays.asList(true, true))).isTrue();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .containsAllKeys(
-                                             AndroidCollections.iterate(mArray).keys())).isTrue();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .containsAnyKey(
-                                             AndroidCollections.iterate(mArray).keys())).isTrue();
+        assertThat(SparseCollections.iterate(mArray).but().to(2).containsValue(false)).isTrue();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .to(2)
+                                    .reverse()
+                                    .containsAllValues(true, false)).isTrue();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .to(2)
+                                    .reverse()
+                                    .containsAnyValue(false, false)).isTrue();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .but()
+                                    .to(2)
+                                    .containsAllValues(Arrays.asList(true, false))).isTrue();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .but()
+                                    .to(2)
+                                    .containsAnyValue(Arrays.asList(false, false))).isTrue();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .but()
+                                    .to(2)
+                                    .containsAnyValue(Arrays.asList(true, true))).isTrue();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .containsAllKeys(
+                                            SparseCollections.iterate(mArray).keys())).isTrue();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .containsAnyKey(
+                                            SparseCollections.iterate(mArray).keys())).isTrue();
     }
 
     public void testConversions() {
 
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .toLongs(new Translator<SparseBooleanArrayEntry, Long>() {
+        assertThat(SparseCollections.iterate(mArray)
+                                    .toLongs(new Translator<SparseBooleanArrayEntry, Long>() {
 
-                                         @Override
-                                         public Long translate(
-                                                 final SparseBooleanArrayEntry element) {
+                                        @Override
+                                        public Long translate(
+                                                final SparseBooleanArrayEntry element) {
 
-                                             return (element.getValue() ? 2L : -99L);
-                                         }
-                                     })
-                                     .reverse()).containsExactly(2L, -99L, 2L, -99L, 2L);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .key(2)
-                                     .toBooleans(
-                                             new Translator<SparseBooleanArrayEntry, Boolean>() {
+                                            return (element.getValue() ? 2L : -99L);
+                                        }
+                                    })
+                                    .reverse()).containsExactly(2L, -99L, 2L, -99L, 2L);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .key(2)
+                                    .toBooleans(new Translator<SparseBooleanArrayEntry, Boolean>() {
 
-                                                 @Override
-                                                 public Boolean translate(
-                                                         final SparseBooleanArrayEntry element) {
+                                                    @Override
+                                                    public Boolean translate(
+                                                            final SparseBooleanArrayEntry element) {
 
-                                                     return 2 == element.getKey();
-                                                 }
-                                             })).containsExactly(true);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .reverse()
-                                     .toIntegers(
-                                             new Translator<SparseBooleanArrayEntry, Integer>() {
+                                                        return 2 == element.getKey();
+                                                    }
+                                                })).containsExactly(true);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .reverse()
+                                    .toIntegers(new Translator<SparseBooleanArrayEntry, Integer>() {
 
-                                                 @Override
-                                                 public Integer translate(
-                                                         final SparseBooleanArrayEntry element) {
+                                                    @Override
+                                                    public Integer translate(
+                                                            final SparseBooleanArrayEntry element) {
 
-                                                     return element.getKey();
-                                                 }
-                                             })
-                                     .only()
-                                     .first(3)
-                                     .retain()
-                                     .reverse()).containsExactly(2, 3, 4);
-        assertThat(AndroidCollections.iterate(mArray).keys()).containsExactly(2, 3, 4);
+                                                        return element.getKey();
+                                                    }
+                                                })
+                                    .only()
+                                    .first(3)
+                                    .retain()
+                                    .reverse()).containsExactly(2, 3, 4);
+        assertThat(SparseCollections.iterate(mArray).keys()).containsExactly(2, 3, 4);
     }
 
     public void testCount() {
 
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .countOf(SparseEntries.entry(1, false))).isEqualTo(1);
         assertThat(
-                AndroidCollections.iterate(mArray).reverse().countOf(SparseEntries.entry(1, false)))
-                .isEqualTo(1);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .first(1)
-                                     .countOf(SparseEntries.entry(1, false))).isZero();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .first(1)
-                                     .countOf(SparseEntries.entry(1, "1"))).isZero();
+                SparseCollections.iterate(mArray).countOf(SparseEntries.entry(1, false))).isEqualTo(
+                1);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .reverse()
+                                    .countOf(SparseEntries.entry(1, false))).isEqualTo(1);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .first(1)
+                                    .countOf(SparseEntries.entry(1, false))).isZero();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .first(1)
+                                    .countOf(SparseEntries.entry(1, "1"))).isZero();
 
-        AndroidCollections.iterate(mArray).replaceValues(new BooleanTranslator() {
+        SparseCollections.iterate(mArray).replaceValues(new BooleanTranslator() {
 
             @Override
             public boolean translate(final boolean element) {
@@ -291,33 +286,31 @@ public class SparseBooleanArrayTest extends TestCase {
                 return false;
             }
         });
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .countOf(SparseEntries.entry(1, false))).isEqualTo(1);
-        assertThat(AndroidCollections.iterate(mArray).values().countOf(false)).isEqualTo(5);
-        assertThat(AndroidCollections.iterate(mArray).values().reverse().countOf(false)).isEqualTo(
-                5);
-        assertThat(AndroidCollections.iterate(mArray).reverse().values().countOf(false)).isEqualTo(
-                5);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .first(2)
-                                     .values()
-                                     .countOf(false)).isEqualTo(2);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .reverse()
-                                     .only()
-                                     .first(2)
-                                     .values()
-                                     .countOf(false)).isEqualTo(2);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .first(2)
-                                     .values()
-                                     .reverse()
-                                     .countOf(false)).isEqualTo(2);
         assertThat(
-                AndroidCollections.iterate(mArray).only().first(2).values().reverse().countOf(true))
-                .isZero();
+                SparseCollections.iterate(mArray).countOf(SparseEntries.entry(1, false))).isEqualTo(
+                1);
+        assertThat(SparseCollections.iterate(mArray).values().countOf(false)).isEqualTo(5);
+        assertThat(SparseCollections.iterate(mArray).values().reverse().countOf(false)).isEqualTo(
+                5);
+        assertThat(SparseCollections.iterate(mArray).reverse().values().countOf(false)).isEqualTo(
+                5);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .first(2)
+                                    .values()
+                                    .countOf(false)).isEqualTo(2);
+        assertThat(
+                SparseCollections.iterate(mArray).reverse().only().first(2).values().countOf(false))
+                .isEqualTo(2);
+        assertThat(
+                SparseCollections.iterate(mArray).only().first(2).values().reverse().countOf(false))
+                .isEqualTo(2);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .first(2)
+                                    .values()
+                                    .reverse()
+                                    .countOf(true)).isZero();
     }
 
     public void testEquals() {
@@ -329,252 +322,238 @@ public class SparseBooleanArrayTest extends TestCase {
             arrayCompat.append(i, (i & 1) == 0);
         }
 
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .isStrictlyEqualTo(
-                                             AndroidCollections.iterate(arrayCompat))).isTrue();
-        assertThat(AndroidCollections.iterate(arrayCompat)
-                                     .isStrictlyEqualTo(
-                                             AndroidCollections.iterate(mArray))).isTrue();
-        assertThat(AndroidCollections.iterate(arrayCompat)
-                                     .only()
-                                     .key(2)
-                                     .remove()
-                                     .isStrictlyEqualTo(
-                                             AndroidCollections.iterate(mArray))).isFalse();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .isStrictlyEqualTo(
-                                             AndroidCollections.iterate(arrayCompat))).isFalse();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .isStrictlyEqualTo(
+                                            SparseCollections.iterate(arrayCompat))).isTrue();
+        assertThat(SparseCollections.iterate(arrayCompat)
+                                    .isStrictlyEqualTo(SparseCollections.iterate(mArray))).isTrue();
+        assertThat(SparseCollections.iterate(arrayCompat)
+                                    .only()
+                                    .key(2)
+                                    .remove()
+                                    .isStrictlyEqualTo(
+                                            SparseCollections.iterate(mArray))).isFalse();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .isStrictlyEqualTo(
+                                            SparseCollections.iterate(arrayCompat))).isFalse();
 
-        final SparseBooleanArray sparseArray = AndroidCollections.iterate(mArray).toSparseArray();
-        assertThat(AndroidCollections.iterate(mArray).isEqualTo(mArray)).isTrue();
-        assertThat(AndroidCollections.iterate(mArray).only().first(2).isEqualTo(mArray)).isFalse();
-        assertThat(AndroidCollections.iterate(mArray).isEqualTo(sparseArray)).isTrue();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .first(2)
-                                     .isEqualTo(sparseArray)).isFalse();
+        final SparseBooleanArray sparseArray = SparseCollections.iterate(mArray).toSparseArray();
+        assertThat(SparseCollections.iterate(mArray).isEqualTo(mArray)).isTrue();
+        assertThat(SparseCollections.iterate(mArray).only().first(2).isEqualTo(mArray)).isFalse();
+        assertThat(SparseCollections.iterate(mArray).isEqualTo(sparseArray)).isTrue();
+        assertThat(
+                SparseCollections.iterate(mArray).only().first(2).isEqualTo(sparseArray)).isFalse();
 
         final ArrayList<IntSparseBooleanEntry> list =
-                AndroidCollections.iterate(mArray).toImmutableList();
-        assertThat(AndroidCollections.iterate(mArray).isEqualTo(list)).isTrue();
-        assertThat(AndroidCollections.iterate(mArray).only().first(2).isEqualTo(list)).isFalse();
+                SparseCollections.iterate(mArray).toImmutableList();
+        assertThat(SparseCollections.iterate(mArray).isEqualTo(list)).isTrue();
+        assertThat(SparseCollections.iterate(mArray).only().first(2).isEqualTo(list)).isFalse();
 
         final ArrayList<ParcelableIntSparseBooleanEntry> parcelableList =
-                AndroidCollections.iterate(mArray).toParcelableList();
-        assertThat(AndroidCollections.iterate(mArray).isEqualTo(parcelableList)).isTrue();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .first(2)
-                                     .isEqualTo(parcelableList)).isFalse();
+                SparseCollections.iterate(mArray).toParcelableList();
+        assertThat(SparseCollections.iterate(mArray).isEqualTo(parcelableList)).isTrue();
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .first(2)
+                                    .isEqualTo(parcelableList)).isFalse();
 
-        final Map<Integer, Boolean> map = AndroidCollections.iterate(mArray).toMap();
-        assertThat(AndroidCollections.iterate(mArray).isEqualTo(map)).isTrue();
-        assertThat(AndroidCollections.iterate(mArray).only().first(2).isEqualTo(map)).isFalse();
+        final Map<Integer, Boolean> map = SparseCollections.iterate(mArray).toMap();
+        assertThat(SparseCollections.iterate(mArray).isEqualTo(map)).isTrue();
+        assertThat(SparseCollections.iterate(mArray).only().first(2).isEqualTo(map)).isFalse();
 
         final SortedMap<Integer, Boolean> sortedMap =
-                AndroidCollections.iterate(mArray).toSortedMap();
-        assertThat(AndroidCollections.iterate(mArray).isEqualTo(sortedMap)).isTrue();
+                SparseCollections.iterate(mArray).toSortedMap();
+        assertThat(SparseCollections.iterate(mArray).isEqualTo(sortedMap)).isTrue();
         assertThat(
-                AndroidCollections.iterate(mArray).only().first(2).isEqualTo(sortedMap)).isFalse();
+                SparseCollections.iterate(mArray).only().first(2).isEqualTo(sortedMap)).isFalse();
 
         mArray.append(7, true);
-        assertThat(AndroidCollections.iterate(mArray).isEqualTo(sparseArray)).isFalse();
+        assertThat(SparseCollections.iterate(mArray).isEqualTo(sparseArray)).isFalse();
+        assertThat(SparseCollections.iterate(mArray).but().last(1).isEqualTo(sparseArray)).isTrue();
+        assertThat(SparseCollections.iterate(mArray).isEqualTo(list)).isFalse();
+        assertThat(SparseCollections.iterate(mArray).but().last(1).isEqualTo(list)).isTrue();
+        assertThat(SparseCollections.iterate(mArray).isEqualTo(parcelableList)).isFalse();
         assertThat(
-                AndroidCollections.iterate(mArray).but().last(1).isEqualTo(sparseArray)).isTrue();
-        assertThat(AndroidCollections.iterate(mArray).isEqualTo(list)).isFalse();
-        assertThat(AndroidCollections.iterate(mArray).but().last(1).isEqualTo(list)).isTrue();
-        assertThat(AndroidCollections.iterate(mArray).isEqualTo(parcelableList)).isFalse();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .but()
-                                     .last(1)
-                                     .isEqualTo(parcelableList)).isTrue();
-        assertThat(AndroidCollections.iterate(mArray).isEqualTo(map)).isFalse();
-        assertThat(AndroidCollections.iterate(mArray).but().last(1).isEqualTo(map)).isTrue();
-        assertThat(AndroidCollections.iterate(mArray).isEqualTo(sortedMap)).isFalse();
-        assertThat(AndroidCollections.iterate(mArray).but().last(1).isEqualTo(sortedMap)).isTrue();
+                SparseCollections.iterate(mArray).but().last(1).isEqualTo(parcelableList)).isTrue();
+        assertThat(SparseCollections.iterate(mArray).isEqualTo(map)).isFalse();
+        assertThat(SparseCollections.iterate(mArray).but().last(1).isEqualTo(map)).isTrue();
+        assertThat(SparseCollections.iterate(mArray).isEqualTo(sortedMap)).isFalse();
+        assertThat(SparseCollections.iterate(mArray).but().last(1).isEqualTo(sortedMap)).isTrue();
     }
 
     public void testFilters() {
 
-        assertThat(AndroidCollections.iterate(mArray).only().last(2).toMap()).contains(
+        assertThat(SparseCollections.iterate(mArray).only().last(2).toMap()).contains(
                 MapEntry.entry(3, false), MapEntry.entry(4, true));
 
         assertThat(
-                AndroidCollections.iterate(mArray).only().first(3).only().last(2).toMap()).contains(
+                SparseCollections.iterate(mArray).only().first(3).only().last(2).toMap()).contains(
                 MapEntry.entry(1, false), MapEntry.entry(2, true));
 
-        assertThat(
-                AndroidCollections.iterate(mArray).only().last(3).but().last(1).toMap()).contains(
+        assertThat(SparseCollections.iterate(mArray).only().last(3).but().last(1).toMap()).contains(
                 MapEntry.entry(2, true), MapEntry.entry(3, false));
 
         assertThat(
-                AndroidCollections.iterate(mArray).only().indexes(2, 1).positionOfKey(2)).isEqualTo(
+                SparseCollections.iterate(mArray).only().indexes(2, 1).positionOfKey(2)).isEqualTo(
                 1);
-        assertThat(AndroidCollections.iterate(mArray).only().indexes(2, 1).indexOfKey(2)).isEqualTo(
+        assertThat(SparseCollections.iterate(mArray).only().indexes(2, 1).indexOfKey(2)).isEqualTo(
                 2);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .indexes(2, 1)
-                                     .reverse()
-                                     .positionOfKey(2)).isEqualTo(0);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .indexes(2, 1)
-                                     .reverse()
-                                     .indexOfKey(2)).isEqualTo(2);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .indexes(Arrays.asList(2, 1))
-                                     .positionOfKey(2)).isEqualTo(1);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .indexes(Arrays.asList(2, 1))
-                                     .indexOfKey(2)).isEqualTo(2);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .indexes(Arrays.asList(2, 1))
-                                     .reverse()
-                                     .positionOfKey(2)).isEqualTo(0);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .indexes(Arrays.asList(2, 1))
-                                     .reverse()
-                                     .indexOfKey(2)).isEqualTo(2);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .indexes((Iterable<Integer>) Arrays.asList(2, 1))
-                                     .positionOfKey(2)).isEqualTo(1);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .indexes((Iterable<Integer>) Arrays.asList(2, 1))
-                                     .indexOfKey(2)).isEqualTo(2);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .indexes((Iterable<Integer>) Arrays.asList(2, 1))
-                                     .reverse()
-                                     .positionOfKey(2)).isEqualTo(0);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .indexes((Iterable<Integer>) Arrays.asList(2, 1))
-                                     .reverse()
-                                     .indexOfKey(2)).isEqualTo(2);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .indexes(2, 1)
+                                    .reverse()
+                                    .positionOfKey(2)).isEqualTo(0);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .indexes(2, 1)
+                                    .reverse()
+                                    .indexOfKey(2)).isEqualTo(2);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .indexes(Arrays.asList(2, 1))
+                                    .positionOfKey(2)).isEqualTo(1);
+        assertThat(
+                SparseCollections.iterate(mArray).only().indexes(Arrays.asList(2, 1)).indexOfKey(2))
+                .isEqualTo(2);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .indexes(Arrays.asList(2, 1))
+                                    .reverse()
+                                    .positionOfKey(2)).isEqualTo(0);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .indexes(Arrays.asList(2, 1))
+                                    .reverse()
+                                    .indexOfKey(2)).isEqualTo(2);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .indexes((Iterable<Integer>) Arrays.asList(2, 1))
+                                    .positionOfKey(2)).isEqualTo(1);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .indexes((Iterable<Integer>) Arrays.asList(2, 1))
+                                    .indexOfKey(2)).isEqualTo(2);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .indexes((Iterable<Integer>) Arrays.asList(2, 1))
+                                    .reverse()
+                                    .positionOfKey(2)).isEqualTo(0);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .indexes((Iterable<Integer>) Arrays.asList(2, 1))
+                                    .reverse()
+                                    .indexOfKey(2)).isEqualTo(2);
 
-        assertThat(AndroidCollections.iterate(mArray).positionOfKey(2)).isEqualTo(2);
-        assertThat(AndroidCollections.iterate(mArray).indexOfKey(2)).isEqualTo(2);
-        assertThat(AndroidCollections.iterate(mArray).but().first(2).positionOfKey(2)).isZero();
-        assertThat(AndroidCollections.iterate(mArray).but().first(2).indexOfKey(2)).isEqualTo(2);
+        assertThat(SparseCollections.iterate(mArray).positionOfKey(2)).isEqualTo(2);
+        assertThat(SparseCollections.iterate(mArray).indexOfKey(2)).isEqualTo(2);
+        assertThat(SparseCollections.iterate(mArray).but().first(2).positionOfKey(2)).isZero();
+        assertThat(SparseCollections.iterate(mArray).but().first(2).indexOfKey(2)).isEqualTo(2);
 
-        assertThat(AndroidCollections.iterate(mArray).reverse().positionOfKey(2)).isEqualTo(2);
-        assertThat(AndroidCollections.iterate(mArray).reverse().indexOfKey(2)).isEqualTo(2);
-        assertThat(AndroidCollections.iterate(mArray).reverse().positionOfKey(1)).isEqualTo(3);
-        assertThat(AndroidCollections.iterate(mArray).reverse().indexOfKey(1)).isEqualTo(1);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .reverse()
-                                     .but()
-                                     .first(2)
-                                     .positionOfKey(2)).isZero();
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .reverse()
-                                     .but()
-                                     .first(2)
-                                     .indexOfKey(2)).isEqualTo(2);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .reverse()
-                                     .but()
-                                     .first(2)
-                                     .positionOfKey(1)).isEqualTo(1);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .reverse()
-                                     .but()
-                                     .first(2)
-                                     .indexOfKey(1)).isEqualTo(1);
+        assertThat(SparseCollections.iterate(mArray).reverse().positionOfKey(2)).isEqualTo(2);
+        assertThat(SparseCollections.iterate(mArray).reverse().indexOfKey(2)).isEqualTo(2);
+        assertThat(SparseCollections.iterate(mArray).reverse().positionOfKey(1)).isEqualTo(3);
+        assertThat(SparseCollections.iterate(mArray).reverse().indexOfKey(1)).isEqualTo(1);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .reverse()
+                                    .but()
+                                    .first(2)
+                                    .positionOfKey(2)).isZero();
+        assertThat(
+                SparseCollections.iterate(mArray).reverse().but().first(2).indexOfKey(2)).isEqualTo(
+                2);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .reverse()
+                                    .but()
+                                    .first(2)
+                                    .positionOfKey(1)).isEqualTo(1);
+        assertThat(
+                SparseCollections.iterate(mArray).reverse().but().first(2).indexOfKey(1)).isEqualTo(
+                1);
 
-        assertThat(AndroidCollections.iterate(mArray).firstPositionOfValue(false)).isEqualTo(1);
-        assertThat(AndroidCollections.iterate(mArray).firstIndexOfValue(false)).isEqualTo(1);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .but()
-                                     .first(2)
-                                     .firstPositionOfValue(false)).isEqualTo(1);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .but()
-                                     .first(2)
-                                     .firstIndexOfValue(false)).isEqualTo(3);
+        assertThat(SparseCollections.iterate(mArray).firstPositionOfValue(false)).isEqualTo(1);
+        assertThat(SparseCollections.iterate(mArray).firstIndexOfValue(false)).isEqualTo(1);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .but()
+                                    .first(2)
+                                    .firstPositionOfValue(false)).isEqualTo(1);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .but()
+                                    .first(2)
+                                    .firstIndexOfValue(false)).isEqualTo(3);
 
-        assertThat(AndroidCollections.iterate(mArray).keys()).containsExactly(0, 1, 2, 3, 4);
-        assertThat(AndroidCollections.iterate(mArray).values()).containsExactly(true, false, true,
-                                                                                false, true);
-        assertThat(AndroidCollections.iterate(mArray).keys().reverse()).containsExactly(4, 3, 2, 1,
-                                                                                        0);
-        assertThat(AndroidCollections.iterate(mArray).reverse().keys()).containsExactly(4, 3, 2, 1,
-                                                                                        0);
-        assertThat(AndroidCollections.iterate(mArray).reverse().keys().reverse()).containsExactly(0,
-                                                                                                  1,
-                                                                                                  2,
-                                                                                                  3,
-                                                                                                  4);
-        assertThat(AndroidCollections.iterate(mArray).reverse().reverse().values()).containsExactly(
+        assertThat(SparseCollections.iterate(mArray).keys()).containsExactly(0, 1, 2, 3, 4);
+        assertThat(SparseCollections.iterate(mArray).values()).containsExactly(true, false, true,
+                                                                               false, true);
+        assertThat(SparseCollections.iterate(mArray).keys().reverse()).containsExactly(4, 3, 2, 1,
+                                                                                       0);
+        assertThat(SparseCollections.iterate(mArray).reverse().keys()).containsExactly(4, 3, 2, 1,
+                                                                                       0);
+        assertThat(SparseCollections.iterate(mArray).reverse().keys().reverse()).containsExactly(0,
+                                                                                                 1,
+                                                                                                 2,
+                                                                                                 3,
+                                                                                                 4);
+        assertThat(SparseCollections.iterate(mArray).reverse().reverse().values()).containsExactly(
                 true, false, true, false, true);
 
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .reverse()
-                                     .keys()
-                                     .translate(new Translator<Integer, Integer>() {
+        assertThat(SparseCollections.iterate(mArray)
+                                    .reverse()
+                                    .keys()
+                                    .translate(new Translator<Integer, Integer>() {
 
-                                         @Override
-                                         public Integer translate(final Integer element) {
+                                        @Override
+                                        public Integer translate(final Integer element) {
 
-                                             return element + 1;
-                                         }
+                                            return element + 1;
+                                        }
 
-                                     })
-                                     .reverse()).containsExactly(1, 2, 3, 4, 5);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .reverse()
-                                     .only()
-                                     .first(3)
-                                     .keys()).containsExactly(4, 3, 2);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .reverse()
-                                     .only()
-                                     .first(3)
-                                     .keys()
-                                     .translate(new Translator<Integer, Integer>() {
+                                    })
+                                    .reverse()).containsExactly(1, 2, 3, 4, 5);
+        assertThat(
+                SparseCollections.iterate(mArray).reverse().only().first(3).keys()).containsExactly(
+                4, 3, 2);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .reverse()
+                                    .only()
+                                    .first(3)
+                                    .keys()
+                                    .translate(new Translator<Integer, Integer>() {
 
-                                         @Override
-                                         public Integer translate(final Integer element) {
+                                        @Override
+                                        public Integer translate(final Integer element) {
 
-                                             return element * 2;
-                                         }
+                                            return element * 2;
+                                        }
 
-                                     })).containsExactly(8, 6, 4);
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .reverse()
-                                     .only()
-                                     .first(3)
-                                     .keys()
-                                     .translate(new Translator<Integer, Integer>() {
+                                    })).containsExactly(8, 6, 4);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .reverse()
+                                    .only()
+                                    .first(3)
+                                    .keys()
+                                    .translate(new Translator<Integer, Integer>() {
 
-                                         @Override
-                                         public Integer translate(final Integer element) {
+                                        @Override
+                                        public Integer translate(final Integer element) {
 
-                                             return element * 2;
-                                         }
+                                            return element * 2;
+                                        }
 
-                                     })
-                                     .reverse()).containsExactly(4, 6, 8);
+                                    })
+                                    .reverse()).containsExactly(4, 6, 8);
 
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .from(2)
-                                     .but()
-                                     .last(2)
-                                     .keys()).containsExactly(2);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .from(2)
+                                    .but()
+                                    .last(2)
+                                    .keys()).containsExactly(2);
     }
 
     public void testImmutable() {
 
         final ArrayList<IntSparseBooleanEntry> arrayList =
-                AndroidCollections.iterate(mArray).only().first(2).toImmutableList();
+                SparseCollections.iterate(mArray).only().first(2).toImmutableList();
 
         assertThat(arrayList).hasSize(2);
         assertThat(arrayList.get(0).getKey()).isEqualTo(0);
@@ -582,12 +561,12 @@ public class SparseBooleanArrayTest extends TestCase {
         assertThat(arrayList.get(1).getKey()).isEqualTo(1);
         assertThat(arrayList.get(1).getValue()).isEqualTo(false);
 
-        final IntSparseBooleanEntry[] array = AndroidCollections.iterate(mArray)
-                                                                .only()
-                                                                .key(2)
-                                                                .toImmutableArray(
-                                                                        IntSparseBooleanEntry
-                                                                                .class);
+        final IntSparseBooleanEntry[] array = SparseCollections.iterate(mArray)
+                                                               .only()
+                                                               .key(2)
+                                                               .toImmutableArray(
+                                                                       IntSparseBooleanEntry
+                                                                               .class);
 
         assertThat(array).hasSize(1);
         assertThat(array[0].getKey()).isEqualTo(2);
@@ -596,24 +575,24 @@ public class SparseBooleanArrayTest extends TestCase {
 
         final ArrayList<IntSparseBooleanEntry> filledList = new ArrayList<IntSparseBooleanEntry>(2);
 
-        AndroidCollections.iterate(mArray).only().first(2).fillImmutable(filledList);
+        SparseCollections.iterate(mArray).only().first(2).fillImmutable(filledList);
 
         assertThat(filledList).isEqualTo(arrayList);
 
         final IntSparseBooleanEntry[] filledArray = new IntSparseBooleanEntry[2];
 
-        AndroidCollections.iterate(mArray).only().indexes(2).fillImmutable(filledArray);
+        SparseCollections.iterate(mArray).only().indexes(2).fillImmutable(filledArray);
 
         assertThat(filledArray[0]).isEqualTo(SparseEntries.entry(2, true));
 
-        AndroidCollections.iterate(mArray).only().indexes(2).fillImmutable(filledArray, 1);
+        SparseCollections.iterate(mArray).only().indexes(2).fillImmutable(filledArray, 1);
 
         assertThat(filledArray[0]).isEqualTo(SparseEntries.entry(2, true));
         assertThat(filledArray[0]).isEqualTo(filledArray[1]);
 
         try {
 
-            AndroidCollections.iterate(mArray).fillImmutable(filledArray);
+            SparseCollections.iterate(mArray).fillImmutable(filledArray);
 
             fail();
 
@@ -623,7 +602,7 @@ public class SparseBooleanArrayTest extends TestCase {
 
         final Object[] objectArray = new Object[2];
 
-        AndroidCollections.iterate(mArray).only().to(1).fillImmutable(objectArray);
+        SparseCollections.iterate(mArray).only().to(1).fillImmutable(objectArray);
 
         assertThat(objectArray).containsExactly((Object[]) filledArray);
     }
@@ -632,14 +611,14 @@ public class SparseBooleanArrayTest extends TestCase {
 
         final ArrayList<IntSparseBooleanEntry> forList = new ArrayList<IntSparseBooleanEntry>();
 
-        for (final SparseBooleanArrayEntry entry : AndroidCollections.iterate(mArray)) {
+        for (final SparseBooleanArrayEntry entry : SparseCollections.iterate(mArray)) {
 
             forList.add(entry.toImmutable());
         }
 
         final ArrayList<IntSparseBooleanEntry> forEachList = new ArrayList<IntSparseBooleanEntry>();
 
-        AndroidCollections.iterate(mArray).forEach(new Action<SparseBooleanArrayEntry>() {
+        SparseCollections.iterate(mArray).forEach(new Action<SparseBooleanArrayEntry>() {
 
             @Override
             public void onNext(final SparseBooleanArrayEntry element, final int count,
@@ -653,7 +632,7 @@ public class SparseBooleanArrayTest extends TestCase {
 
         final int[] totals = new int[2];
 
-        AndroidCollections.iterate(mArray).doWhile(new Condition<SparseBooleanArrayEntry>() {
+        SparseCollections.iterate(mArray).doWhile(new Condition<SparseBooleanArrayEntry>() {
 
             @Override
             public boolean onNext(final SparseBooleanArrayEntry element, final int count,
@@ -670,26 +649,25 @@ public class SparseBooleanArrayTest extends TestCase {
 
         totals[0] = 0;
 
-        assertThat(
-                AndroidCollections.iterate(mArray).each(new Condition<SparseBooleanArrayEntry>() {
+        assertThat(SparseCollections.iterate(mArray).each(new Condition<SparseBooleanArrayEntry>() {
 
-                    @Override
-                    public boolean onNext(final SparseBooleanArrayEntry element, final int count,
-                            final int index) {
+                       @Override
+                       public boolean onNext(final SparseBooleanArrayEntry element, final int count,
+                               final int index) {
 
-                        ++totals[0];
-                        totals[1] = count + 1;
+                           ++totals[0];
+                           totals[1] = count + 1;
 
-                        return element.getKey() != 2;
-                    }
+                           return element.getKey() != 2;
+                       }
 
-                })).isFalse();
+                   })).isFalse();
 
         assertThat(totals).containsOnly(3);
 
         totals[0] = 0;
 
-        assertThat(AndroidCollections.iterate(mArray).any(new Condition<SparseBooleanArrayEntry>() {
+        assertThat(SparseCollections.iterate(mArray).any(new Condition<SparseBooleanArrayEntry>() {
 
             @Override
             public boolean onNext(final SparseBooleanArrayEntry element, final int count,
@@ -706,7 +684,7 @@ public class SparseBooleanArrayTest extends TestCase {
 
         try {
 
-            AndroidCollections.iterate(mArray).iterator().remove();
+            SparseCollections.iterate(mArray).iterator().remove();
 
             fail();
 
@@ -715,7 +693,7 @@ public class SparseBooleanArrayTest extends TestCase {
         }
 
         final Iterator<SparseBooleanArrayEntry> remIterator =
-                AndroidCollections.iterate(mArray).iterator();
+                SparseCollections.iterate(mArray).iterator();
 
         while (remIterator.hasNext()) {
 
@@ -727,11 +705,12 @@ public class SparseBooleanArrayTest extends TestCase {
             }
         }
 
-        assertThat(AndroidCollections.iterate(mArray).toImmutableArray(IntSparseBooleanEntry.class))
-                .containsExactly(SparseEntries.entry(0, true), SparseEntries.entry(2, true),
-                                 SparseEntries.entry(4, true));
+        assertThat(SparseCollections.iterate(mArray)
+                                    .toImmutableArray(IntSparseBooleanEntry.class)).containsExactly(
+                SparseEntries.entry(0, true), SparseEntries.entry(2, true),
+                SparseEntries.entry(4, true));
 
-        for (final SparseBooleanArrayEntry entry : AndroidCollections.iterate(mArray)) {
+        for (final SparseBooleanArrayEntry entry : SparseCollections.iterate(mArray)) {
 
             if (entry.getKey() == 2) {
 
@@ -739,12 +718,13 @@ public class SparseBooleanArrayTest extends TestCase {
             }
         }
 
-        assertThat(AndroidCollections.iterate(mArray).toImmutableArray(IntSparseBooleanEntry.class))
-                .containsExactly(SparseEntries.entry(0, true), SparseEntries.entry(4, true));
+        assertThat(SparseCollections.iterate(mArray)
+                                    .toImmutableArray(IntSparseBooleanEntry.class)).containsExactly(
+                SparseEntries.entry(0, true), SparseEntries.entry(4, true));
 
         try {
 
-            for (final SparseBooleanArrayEntry entry : AndroidCollections.iterate(mArray)) {
+            for (final SparseBooleanArrayEntry entry : SparseCollections.iterate(mArray)) {
 
                 entry.remove();
                 entry.remove();
@@ -759,11 +739,11 @@ public class SparseBooleanArrayTest extends TestCase {
 
     public void testParcelable() {
 
-        final ParcelableIntSparseBooleanEntry[] parcelableArray = AndroidCollections.iterate(mArray)
-                                                                                    .only()
-                                                                                    .value(false)
-                                                                                    .toParcelableArray(
-                                                                                            ParcelableIntSparseBooleanEntry.class);
+        final ParcelableIntSparseBooleanEntry[] parcelableArray = SparseCollections.iterate(mArray)
+                                                                                   .only()
+                                                                                   .value(false)
+                                                                                   .toParcelableArray(
+                                                                                           ParcelableIntSparseBooleanEntry.class);
 
         assertThat(parcelableArray).hasSize(2);
         assertThat(parcelableArray[0].getKey()).isEqualTo(1);
@@ -772,11 +752,11 @@ public class SparseBooleanArrayTest extends TestCase {
         assertThat(parcelableArray[1].getValue()).isEqualTo(false);
 
         final ArrayList<ParcelableIntSparseBooleanEntry> parcelableList =
-                AndroidCollections.iterate(mArray)
-                                  .but()
-                                  .keys(Arrays.asList(1, 2, 3))
-                                  .reverse()
-                                  .toParcelableList();
+                SparseCollections.iterate(mArray)
+                                 .but()
+                                 .keys(Arrays.asList(1, 2, 3))
+                                 .reverse()
+                                 .toParcelableList();
 
         assertThat(parcelableList).hasSize(2);
         assertThat(parcelableList.get(0).getKey()).isEqualTo(4);
@@ -796,7 +776,7 @@ public class SparseBooleanArrayTest extends TestCase {
         parcel.setDataPosition(0);
 
         final Bundle out = parcel.readBundle();
-        out.setClassLoader(AndroidCollections.class.getClassLoader());
+        out.setClassLoader(SparseCollections.class.getClassLoader());
 
         assertThat(out.getParcelableArray("array")).isEqualTo(parcelableArray);
         assertThat(out.getParcelableArrayList("list")).isEqualTo(
@@ -805,25 +785,25 @@ public class SparseBooleanArrayTest extends TestCase {
         final ArrayList<ParcelableIntSparseBooleanEntry> filledList =
                 new ArrayList<ParcelableIntSparseBooleanEntry>(2);
 
-        AndroidCollections.iterate(mArray).but().keys(1, 2, 3).reverse().fillParcelable(filledList);
+        SparseCollections.iterate(mArray).but().keys(1, 2, 3).reverse().fillParcelable(filledList);
 
         assertThat(filledList).isEqualTo(parcelableList);
 
         final ParcelableIntSparseBooleanEntry[] filledArray =
                 new ParcelableIntSparseBooleanEntry[2];
 
-        AndroidCollections.iterate(mArray).only().indexes(2).fillParcelable(filledArray);
+        SparseCollections.iterate(mArray).only().indexes(2).fillParcelable(filledArray);
 
         assertThat(filledArray[0]).isEqualTo(SparseEntries.parcelableEntry(2, true));
 
-        AndroidCollections.iterate(mArray).only().indexes(2).fillParcelable(filledArray, 1);
+        SparseCollections.iterate(mArray).only().indexes(2).fillParcelable(filledArray, 1);
 
         assertThat(filledArray[0]).isEqualTo(SparseEntries.parcelableEntry(2, true));
         assertThat(filledArray[0]).isEqualTo(filledArray[1]);
 
         try {
 
-            AndroidCollections.iterate(mArray).fillParcelable(filledArray);
+            SparseCollections.iterate(mArray).fillParcelable(filledArray);
 
             fail();
 
@@ -833,56 +813,56 @@ public class SparseBooleanArrayTest extends TestCase {
 
         final Parcelable[] parcelables = new Parcelable[2];
 
-        AndroidCollections.iterate(mArray).only().to(1).fillParcelable(parcelables);
+        SparseCollections.iterate(mArray).only().to(1).fillParcelable(parcelables);
 
         assertThat(parcelables).containsExactly(filledArray);
     }
 
     public void testRemove() throws Exception {
 
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .from(2)
-                                     .but()
-                                     .last(2)
-                                     .keys()
-                                     .remove()).containsExactly(0, 1, 3, 4);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .from(2)
+                                    .but()
+                                    .last(2)
+                                    .keys()
+                                    .remove()).containsExactly(0, 1, 3, 4);
 
         setUp();
 
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .remove()
-                                     .values()).containsExactly(true, false);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .to(2)
+                                    .reverse()
+                                    .remove()
+                                    .values()).containsExactly(true, false);
     }
 
     public void testRetain() throws Exception {
 
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .from(2)
-                                     .but()
-                                     .last(2)
-                                     .keys()
-                                     .retain()).containsExactly(2);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .from(2)
+                                    .but()
+                                    .last(2)
+                                    .keys()
+                                    .retain()).containsExactly(2);
 
         setUp();
 
-        assertThat(AndroidCollections.iterate(mArray)
-                                     .only()
-                                     .to(2)
-                                     .reverse()
-                                     .retain()
-                                     .values()
-                                     .reverse()).containsExactly(true, false, true);
+        assertThat(SparseCollections.iterate(mArray)
+                                    .only()
+                                    .to(2)
+                                    .reverse()
+                                    .retain()
+                                    .values()
+                                    .reverse()).containsExactly(true, false, true);
     }
 
     public void testTranslations() {
 
         final SparseBooleanArray array1 =
-                AndroidCollections.iterate(mArray).translateValues(new BooleanTranslator() {
+                SparseCollections.iterate(mArray).translateValues(new BooleanTranslator() {
 
                     @Override
                     public boolean translate(final boolean element) {
@@ -891,9 +871,9 @@ public class SparseBooleanArrayTest extends TestCase {
                     }
                 }).toSparseArray();
 
-        assertThat(AndroidCollections.iterate(array1).values()).containsExactly(false, true, false,
-                                                                                true, false);
-        assertThat(AndroidCollections.iterate(array1).replaceValues(new BooleanTranslator() {
+        assertThat(SparseCollections.iterate(array1).values()).containsExactly(false, true, false,
+                                                                               true, false);
+        assertThat(SparseCollections.iterate(array1).replaceValues(new BooleanTranslator() {
 
             @Override
             public boolean translate(final boolean element) {
@@ -902,81 +882,81 @@ public class SparseBooleanArrayTest extends TestCase {
             }
 
         }).values()).containsExactly(true, false, true, false, true);
-        assertThat(AndroidCollections.iterate(array1).values()).containsExactly(true, false, true,
-                                                                                false, true);
-        assertThat(AndroidCollections.iterate(array1).toImmutableList()).containsExactly(
+        assertThat(SparseCollections.iterate(array1).values()).containsExactly(true, false, true,
+                                                                               false, true);
+        assertThat(SparseCollections.iterate(array1).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, true), SparseEntries.entry(1, false),
                 SparseEntries.entry(2, true), SparseEntries.entry(3, false),
                 SparseEntries.entry(4, true));
 
         final SparseBooleanArray array2 =
-                AndroidCollections.iterate(mArray).translate(new IntTranslator() {
+                SparseCollections.iterate(mArray).translate(new IntTranslator() {
 
-                                                                 @Override
-                                                                 public int translate(
-                                                                         final int value) {
+                                                                @Override
+                                                                public int translate(
+                                                                        final int value) {
 
-                                                                     return value + 1;
-                                                                 }
-                                                             },
+                                                                    return value + 1;
+                                                                }
+                                                            },
 
-                                                             new BooleanTranslator() {
+                                                            new BooleanTranslator() {
 
-                                                                 @Override
-                                                                 public boolean translate(
-                                                                         final boolean element) {
+                                                                @Override
+                                                                public boolean translate(
+                                                                        final boolean element) {
 
-                                                                     return !element;
-                                                                 }
-                                                             }).toSparseArray();
-        assertThat(AndroidCollections.iterate(array2).toImmutableList()).containsExactly(
+                                                                    return !element;
+                                                                }
+                                                            }).toSparseArray();
+        assertThat(SparseCollections.iterate(array2).toImmutableList()).containsExactly(
                 SparseEntries.entry(1, false), SparseEntries.entry(2, true),
                 SparseEntries.entry(3, false), SparseEntries.entry(4, true),
                 SparseEntries.entry(5, false));
-        AndroidCollections.iterate(array1).only().first(3).putInto(array2);
-        assertThat(AndroidCollections.iterate(array2).toImmutableList()).containsExactly(
+        SparseCollections.iterate(array1).only().first(3).putInto(array2);
+        assertThat(SparseCollections.iterate(array2).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, true), SparseEntries.entry(1, false),
                 SparseEntries.entry(2, true), SparseEntries.entry(3, false),
                 SparseEntries.entry(4, true), SparseEntries.entry(5, false));
-        AndroidCollections.iterate(array1).only().first(3).appendTo(array2);
-        assertThat(AndroidCollections.iterate(array2).toImmutableList()).containsExactly(
+        SparseCollections.iterate(array1).only().first(3).appendTo(array2);
+        assertThat(SparseCollections.iterate(array2).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, true), SparseEntries.entry(1, false),
                 SparseEntries.entry(2, true), SparseEntries.entry(3, false),
                 SparseEntries.entry(4, true), SparseEntries.entry(5, false));
 
-        AndroidCollections.iterate(array2)
-                          .only()
-                          .keys(2, 3)
-                          .translateValues(new BooleanTranslator() {
+        SparseCollections.iterate(array2)
+                         .only()
+                         .keys(2, 3)
+                         .translateValues(new BooleanTranslator() {
 
-                              @Override
-                              public boolean translate(final boolean element) {
+                             @Override
+                             public boolean translate(final boolean element) {
 
-                                  return !element;
-                              }
-                          })
-                          .putInto(mArray);
-        assertThat(AndroidCollections.iterate(mArray).toImmutableList()).containsExactly(
+                                 return !element;
+                             }
+                         })
+                         .putInto(mArray);
+        assertThat(SparseCollections.iterate(mArray).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, true), SparseEntries.entry(1, false),
                 SparseEntries.entry(2, false), SparseEntries.entry(3, true),
                 SparseEntries.entry(4, true));
-        AndroidCollections.iterate(array2)
-                          .only()
-                          .keys(2, 3)
-                          .translateValues(new BooleanTranslator() {
+        SparseCollections.iterate(array2)
+                         .only()
+                         .keys(2, 3)
+                         .translateValues(new BooleanTranslator() {
 
-                              @Override
-                              public boolean translate(final boolean element) {
+                             @Override
+                             public boolean translate(final boolean element) {
 
-                                  return !element;
-                              }
-                          })
-                          .appendTo(mArray);
-        assertThat(AndroidCollections.iterate(mArray).toImmutableList()).containsExactly(
+                                 return !element;
+                             }
+                         })
+                         .appendTo(mArray);
+        assertThat(SparseCollections.iterate(mArray).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, true), SparseEntries.entry(1, false),
                 SparseEntries.entry(2, false), SparseEntries.entry(3, true),
                 SparseEntries.entry(4, true));
-        AndroidCollections.iterate(array2).only().last(1).translate(new IntTranslator() {
+        SparseCollections.iterate(array2).only().last(1).translate(new IntTranslator() {
 
             @Override
             public int translate(final int value) {
@@ -993,11 +973,11 @@ public class SparseBooleanArrayTest extends TestCase {
             }
 
         }).putInto(mArray);
-        assertThat(AndroidCollections.iterate(mArray).toImmutableList()).containsExactly(
+        assertThat(SparseCollections.iterate(mArray).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, true), SparseEntries.entry(1, false),
                 SparseEntries.entry(2, false), SparseEntries.entry(3, true),
                 SparseEntries.entry(4, true));
-        AndroidCollections.iterate(array2).only().last(1).translate(new IntTranslator() {
+        SparseCollections.iterate(array2).only().last(1).translate(new IntTranslator() {
 
             @Override
             public int translate(final int value) {
@@ -1014,18 +994,18 @@ public class SparseBooleanArrayTest extends TestCase {
             }
 
         }).putInto(mArray);
-        assertThat(AndroidCollections.iterate(mArray).toImmutableList()).containsExactly(
+        assertThat(SparseCollections.iterate(mArray).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, true), SparseEntries.entry(1, false),
                 SparseEntries.entry(2, false), SparseEntries.entry(3, true),
                 SparseEntries.entry(4, true));
 
-        final SparseBooleanArray array3 = AndroidCollections.iterate(mArray).toSparseArray();
-        assertThat(AndroidCollections.iterate(array3).toImmutableList()).containsExactly(
+        final SparseBooleanArray array3 = SparseCollections.iterate(mArray).toSparseArray();
+        assertThat(SparseCollections.iterate(array3).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, true), SparseEntries.entry(1, false),
                 SparseEntries.entry(2, false), SparseEntries.entry(3, true),
                 SparseEntries.entry(4, true));
 
-        AndroidCollections.iterate(array3).but().last(1).translateKeys(new IntTranslator() {
+        SparseCollections.iterate(array3).but().last(1).translateKeys(new IntTranslator() {
 
             @Override
             public int translate(final int value) {
@@ -1034,11 +1014,11 @@ public class SparseBooleanArrayTest extends TestCase {
             }
 
         }).appendTo(mArray);
-        assertThat(AndroidCollections.iterate(mArray).toImmutableList()).containsExactly(
+        assertThat(SparseCollections.iterate(mArray).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, true), SparseEntries.entry(1, false),
                 SparseEntries.entry(2, true), SparseEntries.entry(3, false),
                 SparseEntries.entry(4, false), SparseEntries.entry(5, true));
-        AndroidCollections.iterate(array3).but().last(1).translateKeys(new IntTranslator() {
+        SparseCollections.iterate(array3).but().last(1).translateKeys(new IntTranslator() {
 
             @Override
             public int translate(final int value) {
@@ -1047,7 +1027,7 @@ public class SparseBooleanArrayTest extends TestCase {
             }
 
         }).putInto(mArray);
-        assertThat(AndroidCollections.iterate(mArray).toImmutableList()).containsExactly(
+        assertThat(SparseCollections.iterate(mArray).toImmutableList()).containsExactly(
                 SparseEntries.entry(0, true), SparseEntries.entry(1, false),
                 SparseEntries.entry(2, true), SparseEntries.entry(3, false),
                 SparseEntries.entry(4, false), SparseEntries.entry(5, true));

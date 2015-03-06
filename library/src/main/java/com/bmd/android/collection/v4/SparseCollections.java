@@ -35,12 +35,12 @@ import com.bmd.android.collection.iterator.SupportLongSparseArrayIterable;
  * <p/>
  * Created by davide on 3/9/14.
  */
-public class AndroidCollections {
+public class SparseCollections {
 
     /**
      * Avoid direct instantiation.
      */
-    protected AndroidCollections() {
+    protected SparseCollections() {
 
     }
 

@@ -44,7 +44,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
  * The sparse collection can be iterated both by using the classic Java syntax:
  * <pre>
  *  <code>
- *     for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)) {
+ *     for (final SparseArrayEntry<String> entry: SparseCollections.iterate(array)) {
  *
  *         // ... do your stuff ...
  *     }
@@ -53,18 +53,18 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
  * Or through a more fluent syntax, like:
  * <pre>
  *  <code>
- *     AndroidCollections.iterate(array)
- *                       .only().from(4)
- *                       .forEach((element, index) -> {
- *                           // ... do your stuff ...
- *                       });
+ *     SparseCollections.iterate(array)
+ *                      .only().from(4)
+ *                      .forEach((element, index) -> {
+ *                          // ... do your stuff ...
+ *                      });
  *  </code>
  * </pre>
  * Or even by mixing the two:
  * <pre>
  *  <code>
- *     for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)
- *                                                                  .only().first(3)) {
+ *     for (final SparseArrayEntry<String> entry: SparseCollections.iterate(array)
+ *                                                                 .only().first(3)) {
  *
  *         // ... do your stuff ...
  *     }
@@ -82,12 +82,12 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
  *         array.append(i, String.valueOf(i));
  *     }
  *
- *     AndroidCollections.iterate(array)
- *                       .only().first(3)
- *                       .only().last(2)
- *                       .reverse().forEach((element, index) -> {
- *                           System.out.println(element.getValue());
- *                       });
+ *     SparseCollections.iterate(array)
+ *                      .only().first(3)
+ *                      .only().last(2)
+ *                      .reverse().forEach((element, index) -> {
+ *                          System.out.println(element.getValue());
+ *                      });
  *  </code>
  * </pre>
  * will be:
@@ -119,7 +119,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
  *
  *     IntSparseObjectEntry<String> myEntry;
  *
- *     for (final SparseArrayEntry<String> entry: AndroidCollections.iterate(array)) {
+ *     for (final SparseArrayEntry<String> entry: SparseCollections.iterate(array)) {
  *
  *         if ("3".equals(entry.getValue())) {
  *
@@ -132,22 +132,22 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
  * </pre>
  * <p/>
  * For JELLY BEAN retro-compatible implementation refer to
- * {@link com.bmd.android.collection.v16.AndroidCollections}.
+ * {@link com.bmd.android.collection.v16.SparseCollections}.
  * <p/>
  * Created by davide on 5/1/14.
  *
- * @see com.bmd.android.collection.v4.AndroidCollections
+ * @see com.bmd.android.collection.v4.SparseCollections
  */
 @SuppressFBWarnings(value = "NM_SAME_SIMPLE_NAME_AS_SUPERCLASS",
                     justification = "utility class extending functionalities of another utility "
                             + "class")
 @TargetApi(VERSION_CODES.JELLY_BEAN_MR2)
-public class AndroidCollections extends com.bmd.android.collection.v16.AndroidCollections {
+public class SparseCollections extends com.bmd.android.collection.v16.SparseCollections {
 
     /**
      * Avoid direct instantiation.
      */
-    protected AndroidCollections() {
+    protected SparseCollections() {
 
     }
 
