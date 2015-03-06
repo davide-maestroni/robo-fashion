@@ -13,7 +13,7 @@ Android sparse collections.
 
         // Fill with values...
 
-        for (final SimpleArrayMapEntry&lt;String, String> entry : AndroidCollections.iterate(array)) {
+        for (final SimpleArrayMapEntry&lt;String, String> entry : SparseCollections.iterate(array)) {
 
             System.out.println(entry);
         }
@@ -26,7 +26,7 @@ Android sparse collections.
 
         // Fill with values...
 
-        AndroidCollections.iterate(array).only(new Filter&lt;SimpleArrayMapEntry&lt;String, String>>() {
+        SparseCollections.iterate(array).only(new Filter&lt;SimpleArrayMapEntry&lt;String, String>>() {
 
                     &commat;Override
                     public boolean matches(final SimpleArrayMapEntry&lt;String, String> entry,
@@ -54,7 +54,7 @@ order:
         // Fill with values...
 
         for (final SparseArrayEntry&lt;String> entry :
-                AndroidCollections.iterate(array).but().last(2).reverse()) {
+                SparseCollections.iterate(array).but().last(2).reverse()) {
 
             System.out.println(entry);
         }
@@ -67,7 +67,7 @@ order:
 
         // Fill with values...
 
-        AndroidCollections.iterate(array).only(new Filter&lt;SparseArrayEntry&lt;String>>() {
+        SparseCollections.iterate(array).only(new Filter&lt;SparseArrayEntry&lt;String>>() {
 
                     &commat;Override
                     public boolean matches(final SparseArrayEntry&lt;String> entry, final int count,
@@ -85,7 +85,7 @@ order:
 
         // Fill with values...
 
-        AndroidCollections.iterate(array).only().last(3).retain();
+        SparseCollections.iterate(array).only().last(3).retain();
     </code>
 </pre>
 <b>Example 6:</b> replace the value of the elements with an even key with lowercase text:
@@ -95,7 +95,7 @@ order:
 
         // Fill with values...
 
-        AndroidCollections.iterate(array).only(new Filter&lt;SparseArrayEntry&lt;String>>() {
+        SparseCollections.iterate(array).only(new Filter&lt;SparseArrayEntry&lt;String>>() {
 
                     &commat;Override
                     public boolean matches(final SparseArrayEntry&lt;String> entry, final int count,
