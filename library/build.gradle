@@ -20,17 +20,17 @@ apply plugin: 'maven'
 apply plugin: 'signing'
 
 group = 'com.github.davide-maestroni'
-version = '2.0.0'
+version = '3.0.0'
 archivesBaseName = project.parent.name
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion '21.1.2' // Travis does not support a later version
+    compileSdkVersion 22
+    buildToolsVersion '22.0.1' // Travis does not support an higher version
 
     defaultConfig {
-        minSdkVersion 8
-        targetSdkVersion 21
-        versionCode 101
+        minSdkVersion 4
+        targetSdkVersion 21 // Travis does not support an higher version
+        versionCode 300
         versionName version
     }
 
@@ -48,17 +48,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:support-v4:21.0.3' // Travis does not support a later version
+    // Travis does not support an higher version
+    compile 'com.android.support:support-v4:21.0.3'
     compile 'com.google.code.findbugs:annotations:3.0.0'
 
-    androidTestCompile 'org.assertj:assertj-core:1.7.0'
+    androidTestCompile 'org.assertj:assertj-core:1.7.1'
 }
 
 task("jacocoTest", dependsOn: 'connectedCheck') {
     description = "Runs the tests and generates the JaCoCo report files."
 } << {
-    tasks.createDebugCoverageReport.execute()
+    tasks.createDebugAndroidTestCoverageReport.execute()
 }
 
 task("javadoc", dependsOn: 'javadocRelease')
@@ -159,7 +159,7 @@ if (project.hasProperty('uploadEnabled')) {
 
                 pom.project {
                     name = archivesBaseName
-                    packaging = 'jar'
+                    packaging = 'aar'
                     description = 'Easily iterate through Android sparse collections'
                     url = 'http://davide-maestroni.github.io/robo-fashion/'
 

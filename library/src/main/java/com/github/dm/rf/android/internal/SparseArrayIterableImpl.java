@@ -1,0 +1,760 @@
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.github.dm.rf.android.internal;
+
+import android.annotation.SuppressLint;
+import android.os.Parcelable;
+import android.util.SparseArray;
+
+import com.github.dm.rf.android.entry.IntSparseObjectEntry;
+import com.github.dm.rf.android.entry.ParcelableIntSparseObjectEntry;
+import com.github.dm.rf.android.entry.SparseArrayEntry;
+import com.github.dm.rf.android.filter.Filter;
+import com.github.dm.rf.android.filter.SparseArrayFilterBuilder;
+import com.github.dm.rf.android.iterator.ElementSparseIterable;
+import com.github.dm.rf.android.iterator.IntSparseIterable;
+import com.github.dm.rf.android.iterator.SparseArrayIterable;
+import com.github.dm.rf.android.translator.FullIntTranslator;
+import com.github.dm.rf.android.translator.FullTranslator;
+import com.github.dm.rf.android.translator.IntTranslator;
+import com.github.dm.rf.android.translator.Translator;
+import com.github.dm.rf.android.translator.Translators;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+/**
+ * Implementation of a {@link SparseArrayIterable}.
+ * <p/>
+ * Created by davide-maestroni on 3/11/14.
+ *
+ * @param <V> the entry value type.
+ */
+class SparseArrayIterableImpl<V> extends AbstractSparseIterable<SparseArrayEntry<V>>
+        implements SparseArrayIterable<V> {
+
+    private final SparseArray<V> mArray;
+
+    private SparseArrayFilterBuilderImpl<V> mExclusionBuilder;
+
+    private SparseArrayFilterBuilderImpl<V> mInclusionBuilder;
+
+    private Translator<SparseArrayEntry<V>, Integer> mKeyTranslator;
+
+    private Translator<SparseArrayEntry<V>, V> mValueTranslator;
+
+    public SparseArrayIterableImpl(final SparseArray<V> array) {
+
+        mArray = array;
+    }
+
+    SparseArrayIterableImpl(final SparseArrayIterableImpl<V> other) {
+
+        super(other);
+
+        mArray = other.mArray;
+    }
+
+    @Override
+    public SparseArrayIterable<V> appendTo(final SparseArray<V> other) {
+
+        for (final SparseArrayEntry<V> entry : this) {
+
+            other.append(entry.getKey(), entry.getValue());
+        }
+
+        return this;
+    }
+
+    @Override
+    public boolean containsAllKeys(final int... keys) {
+
+        for (final int key : keys) {
+
+            if (positionOfKey(key) < 0) {
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean containsAllKeys(final Iterable<Integer> keys) {
+
+        for (final int key : keys) {
+
+            if (positionOfKey(key) < 0) {
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean containsAllValues(final Object... values) {
+
+        for (final Object value : values) {
+
+            if (firstPositionOfValue(value) < 0) {
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean containsAllValues(final Iterable<?> values) {
+
+        for (final Object value : values) {
+
+            if (firstPositionOfValue(value) < 0) {
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean containsAnyKey(final int... keys) {
+
+        for (final int key : keys) {
+
+            if (positionOfKey(key) >= 0) {
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean containsAnyKey(final Iterable<Integer> keys) {
+
+        for (final int key : keys) {
+
+            if (positionOfKey(key) >= 0) {
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean containsAnyValue(final Object... values) {
+
+        for (final Object value : values) {
+
+            if (firstPositionOfValue(value) >= 0) {
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean containsAnyValue(final Iterable<?> values) {
+
+        for (final Object value : values) {
+
+            if (firstPositionOfValue(value) >= 0) {
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean containsKey(final int key) {
+
+        return positionOfKey(key) >= 0;
+    }
+
+    @Override
+    public boolean containsValue(final Object value) {
+
+        return firstPositionOfValue(value) >= 0;
+    }
+
+    @Override
+    public SparseArrayIterable<V> fill(final Map<? super Integer, ? super V> map) {
+
+        for (final SparseArrayEntry<V> entry : this) {
+
+            map.put(entry.getKey(), entry.getValue());
+        }
+
+        return this;
+    }
+
+    @Override
+    public SparseArrayIterable<V> fillImmutable(
+            final Collection<? super IntSparseObjectEntry<V>> collection) {
+
+        for (final SparseArrayEntry<V> entry : this) {
+
+            collection.add(entry.toImmutable());
+        }
+
+        return this;
+    }
+
+    @Override
+    public <T> SparseArrayIterable<V> fillImmutable(final T[] array) {
+
+        return fillImmutable(array, 0);
+    }
+
+    @Override
+    public <T> SparseArrayIterable<V> fillImmutable(final T[] array, final int offset) {
+
+        int i = offset;
+
+        for (final SparseArrayEntry<V> entry : this) {
+
+            //noinspection unchecked
+            array[i++] = (T) entry.toImmutable();
+        }
+
+        return this;
+    }
+
+    @Override
+    public <T extends Parcelable> SparseArrayIterable<V> fillParcelable(final T[] array) {
+
+        return fillParcelable(array, 0);
+    }
+
+    @Override
+    public <T extends Parcelable> SparseArrayIterable<V> fillParcelable(final T[] array,
+            final int offset) {
+
+        int i = offset;
+
+        for (final SparseArrayEntry<V> entry : this) {
+
+            //noinspection unchecked
+            array[i++] = (T) entry.toParcelable();
+        }
+
+        return this;
+    }
+
+    @Override
+    public SparseArrayIterable<V> fillParcelable(
+            final Collection<? super ParcelableIntSparseObjectEntry<V>> collection) {
+
+        for (final SparseArrayEntry<V> entry : this) {
+
+            collection.add(entry.toParcelable());
+        }
+
+        return this;
+    }
+
+    @Override
+    public int firstIndexOfValue(final Object value) {
+
+        if (value == null) {
+
+            for (final SparseArrayEntry<V> entry : this) {
+
+                if (entry.getValue() == null) {
+
+                    return entry.getIndex();
+                }
+            }
+
+        } else {
+
+            for (final SparseArrayEntry<V> entry : this) {
+
+                if (value.equals(entry.getValue())) {
+
+                    return entry.getIndex();
+                }
+            }
+        }
+
+        return -1;
+    }
+
+    @Override
+    public int firstPositionOfValue(final Object value) {
+
+        int i = 0;
+
+        if (value == null) {
+
+            for (final SparseArrayEntry<V> entry : this) {
+
+                if (entry.getValue() == null) {
+
+                    return i;
+                }
+
+                ++i;
+            }
+
+        } else {
+
+            for (final SparseArrayEntry<V> entry : this) {
+
+                if (value.equals(entry.getValue())) {
+
+                    return i;
+                }
+
+                ++i;
+            }
+        }
+
+        return -1;
+    }
+
+    @Override
+    public int indexOfKey(final int key) {
+
+        for (final SparseArrayEntry<V> entry : this) {
+
+            if (entry.getKey() == key) {
+
+                return entry.getIndex();
+            }
+        }
+
+        return -1;
+    }
+
+    @Override
+    public boolean isEqualTo(final SparseArray<?> array) {
+
+        int count = 0;
+
+        for (final SparseArrayEntry<V> entry : this) {
+
+            final Object value = array.get(entry.getKey());
+
+            if (value == null) {
+
+                if (entry.getValue() != null) {
+
+                    return false;
+                }
+
+            } else if (!value.equals(entry.getValue())) {
+
+                return false;
+            }
+
+            ++count;
+        }
+
+        return (count == array.size());
+    }
+
+    @Override
+    public boolean isEqualTo(final Map<?, ?> map) {
+
+        int count = 0;
+
+        for (final SparseArrayEntry<V> entry : this) {
+
+            final Object value = map.get(entry.getKey());
+
+            if (value == null) {
+
+                if (entry.getValue() != null) {
+
+                    return false;
+                }
+
+            } else if (!value.equals(entry.getValue())) {
+
+                return false;
+            }
+
+            ++count;
+        }
+
+        return (count == map.size());
+    }
+
+    @Override
+    public IntSparseIterable keys() {
+
+        if (mKeyTranslator == null) {
+
+            mKeyTranslator = new Translator<SparseArrayEntry<V>, Integer>() {
+
+                @Override
+                public Integer translate(final SparseArrayEntry<V> element) {
+
+                    return element.getKey();
+                }
+            };
+        }
+
+        return toIntegers(mKeyTranslator);
+    }
+
+    @Override
+    public int positionOfKey(final int key) {
+
+        int i = 0;
+
+        for (final SparseArrayEntry<V> entry : this) {
+
+            if (entry.getKey() == key) {
+
+                return i;
+            }
+
+            ++i;
+        }
+
+        return -1;
+    }
+
+    @Override
+    public SparseArrayIterable<V> putInto(final SparseArray<V> other) {
+
+        for (final SparseArrayEntry<V> entry : this) {
+
+            other.put(entry.getKey(), entry.getValue());
+        }
+
+        return this;
+    }
+
+    @Override
+    public SparseArrayIterable<V> replaceValues(final Translator<V, V> translator) {
+
+        final SparseArray<V> array = mArray;
+
+        for (final SparseArrayEntry<V> entry : this) {
+
+            array.append(entry.getKey(), translator.translate(entry.getValue()));
+        }
+
+        return this;
+    }
+
+    @Override
+    public <T> T[] toImmutableArray(final Class<T> type) {
+
+        final ArrayList<IntSparseObjectEntry<V>> list = toImmutableList();
+
+        //noinspection unchecked,SuspiciousToArrayCall
+        return list.toArray((T[]) Array.newInstance(type, list.size()));
+    }
+
+    @Override
+    public ArrayList<IntSparseObjectEntry<V>> toImmutableList() {
+
+        final ArrayList<IntSparseObjectEntry<V>> list = new ArrayList<IntSparseObjectEntry<V>>();
+
+        fillImmutable(list);
+
+        return list;
+    }
+
+    @Override
+    public Map<Integer, V> toMap() {
+
+        @SuppressLint("UseSparseArrays")
+        final HashMap<Integer, V> map = new HashMap<Integer, V>();
+
+        fill(map);
+
+        return map;
+    }
+
+    @Override
+    public <T extends Parcelable> T[] toParcelableArray(final Class<T> type) {
+
+        final ArrayList<ParcelableIntSparseObjectEntry<V>> list = toParcelableList();
+
+        //noinspection unchecked,SuspiciousToArrayCall
+        return list.toArray((T[]) Array.newInstance(type, list.size()));
+    }
+
+    @Override
+    public ArrayList<ParcelableIntSparseObjectEntry<V>> toParcelableList() {
+
+        final ArrayList<ParcelableIntSparseObjectEntry<V>> list =
+                new ArrayList<ParcelableIntSparseObjectEntry<V>>();
+
+        fillParcelable(list);
+
+        return list;
+    }
+
+    @Override
+    public SortedMap<Integer, V> toSortedMap() {
+
+        final TreeMap<Integer, V> map = new TreeMap<Integer, V>();
+
+        fill(map);
+
+        return map;
+    }
+
+    @Override
+    public SparseArray<V> toSparseArray() {
+
+        final SparseArray<V> array = new SparseArray<V>();
+
+        for (final SparseArrayEntry<V> entry : this) {
+
+            array.append(entry.getKey(), entry.getValue());
+        }
+
+        return array;
+    }
+
+    @Override
+    public <T> SparseArrayIterable<T> translate(final IntTranslator keyTranslator,
+            final Translator<V, T> valueTranslator) {
+
+        return new TranslatedSparseArrayIterableImpl<T, V>(this, Translators.full(keyTranslator),
+                                                           Translators.full(valueTranslator));
+    }
+
+    @Override
+    public SparseArrayIterable<V> translateKeys(final IntTranslator keyTranslator) {
+
+        final FullTranslator<V, V> valueTranslator = Translators.identity();
+
+        return translate(keyTranslator, valueTranslator);
+    }
+
+    @Override
+    public <T> SparseArrayIterable<T> translateValues(final Translator<V, T> translator) {
+
+        return translate(Translators.intIdentity(), translator);
+    }
+
+    @Override
+    public ElementSparseIterable<V> values() {
+
+        if (mValueTranslator == null) {
+
+            mValueTranslator = new Translator<SparseArrayEntry<V>, V>() {
+
+                @Override
+                public V translate(final SparseArrayEntry<V> element) {
+
+                    return element.getValue();
+                }
+            };
+        }
+
+        return toElements(mValueTranslator);
+    }
+
+    @Override
+    public SparseArrayFilterBuilder<V> but() {
+
+        if (mExclusionBuilder == null) {
+
+            mExclusionBuilder = new SparseArrayFilterBuilderImpl<V>(this, false);
+        }
+
+        return mExclusionBuilder;
+    }
+
+    @Override
+    public SparseArrayIterable<V> but(final Filter<SparseArrayEntry<V>> filter) {
+
+        super.but(filter);
+
+        return this;
+    }
+
+    @Override
+    public SparseArrayIterable<V> doWhile(final Condition<SparseArrayEntry<V>> condition) {
+
+        super.doWhile(condition);
+
+        return this;
+    }
+
+    @Override
+    public SparseArrayIterable<V> forEach(final Action<SparseArrayEntry<V>> action) {
+
+        super.forEach(action);
+
+        return this;
+    }
+
+    @Override
+    public SparseArrayFilterBuilder<V> only() {
+
+        if (mInclusionBuilder == null) {
+
+            mInclusionBuilder = new SparseArrayFilterBuilderImpl<V>(this, true);
+        }
+
+        return mInclusionBuilder;
+    }
+
+    @Override
+    public SparseArrayIterable<V> only(final Filter<SparseArrayEntry<V>> filter) {
+
+        super.only(filter);
+
+        return this;
+    }
+
+    @Override
+    public SparseArrayIterable<V> remove() {
+
+        super.remove();
+
+        return this;
+    }
+
+    @Override
+    public SparseArrayIterable<V> retain() {
+
+        super.retain();
+
+        return this;
+    }
+
+    @Override
+    public SparseArrayIterable<V> reverse() {
+
+        super.reverse();
+
+        return this;
+    }
+
+    private static class TranslatedSparseArrayIterableImpl<T, V>
+            extends SparseArrayIterableImpl<T> {
+
+        private final SparseArrayIterableImpl<V> mIterable;
+
+        private final FullIntTranslator mKeyTranslator;
+
+        private final FullTranslator<V, T> mValueTranslator;
+
+        public TranslatedSparseArrayIterableImpl(final SparseArrayIterableImpl<V> wrapped,
+                final FullIntTranslator keyTranslator, final FullTranslator<V, T> valueTranslator) {
+
+            super((SparseArray<T>) null);
+
+            mIterable = wrapped;
+            mKeyTranslator = keyTranslator;
+            mValueTranslator = valueTranslator;
+        }
+
+        private TranslatedSparseArrayIterableImpl(
+                final TranslatedSparseArrayIterableImpl<T, V> other) {
+
+            super(other);
+
+            mIterable = other.mIterable;
+            mKeyTranslator = other.mKeyTranslator;
+            mValueTranslator = other.mValueTranslator;
+        }
+
+        @Override
+        protected TranslatedSparseArrayIterableImpl<T, V> copy() {
+
+            return new TranslatedSparseArrayIterableImpl<T, V>(this);
+        }
+
+        @Override
+        protected SparseIterator<SparseArrayEntry<T>> createIterator(final boolean isReverse) {
+
+            final SparseArrayIterableImpl<V> iterable;
+
+            if (isReverse) {
+
+                iterable = mIterable.copy();
+                iterable.reverse();
+
+            } else {
+
+                iterable = mIterable;
+            }
+
+            final SparseIterator<SparseArrayEntry<V>> iterator = iterable.filteredIterator(false);
+
+            return new TranslatedSparseArrayIterator<T, V>(iterator, mKeyTranslator,
+                                                           mValueTranslator);
+        }
+
+        @Override
+        protected SparseIterator<SparseArrayEntry<T>> rawIterator(final boolean isReverse) {
+
+            final SparseIterator<SparseArrayEntry<V>> iterator = mIterable.rawIterator(isReverse);
+
+            return new TranslatedSparseArrayIterator<T, V>(iterator, mKeyTranslator,
+                                                           mValueTranslator);
+        }
+
+        @Override
+        protected void clearFilters() {
+
+            super.clearFilters();
+
+            mIterable.clearFilters();
+        }
+    }
+
+    @Override
+    protected SparseArrayIterableImpl<V> copy() {
+
+        return new SparseArrayIterableImpl<V>(this);
+    }
+
+    @Override
+    protected SparseIterator<SparseArrayEntry<V>> createIterator(final boolean isReverse) {
+
+        if (isReverse) {
+
+            return new SparseArrayReverseIterator<V>(mArray);
+        }
+
+        return new SparseArrayIterator<V>(mArray);
+    }
+
+    @Override
+    protected SparseIterator<SparseArrayEntry<V>> rawIterator(final boolean isReverse) {
+
+        return createIterator(isReverse);
+    }
+}
