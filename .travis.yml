@@ -6,10 +6,10 @@ sudo: false
 android:
   components:
     # The BuildTools version
-    - build-tools-21.0.2
+    - build-tools-22.0.1
 
     # The SDK version
-    - android-21
+    - android-22
 
     # Extras
     - extra
